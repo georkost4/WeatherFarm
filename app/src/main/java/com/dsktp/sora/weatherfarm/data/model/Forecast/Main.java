@@ -15,7 +15,7 @@ public class Main
     private double sea_level;
     private double grnd_level;
     private double humidity;
-//    private double temp_kf todo there is not such field in current weather
+    private double temp_kf; //todo there is not such field in current weather
 
 
     public Main(double temp, double temp_min, double temp_max, double pressure, double sea_level, double grnd_level, double humidity) {

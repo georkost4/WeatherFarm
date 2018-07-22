@@ -10,4 +10,25 @@ public class UVindex
 {
     private int dt;
     private float uvi; // ultraviolet index
+
+    public UVindex(int dt, float uvi) {
+        this.dt = dt;
+        this.uvi = uvi;
+    }
+
+    public int getDt() {
+        return dt;
+    }
+
+    public void setDt(int dt) {
+        this.dt = dt;
+    }
+
+    public float getUvi() {
+        return uvi;
+    }
+
+    public void setUvi(float uvi) {
+        this.uvi = uvi;
+    }
 }

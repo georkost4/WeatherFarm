@@ -4,55 +4,45 @@ import java.util.ArrayList;
 
 /**
  * This file created by Georgios Kostogloudis
- * and was last modified on 21/7/2018.
+ * and was last modified on 22/7/2018.
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class WeatherResponsePOJO
+public class WeatherForecastResponsePOJO
 {
     private int dt;
     private ArrayList<Weather> weather;
     private Main main;
     private Wind wind;
+    private Rain rain;
     private Cloud clouds;
+    private Snow snow;
+
+    public Snow getSnow() {
+        return snow;
+    }
 
     public int getDt() {
         return dt;
     }
 
-    public void setDt(int dt) {
-        this.dt = dt;
+    public ArrayList<Weather> getWeather() {
+        return weather;
     }
-
-//    public Weather getWeather() {
-//        return weather;
-//    }
-
-//    public void setWeather(Weather weather) {
-//        this.weather = weather;
-//    }
 
     public Main getMain() {
         return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
     }
 
     public Wind getWind() {
         return wind;
     }
 
-    public void setWind(Wind wind) {
-        this.wind = wind;
+    public Rain getRain() {
+        return rain;
     }
 
     public Cloud getClouds() {
         return clouds;
-    }
-
-    public void setClouds(Cloud clouds) {
-        this.clouds = clouds;
     }
 }
