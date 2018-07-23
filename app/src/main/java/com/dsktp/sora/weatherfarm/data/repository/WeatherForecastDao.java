@@ -5,10 +5,9 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.dsktp.sora.weatherfarm.data.model.Ground.UVindex;
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 
 import java.util.List;
-
 
 /**
  * This file created by Georgios Kostogloudis
@@ -17,14 +16,16 @@ import java.util.List;
  * UDACITY ND programm.
  */
 @Dao
-public interface UVindexDao
+public interface WeatherForecastDao
 {
-    @Query("SELECT * FROM CurrentUltraVioletDataTable")
-    List<UVindex> getAllEntries();
+    @Query("SELECT * FROM weatherForecastTable")
+    List<WeatherForecastPOJO> getWeatherEntries();
 
     @Insert
-    void insertUViEntry(UVindex entrie);
+    long insertWeatherForecastEntry(WeatherForecastPOJO entrie);
 
-    @Query("DELETE FROM CurrentUltraVioletDataTable WHERE time = :entrieID")
-    void delete(int entrieID);
+    @Query("DELETE FROM weatherForecastTable WHERE dt = :entryID")
+    int deleteForecastEntry(int  entryID);
+
+
 }

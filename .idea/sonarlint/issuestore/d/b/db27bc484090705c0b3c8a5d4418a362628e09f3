@@ -1,6 +1,5 @@
 
-Bsquid:S1170"!Make this final field static too.(¥½Ğ¤ÿÿÿÿÿ8éÎÉ£Ì,
-Psquid:S1068"/Remove this unused "coordinates" private field.(ØÊ×Ïüÿÿÿÿ8éÎÉ£Ì,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ø½Ú8¡ÇÊ£Ì,
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡ô£ÿ8éÎÉ£Ì,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(™°¸úÿÿÿÿ8‰€Ë£Ì,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(™°¸úÿÿÿÿ8ÍÉ¡³Ì,
+Bsquid:S1170"!Make this final field static too.(¥½Ğ¤ÿÿÿÿÿ8ÍÉ¡³Ì,
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡ô£ÿ8ÍÉ¡³Ì,
+Ksquid:S1068"/Remove this unused "coordinates" private field.(¥¾©Ã8ÍÉ¡³Ì,

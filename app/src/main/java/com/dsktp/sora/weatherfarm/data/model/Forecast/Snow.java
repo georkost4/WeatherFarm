@@ -12,4 +12,19 @@ public class Snow
 {
     @SerializedName("3h")
     private double threeHourSnowVolume;
+
+    public Snow(double threeHourSnowVolume) {
+        this.threeHourSnowVolume = threeHourSnowVolume;
+    }
+
+    public Snow() {
+    }
+
+    public double getThreeHourSnowVolume() {
+        return threeHourSnowVolume;
+    }
+
+    public void setThreeHourSnowVolume(double threeHourSnowVolume) {
+        this.threeHourSnowVolume = threeHourSnowVolume;
+    }
 }

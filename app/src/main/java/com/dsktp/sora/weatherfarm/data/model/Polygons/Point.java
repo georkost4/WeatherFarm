@@ -10,5 +10,5 @@ import java.util.List;
  */
 public class Point
 {
-    private List<Coordinates> points;
+    private List<Coordinates> points; //todo use this class in request body
 }

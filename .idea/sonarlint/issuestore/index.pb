@@ -59,3 +59,13 @@ Mapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/GeoJSON.java,
 Uapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/SendPolygonPOJO.java,9\d\9d3ad57a9476ace4e159e738891efa721e5c65a3
 {
 Kapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/Point.java,6\c\6c73ea7614e937b3ee36f4f3d5d45e7f4e102ceb
+…
+Uapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/PolygonInfoPOJO.java,3\3\3387139cd0d2f11eec4526e43de40ae473200adb
+}
+Mapp/src/main/java/com/dsktp/sora/weatherfarm/data/repository/AppDatabase.java,6\e\6e783b8b8493fe7ac12f089fab166b444ef7cac6
+‚
+Rapp/src/androidTest/java/com/dsktp/sora/weatherfarm/SimpleEntityReadWriteTest.java,8\e\8e6d37671739ec32d1dd5adf941014ce1c5e3b49
+|
+Lapp/src/main/java/com/dsktp/sora/weatherfarm/data/repository/UVindexDao.java,c\0\c05c714db9af64ab4f50cc997a6e4017cfe9a685
+}
+Mapp/src/main/java/com/dsktp/sora/weatherfarm/data/repository/SoilDataDao.java,4\f\4f026af317483b55e177b15d19552b253d8f9149

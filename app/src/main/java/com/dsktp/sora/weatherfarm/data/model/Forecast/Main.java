@@ -28,6 +28,9 @@ public class Main
         this.humidity = humidity;
     }
 
+    public Main() {
+    }
+
     public double getTemp() {
         return temp;
     }

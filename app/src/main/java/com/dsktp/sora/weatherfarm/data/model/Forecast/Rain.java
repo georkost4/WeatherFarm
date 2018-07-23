@@ -12,4 +12,19 @@ public class Rain
 {
     @SerializedName("3h")
     private double threeHourRainVolume;
+
+    public Rain(double threeHourRainVolume) {
+        this.threeHourRainVolume = threeHourRainVolume;
+    }
+
+    public Rain() {
+    }
+
+    public double getThreeHourRainVolume() {
+        return threeHourRainVolume;
+    }
+
+    public void setThreeHourRainVolume(double threeHourRainVolume) {
+        this.threeHourRainVolume = threeHourRainVolume;
+    }
 }

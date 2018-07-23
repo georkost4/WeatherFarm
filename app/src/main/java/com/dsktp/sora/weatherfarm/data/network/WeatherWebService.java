@@ -1,6 +1,6 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
-import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastResponsePOJO;
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 
 import java.util.List;
 
@@ -17,16 +17,16 @@ import retrofit2.http.Query;
 public interface WeatherWebService
 {
     @GET("weather")
-    Call<WeatherForecastResponsePOJO> currentWeatherLatLongForecast(@Query("lat") String latitude,@Query("lon") String longtitude,@Query("appid") String API_KEY);
+    Call<WeatherForecastPOJO> currentWeatherLatLongForecast(@Query("lat") String latitude, @Query("lon") String longtitude, @Query("appid") String API_KEY);
 
     @GET("weather")
-    Call<WeatherForecastResponsePOJO> currentWeatherPolygonForecast(@Query("polyid") String polygonID,@Query("appid") String API_KEY);
+    Call<WeatherForecastPOJO> currentWeatherPolygonForecast(@Query("polyid") String polygonID, @Query("appid") String API_KEY);
 
     @GET("weather/forecast")
-    Call<List<WeatherForecastResponsePOJO>> WeatherLatLongForecast(@Query("lat") String latitude, @Query("lon") String longtitude, @Query("appid") String API_KEY);
+    Call<List<WeatherForecastPOJO>> WeatherLatLongForecast(@Query("lat") String latitude, @Query("lon") String longtitude, @Query("appid") String API_KEY);
 
     @GET("weather/forecast")
-    Call<List<WeatherForecastResponsePOJO>> WeatherPolygonForecast(@Query("polyid") String polygonID,@Query("appid") String API_KEY);
+    Call<List<WeatherForecastPOJO>> WeatherPolygonForecast(@Query("polyid") String polygonID, @Query("appid") String API_KEY);
 
 
 }

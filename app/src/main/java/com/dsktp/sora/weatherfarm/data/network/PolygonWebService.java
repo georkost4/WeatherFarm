@@ -1,7 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.SendPolygonPOJO;
+import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public interface PolygonWebService
 {
     @Headers({"Content-Type: application/json"})
     @POST("polygons")
-    Call<SendPolygonPOJO> sendPolygon(@Query("appid") String API_KEY, @Body SendPolygonPOJO body);
+    Call<PolygonPOJO> sendPolygon(@Query("appid") String API_KEY, @Body PolygonPOJO body);
 
     @GET("polygons/{polyID}")
     Call<PolygonInfoPOJO> getPolygonInfo(@Path("polyID") String polyID, @Query("appid") String API_KEY);

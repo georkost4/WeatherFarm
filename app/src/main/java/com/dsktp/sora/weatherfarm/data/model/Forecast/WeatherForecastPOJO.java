@@ -1,5 +1,8 @@
 package com.dsktp.sora.weatherfarm.data.model.Forecast;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.ArrayList;
 
 /**
@@ -8,8 +11,11 @@ import java.util.ArrayList;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class WeatherForecastResponsePOJO
+
+@Entity(tableName = "weatherForecastTable")
+public class WeatherForecastPOJO
 {
+    @PrimaryKey
     private int dt;
     private ArrayList<Weather> weather;
     private Main main;
@@ -44,5 +50,33 @@ public class WeatherForecastResponsePOJO
 
     public Cloud getClouds() {
         return clouds;
+    }
+
+    public void setDt(int dt) {
+        this.dt = dt;
+    }
+
+    public void setWeather(ArrayList<Weather> weather) {
+        this.weather = weather;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
+
+    public void setClouds(Cloud clouds) {
+        this.clouds = clouds;
+    }
+
+    public void setSnow(Snow snow) {
+        this.snow = snow;
     }
 }

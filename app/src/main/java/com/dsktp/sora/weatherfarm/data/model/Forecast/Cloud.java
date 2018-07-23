@@ -10,6 +10,8 @@ public class Cloud
 {
     private int all;
 
+    public Cloud() {
+    }
 
     public Cloud(int all) {
         this.all = all;

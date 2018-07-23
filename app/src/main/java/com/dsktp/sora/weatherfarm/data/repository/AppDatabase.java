@@ -2,9 +2,13 @@ package com.dsktp.sora.weatherfarm.data.repository;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Ground.Soil;
 import com.dsktp.sora.weatherfarm.data.model.Ground.UVindex;
+import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
+import com.dsktp.sora.weatherfarm.utils.Converter;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -12,9 +16,12 @@ import com.dsktp.sora.weatherfarm.data.model.Ground.UVindex;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-@Database(entities = {Soil.class, UVindex.class}, version = 1)
+@Database(entities = {Soil.class, UVindex.class, WeatherForecastPOJO.class, PolygonInfoPOJO.class}, version = 1,exportSchema = false)
+@TypeConverters({Converter.class})
 public abstract class AppDatabase extends RoomDatabase
 {
     public abstract UVindexDao uVindexDao();
     public abstract SoilDataDao soilDataDao();
+    public abstract PolygonDao polygonDao();
+    public abstract WeatherForecastDao weatherForecastDao();
 }

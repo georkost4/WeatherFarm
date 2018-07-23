@@ -1,5 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.model.Polygons;
 
+import android.arch.persistence.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -10,14 +12,15 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class SendPolygonPOJO
+
+public class PolygonPOJO
 {
     private String name;
     private GeoJSON geo_json;
 
 
 
-    public SendPolygonPOJO() {
+    public PolygonPOJO() {
     }
 
     public String getName() {

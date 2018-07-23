@@ -23,9 +23,9 @@ public interface SoilDataDao
     List<Soil> getAllEntries();
 
     @Insert
-    void insertSoilDataEntrie(Soil entrie);
+    void insertSoilDataEntry(Soil entry);
 
-    @Delete
-    void delete(Soil entrie);
+    @Query("DELETE FROM currentsoildatatable WHERE time = :entryID")
+    void delete(int entryID);
 }
 

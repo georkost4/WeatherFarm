@@ -3,16 +3,14 @@ package com.dsktp.sora.weatherfarm.data.network;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
 import com.dsktp.sora.weatherfarm.R;
-import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastResponsePOJO;
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Ground.Soil;
 import com.dsktp.sora.weatherfarm.data.model.Ground.UVindex;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.Coordinates;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.GeoJSON;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.Geometry;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.Point;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonProperties;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.SendPolygonPOJO;
+import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.PUT;
 
 
 /**
@@ -48,11 +45,11 @@ public class RemoteRepository
 
         WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-        Call<List<WeatherForecastResponsePOJO>> responsePOJOCall = service.WeatherLatLongForecast("41.725584", "26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherLatLongForecast("41.725584", "26.425015", BuildConfig.AgroMonitorAPIKey);
 
-        responsePOJOCall.enqueue(new Callback<List<WeatherForecastResponsePOJO>>() {
+        responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
-            public void onResponse(Call<List<WeatherForecastResponsePOJO>> call, Response<List<WeatherForecastResponsePOJO>> response) {
+            public void onResponse(Call<List<WeatherForecastPOJO>> call, Response<List<WeatherForecastPOJO>> response) {
 
                 if (response.isSuccessful()) {
                     int time = response.body().get(0).getDt();
@@ -68,7 +65,7 @@ public class RemoteRepository
             }
 
             @Override
-            public void onFailure(Call<List<WeatherForecastResponsePOJO>> call, Throwable t) {
+            public void onFailure(Call<List<WeatherForecastPOJO>> call, Throwable t) {
                 Log.e("DEBUG", "There was an error");
                 t.printStackTrace();
             }
@@ -86,11 +83,11 @@ public class RemoteRepository
 
             WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-            Call<List<WeatherForecastResponsePOJO>> responsePOJOCall = service.WeatherPolygonForecast("5b508976002a87000908ca41", BuildConfig.AgroMonitorAPIKey);
+            Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherPolygonForecast("5b508976002a87000908ca41", BuildConfig.AgroMonitorAPIKey);
 
-            responsePOJOCall.enqueue(new Callback<List<WeatherForecastResponsePOJO>>() {
+            responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
                 @Override
-                public void onResponse(Call<List<WeatherForecastResponsePOJO>> call, Response<List<WeatherForecastResponsePOJO>> response) {
+                public void onResponse(Call<List<WeatherForecastPOJO>> call, Response<List<WeatherForecastPOJO>> response) {
 
                     if(response.isSuccessful()) {
                         int time = response.body().get(0).getDt();
@@ -108,7 +105,7 @@ public class RemoteRepository
                 }
 
                 @Override
-                public void onFailure(Call<List<WeatherForecastResponsePOJO>> call, Throwable t) {
+                public void onFailure(Call<List<WeatherForecastPOJO>> call, Throwable t) {
                     Log.e("DEBUG","There was an error");
                     t.printStackTrace();
                 }
@@ -127,11 +124,11 @@ public class RemoteRepository
 
         WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-        Call<WeatherForecastResponsePOJO> responsePOJOCall = service.currentWeatherLatLongForecast("41.725584","26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<WeatherForecastPOJO> responsePOJOCall = service.currentWeatherLatLongForecast("41.725584","26.425015", BuildConfig.AgroMonitorAPIKey);
 
-        responsePOJOCall.enqueue(new Callback<WeatherForecastResponsePOJO>() {
+        responsePOJOCall.enqueue(new Callback<WeatherForecastPOJO>() {
             @Override
-            public void onResponse(Call<WeatherForecastResponsePOJO> call, Response<WeatherForecastResponsePOJO> response) {
+            public void onResponse(Call<WeatherForecastPOJO> call, Response<WeatherForecastPOJO> response) {
 
                 if(response.isSuccessful()) {
                     int time = response.body().getDt();
@@ -146,7 +143,7 @@ public class RemoteRepository
             }
 
             @Override
-            public void onFailure(Call<WeatherForecastResponsePOJO> call, Throwable t) {
+            public void onFailure(Call<WeatherForecastPOJO> call, Throwable t) {
                 Log.e("DEBUG","There was an error");
                 t.printStackTrace();
             }
@@ -337,7 +334,7 @@ public class RemoteRepository
 
 
 
-        SendPolygonPOJO polygonPOJO = new SendPolygonPOJO();
+        PolygonPOJO polygonPOJO = new PolygonPOJO();
         polygonPOJO.setName("Rizia1");
 
 
@@ -369,13 +366,13 @@ public class RemoteRepository
         polygonPOJO.setGeo_json(data);
 
 
-        Call<SendPolygonPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
+        Call<PolygonPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
 
         Log.d("DEBUG",bodyToString(responsePOJOCall.request().body()));
 
-        responsePOJOCall.enqueue(new Callback<SendPolygonPOJO>() {
+        responsePOJOCall.enqueue(new Callback<PolygonPOJO>() {
             @Override
-            public void onResponse(Call<SendPolygonPOJO> call, Response<SendPolygonPOJO> response) {
+            public void onResponse(Call<PolygonPOJO> call, Response<PolygonPOJO> response) {
 
                 if(response.isSuccessful()) {
                     Log.d("DEBUG", "Response message from polygon =  " + response.toString());
@@ -398,7 +395,7 @@ public class RemoteRepository
             }
 
             @Override
-            public void onFailure(Call<SendPolygonPOJO> call, Throwable t) {
+            public void onFailure(Call<PolygonPOJO> call, Throwable t) {
                 Log.e("DEBUG","There was an error");
                 t.printStackTrace();
             }
