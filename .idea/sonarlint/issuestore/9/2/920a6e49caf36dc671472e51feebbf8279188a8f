@@ -1,5 +1,21 @@
 
-isquid:S1192-"FDefine a constant instead of duplicating this literal "DEBUG" 5 times.(¼®…¤þÿÿÿÿ8÷Ð¤ôË,
-Psquid:S1135%"2Complete the task associated to this TODO comment.(àžÕ¼8÷Ð¤ôË,
-gsquid:UselessImportCheck"<Remove this unused import 'javax.crypto.spec.DESedeKeySpec'.(»Áß§8÷Ð¤ôË,
-Fsquid:S1148:"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8÷Ð¤ôË,
+tsquid:S1192:"WDefine a constant instead of duplicating this literal "Response error body = " 6 times.(¨©Ÿ8ÎÎÓ£Ì,
+Fsquid:S1148C"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+Gsquid:S1148·"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+jsquid:S11925"GDefine a constant instead of duplicating this literal "DEBUG" 36 times.(˜ù•åúÿÿÿÿ8ÎÎÓ£Ì,
+Gsquid:S1148ß"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+jsquid:CommentedOutCodeLineŽ"<This block of commented-out lines of code should be removed.(­€ÝÁ8ÎÎÓ£Ì,
+qsquid:S1192<"SDefine a constant instead of duplicating this literal "Respone message = " 8 times.(•À²‚8ÎÎÓ£Ì,
+Gsquid:S1148¯"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÎÎÓ£Ì,
+osquid:CommentedOutCodeLineŒ"<This block of commented-out lines of code should be removed.(‘‹”ýÿÿÿÿ8ÎÎÓ£Ì,
+Œsquid:S1192&"iDefine a constant instead of duplicating this literal "https://api.agromonitoring.com/agro/1.0/" 6 times.(Ù–ÔÆûÿÿÿÿ8ÎÎÓ£Ì,
+Gsquid:S1148¾"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+Gsquid:S1148‘"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+qsquid:S1192B"SDefine a constant instead of duplicating this literal "There was an error" 6 times.(§»±˜8ÎÎÓ£Ì,
+qsquid:S1192;"SDefine a constant instead of duplicating this literal "Response error  = " 6 times.(þö«¶8ÎÎÓ£Ì,
+Fsquid:S1148k"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎÎÓ£Ì,
+osquid:CommentedOutCodeLine”"<This block of commented-out lines of code should be removed.(õË®ƒûÿÿÿÿ8ÎÎÓ£Ì,
+osquid:CommentedOutCodeLine÷"<This block of commented-out lines of code should be removed.(ãÊ÷þÿÿÿÿ8ÎÎÓ£Ì,
+msquid:S1192-"JDefine a constant instead of duplicating this literal "41.725584" 4 times.(ÿÛÌøùÿÿÿÿ8ÎÎÓ£Ì,
+msquid:S1192-"JDefine a constant instead of duplicating this literal "26.425015" 4 times.(ÿÛÌøùÿÿÿÿ8ÎÎÓ£Ì,
+|squid:UselessImportCheck"QRemove this unused import 'com.dsktp.sora.weatherfarm.data.model.Polygons.Point'.(ë£¯—8ÎÎÓ£Ì,

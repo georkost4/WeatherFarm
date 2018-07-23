@@ -1,23 +1,25 @@
 
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¦Ö8äë¨ñË,
-psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å×ß±úÿÿÿÿ8äë¨ñË,
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÔÙŸ8äë¨ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Äšëùÿÿÿÿ8äë¨ñË,
-psquid:S00116"SRename this field "temp_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öú–›8¸òŸñË,
-psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Äšëùÿÿÿÿ8äë¨ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8ôŸ¬ñË,
-rsquid:S00116"URename this field "grnd_level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞÑåñ8¿•¢ñË,
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£µ†á8äë¨ñË,
-usquid:S00116"SRename this field "temp_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞØ‹ûûÿÿÿÿ8¸òŸñË,
-vsquid:S00116"TRename this field "sea_level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÒ×èüÿÿÿÿ8¿•¢ñË,
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÔÙŸ8äë¨ñË,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(¥¡Ñ¯8õ‘¤ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8ôŸ¬ñË,
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õêÖ¾8äë¨ñË,
-psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßî­ïøÿÿÿÿ8äë¨ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å×ß±úÿÿÿÿ8äë¨ñË,
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¦Ö8äë¨ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8ôŸ¬ñË,
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ¾¨8äë¨ñË,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8ôŸ¬ñË,
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ã¦ïÈ8ú·ñË,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å×ß±úÿÿÿÿ8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8£Â¦Ì,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õêÖ¾8£Â¦Ì,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£µ†á8£Â¦Ì,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßî­ïøÿÿÿÿ8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8£Â¦Ì,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÔÙŸ8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å×ß±úÿÿÿÿ8£Â¦Ì,
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ã¦ïÈ8£Â¦Ì,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¦Ö8£Â¦Ì,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(¯¹øõúÿÿÿÿ8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8£Â¦Ì,
+psquid:S00116"SRename this field "temp_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öú–›8£Â¦Ì,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÔÙŸ8£Â¦Ì,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ¾¨8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÍŠ‡ıÿÿÿÿ8£Â¦Ì,
+rsquid:S00116"URename this field "grnd_level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞÑåñ8£Â¦Ì,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Äšëùÿÿÿÿ8£Â¦Ì,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¦Ö8£Â¦Ì,
+vsquid:S00116"TRename this field "sea_level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÒ×èüÿÿÿÿ8£Â¦Ì,
+usquid:S00116"SRename this field "temp_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞØ‹ûûÿÿÿÿ8£Â¦Ì,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Äšëùÿÿÿÿ8£Â¦Ì,
+Lsquid:S1068"+Remove this unused "temp_kf" private field.(¯¹øõúÿÿÿÿ8úÙ§Ì,
+tsquid:S00116"RRename this field "temp_kf" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¹øõúÿÿÿÿ8úÙ§Ì,

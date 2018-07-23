@@ -22,15 +22,21 @@ public class MainActivity extends AppCompatActivity
 
         RemoteRepository remoteRepository = new RemoteRepository();
 
-        remoteRepository.getCurrentForecast();
+//        remoteRepository.getCurrentForecast();
+//
+//        remoteRepository.getCurrentSoilData();
+//
+//        remoteRepository.getCurrentUVIndex();
+//
+//        remoteRepository.getForecastLatLon();
+//
+//        remoteRepository.getForecastPolygon();
 
-        remoteRepository.getCurrentSoilData();
+//        remoteRepository.sendPolygon();
 
-        remoteRepository.getCurrentUVIndex();
-
-        remoteRepository.getForecastLatLon();
-
-        remoteRepository.getForecastPolygon();
-
+//        remoteRepository.getPolygonInfo();
+//          remoteRepository.getListOfPolygons();
+//          remoteRepository.removePolygon();
+//          remoteRepository.getListOfPolygons();
     }
 }
