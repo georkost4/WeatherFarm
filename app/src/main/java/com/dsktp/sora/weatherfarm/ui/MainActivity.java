@@ -1,9 +1,11 @@
-package com.dsktp.sora.weatherfarm;
+package com.dsktp.sora.weatherfarm.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 
 /**
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity
 
 
         RemoteRepository remoteRepository = new RemoteRepository();
-
+        startActivity(new Intent(this,MapActivity.class));
 //        remoteRepository.getCurrentForecast();
 //
 //        remoteRepository.getCurrentSoilData();

@@ -1,0 +1,4 @@
+
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ã¦ïÈ8Ê»‘ÇÌ,
+Œsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(½Ï©„8Ê»‘ÇÌ,
+“squid:S1319"rThe type of the "weather" object should be an interface such as "List" rather than the implementation "ArrayList".(¯±¥‰øÿÿÿÿ8½à”ÇÌ,

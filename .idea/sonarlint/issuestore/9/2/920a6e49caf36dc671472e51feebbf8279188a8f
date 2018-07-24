@@ -1,25 +1,22 @@
 
-Psquid:S1066"/Merge this if statement with the enclosing one.(ë©ªÂüÿÿÿÿ8–Ò·Ì,
-gsquid:UselessImportCheck"9Remove this unused import 'com.dsktp.sora.weatherfarm.R'.(Ë¶ÿÿÿÿÿ8Ò£ş¶Ì,
-…squid:UselessImportCheck"WRemove this unused import 'com.dsktp.sora.weatherfarm.data.model.Polygons.Coordinates'.( ü”ùÿÿÿÿ8Ò£ş¶Ì,
-rsquid:S1192"WDefine a constant instead of duplicating this literal "Response error body = " 6 times.(¨©Ÿ8Ò£ş¶Ì,
 qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8Ò£ş¶Ì,
-ksquid:S1192"JDefine a constant instead of duplicating this literal "41.725584" 4 times.(ÿÛÌøùÿÿÿÿ8Ò£ş¶Ì,
-osquid:S1192"SDefine a constant instead of duplicating this literal "There was an error" 6 times.(§»±˜8Ò£ş¶Ì,
-ksquid:S1192"JDefine a constant instead of duplicating this literal "26.425015" 4 times.(ÿÛÌøùÿÿÿÿ8Ò£ş¶Ì,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Response error  = " 6 times.(şö«¶8Ò£ş¶Ì,
-Xsquid:UselessImportCheck"/Remove this unused import 'retrofit2.http.PUT'.(Ğµ ‹8Ò£ş¶Ì,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
+gsquid:UselessImportCheck"9Remove this unused import 'com.dsktp.sora.weatherfarm.R'.(Ë¶ÿÿÿÿÿ8Ò£ş¶Ì,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰Óñâ8Ò£ş¶Ì,
 ¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»ŞÃıÿÿÿÿ8Ò£ş¶Ì,
 Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
 Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 8 times.(•À²‚8Ò£ş¶Ì,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(±†üúÿÿÿÿ8–Ò·Ì,
-zsquid:UselessImportCheck"QRemove this unused import 'com.dsktp.sora.weatherfarm.data.model.Polygons.Point'.(ë£¯—8Ò£ş¶Ì,
-hsquid:S1192"GDefine a constant instead of duplicating this literal "DEBUG" 36 times.(˜ù•åúÿÿÿÿ8Ò£ş¶Ì,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰Óñâ8Ò£ş¶Ì,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ò£ş¶Ì,
+rsquid:S1192"WDefine a constant instead of duplicating this literal "Response error body = " 6 times.(¨©Ÿ8Ò£ş¶Ì,
 Šsquid:S1192"iDefine a constant instead of duplicating this literal "https://api.agromonitoring.com/agro/1.0/" 9 times.(Ù–ÔÆûÿÿÿÿ8Ò£ş¶Ì,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 8 times.(•À²‚8Ò£ş¶Ì,
+Psquid:S1066"/Merge this if statement with the enclosing one.(ë©ªÂüÿÿÿÿ8–Ò·Ì,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Response error  = " 6 times.(şö«¶8Ò£ş¶Ì,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
+osquid:S1192"SDefine a constant instead of duplicating this literal "There was an error" 6 times.(§»±˜8Ò£ş¶Ì,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ò£ş¶Ì,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8Ò£ş¶Ì,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(±†üúÿÿÿÿ8–Ò·Ì,
+hsquid:S1192"GDefine a constant instead of duplicating this literal "DEBUG" 36 times.(˜ù•åúÿÿÿÿ8Ò£ş¶Ì,
+ksquid:S1192"JDefine a constant instead of duplicating this literal "26.425015" 4 times.(ï’Ê·ûÿÿÿÿ8ìÃÄÌ,
+ksquid:S1192"JDefine a constant instead of duplicating this literal "41.725584" 4 times.(ï’Ê·ûÿÿÿÿ8ìÃÄÌ,

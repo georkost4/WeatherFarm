@@ -11,6 +11,7 @@ import com.dsktp.sora.weatherfarm.data.model.Polygons.Geometry;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonProperties;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -320,7 +321,7 @@ public class RemoteRepository
     }
 
 
-    public void sendPolygon()
+    public void sendPolygon(List<LatLng> points,String polygonName)
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.agromonitoring.com/agro/1.0/")
@@ -335,25 +336,40 @@ public class RemoteRepository
 
 
         PolygonPOJO polygonPOJO = new PolygonPOJO();
-        polygonPOJO.setName("Rizia1");
+        polygonPOJO.setName(polygonName);
 
 
         double[][] coordinatesArray = new double[5][2];
 
-        coordinatesArray[0][0] = 41.621653;
-        coordinatesArray[0][1] = 26.434190;
+//        coordinatesArray[0][0] = 41.621653;
+//        coordinatesArray[0][1] = 26.434190;
+//
+//        coordinatesArray[1][0] = 41.623153;
+//        coordinatesArray[1][1] = 26.435756;
+//
+//        coordinatesArray[2][0] = 41.624701;
+//        coordinatesArray[2][1] = 26.433063;
+//
+//        coordinatesArray[3][0] = 41.623177;
+//        coordinatesArray[3][1] = 26.431121;
+//
+//        coordinatesArray[4][0] = 41.621653;
+//        coordinatesArray[4][1] = 26.434190;
 
-        coordinatesArray[1][0] = 41.623153;
-        coordinatesArray[1][1] = 26.435756;
+        coordinatesArray[0][0] = points.get(0).latitude;
+        coordinatesArray[0][1] = points.get(0).longitude;
 
-        coordinatesArray[2][0] = 41.624701;
-        coordinatesArray[2][1] = 26.433063;
+        coordinatesArray[1][0] = points.get(1).latitude;
+        coordinatesArray[1][1] = points.get(1).longitude;
 
-        coordinatesArray[3][0] = 41.623177;
-        coordinatesArray[3][1] = 26.431121;
+        coordinatesArray[2][0] = points.get(2).latitude;
+        coordinatesArray[2][1] = points.get(2).longitude;
 
-        coordinatesArray[4][0] = 41.621653;
-        coordinatesArray[4][1] = 26.434190;
+        coordinatesArray[3][0] = points.get(3).latitude;
+        coordinatesArray[3][1] = points.get(3).longitude;
+
+        coordinatesArray[4][0] = points.get(0).latitude;
+        coordinatesArray[4][1] = points.get(0).longitude;
 
 
         List<double[][]> pointList = new ArrayList<>();
