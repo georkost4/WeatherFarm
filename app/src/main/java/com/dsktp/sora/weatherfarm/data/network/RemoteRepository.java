@@ -25,6 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.DELETE;
+
+import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_URL;
 
 
 /**
@@ -37,46 +40,46 @@ public class RemoteRepository
 {
     private  String DEBUG_TAG = "#" + getClass().getSimpleName();
 
-    public void getForecastLatLon() {
+    public void getForecastLatLon(String lat,String lon) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
 
         WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-        Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherLatLongForecast("41.725584", "26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherLatLongForecast(lat, lon, BuildConfig.AgroMonitorAPIKey);
 
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
             public void onResponse(Call<List<WeatherForecastPOJO>> call, Response<List<WeatherForecastPOJO>> response) {
 
-                if (response.isSuccessful()) {
+                if (response.isSuccessful())
+                {
                     int time = response.body().get(0).getDt();
-                    Log.d("DEBUG", "time in first element = " + time);
+                    Log.d(DEBUG_TAG, "time in first element = " + time);
 
                     int time1 = response.body().get(4).getDt();
-                    Log.d("DEBUG", "time in third element = " + time1);
-                } else {
-                    Log.d("DEBUG", "Response error body = " + response.errorBody());
-                    Log.d("DEBUG", "Response error  = " + response.toString());
-                    Log.d("DEBUG", "Respone message = " + response.message());
+                    Log.d(DEBUG_TAG, "time in third element = " + time1);
+                } else
+                    {
+                    Log.d(DEBUG_TAG, "Response message = " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<List<WeatherForecastPOJO>> call, Throwable t) {
-                Log.e("DEBUG", "There was an error");
+                Log.e(DEBUG_TAG, "There was an error getting forecast for lat/lon");
                 t.printStackTrace();
             }
         });
     }
 
-        public void getForecastPolygon()
+        public void getForecastPolygon(String polygonID)
         {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                    .baseUrl(BASE_AGRO_MONITORING_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
@@ -84,7 +87,7 @@ public class RemoteRepository
 
             WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-            Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherPolygonForecast("5b508976002a87000908ca41", BuildConfig.AgroMonitorAPIKey);
+            Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherPolygonForecast(polygonID, BuildConfig.AgroMonitorAPIKey);
 
             responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
                 @Override
@@ -92,32 +95,30 @@ public class RemoteRepository
 
                     if(response.isSuccessful()) {
                         int time = response.body().get(0).getDt();
-                        Log.d("DEBUG", "time in first element = " + time);
+                        Log.d(DEBUG_TAG, "time in first element = " + time);
 
                         int time1 = response.body().get(4).getDt();
-                        Log.d("DEBUG", "time in third element = " + time1);
+                        Log.d(DEBUG_TAG, "time in third element = " + time1);
                     }
                     else
                     {
-                        Log.d("DEBUG","Response error body = " + response.errorBody());
-                        Log.d("DEBUG","Response error  = " + response.toString());
-                        Log.d("DEBUG","Respone message = " + response.message() );
+                        Log.d(DEBUG_TAG,"Respone message = " + response.message() );
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<WeatherForecastPOJO>> call, Throwable t) {
-                    Log.e("DEBUG","There was an error");
+                    Log.e(DEBUG_TAG,"There was an error getting forecast data for polygon");
                     t.printStackTrace();
                 }
             });
 
     }
 
-    public void getCurrentForecast()
+    public void getCurrentForecast(String lat,String lon)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -125,7 +126,7 @@ public class RemoteRepository
 
         WeatherWebService service = retrofit.create(WeatherWebService.class);
 
-        Call<WeatherForecastPOJO> responsePOJOCall = service.currentWeatherLatLongForecast("41.725584","26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<WeatherForecastPOJO> responsePOJOCall = service.currentWeatherLatLongForecast(lat,lon, BuildConfig.AgroMonitorAPIKey);
 
         responsePOJOCall.enqueue(new Callback<WeatherForecastPOJO>() {
             @Override
@@ -133,29 +134,27 @@ public class RemoteRepository
 
                 if(response.isSuccessful()) {
                     int time = response.body().getDt();
-                    Log.d("DEBUG", "time = " + time);
+                    Log.d(DEBUG_TAG, "time = " + time);
                 }
                 else
                 {
-                    Log.d("DEBUG","Response error body = " + response.errorBody());
-                    Log.d("DEBUG","Response error  = " + response.toString());
-                    Log.d("DEBUG","Respone message = " + response.message() );
+                    Log.d(DEBUG_TAG,"Respone message = " + response.message() );
                 }
             }
 
             @Override
             public void onFailure(Call<WeatherForecastPOJO> call, Throwable t) {
-                Log.e("DEBUG","There was an error");
+                Log.e(DEBUG_TAG,"There was an error getting current forecast data for lat/lon");
                 t.printStackTrace();
             }
         });
 
     }
 
-    public void getCurrentSoilData()
+    public void getCurrentSoilData(String lat,String lon)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -163,7 +162,7 @@ public class RemoteRepository
 
         SoilDataWebService service = retrofit.create(SoilDataWebService.class);
 
-        Call<Soil> responsePOJOCall = service.currentSoilDataLatLongForecast("41.725584","26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<Soil> responsePOJOCall = service.currentSoilDataLatLongForecast(lat,lon, BuildConfig.AgroMonitorAPIKey);
 
         responsePOJOCall.enqueue(new Callback<Soil>() {
             @Override
@@ -171,29 +170,27 @@ public class RemoteRepository
 
                 if(response.isSuccessful()) {
                     double moisture =  response.body().getMoisture();
-                    Log.d("DEBUG", "Moisture = " + moisture);
+                    Log.d(DEBUG_TAG, "Moisture = " + moisture);
                 }
                 else
                 {
-                    Log.d("DEBUG","Response error body = " + response.errorBody());
-                    Log.d("DEBUG","Response error  = " + response.toString());
-                    Log.d("DEBUG","Respone message = " + response.message() );
+                    Log.d(DEBUG_TAG,"Respone message = " + response.message() );
                 }
             }
 
             @Override
             public void onFailure(Call<Soil> call, Throwable t) {
-                Log.e("DEBUG","There was an error");
+                Log.e(DEBUG_TAG,"There was an error getting the current soil data for lat/lon");
                 t.printStackTrace();
             }
         });
 
     }
 
-    public void getCurrentUVIndex()
+    public void getCurrentUVIndex(String lat , String lon)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -203,7 +200,7 @@ public class RemoteRepository
 
 
 
-        Call<UVindex> responsePOJOCall = service.currentUViDataLatLongForecast("41.725584","26.425015", BuildConfig.AgroMonitorAPIKey);
+        Call<UVindex> responsePOJOCall = service.currentUViDataLatLongForecast(lat,lon, BuildConfig.AgroMonitorAPIKey);
 
         responsePOJOCall.enqueue(new Callback<UVindex>() {
             @Override
@@ -211,35 +208,33 @@ public class RemoteRepository
 
                 if(response.isSuccessful()) {
                     double uvi = (int) response.body().getUvi();
-                    Log.d("DEBUG", "UV index = " + uvi);
+                    Log.d(DEBUG_TAG, "UV index = " + uvi);
                 }
                 else
                 {
-                    Log.d("DEBUG","Response error body = " + response.errorBody());
-                    Log.d("DEBUG","Response error  = " + response.toString());
-                    Log.d("DEBUG","Respone message = " + response.message() );
+                    Log.d(DEBUG_TAG,"Respone message = " + response.message() );
                 }
             }
 
             @Override
             public void onFailure(Call<UVindex> call, Throwable t) {
-                Log.e("DEBUG","There was an error");
+                Log.e(DEBUG_TAG,"There was an error getting the current UV index for lat/lon");
                 t.printStackTrace();
             }
         });
 
     }
 
-    public void removePolygon()
+    public void removePolygon(String polygonID)
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PolygonWebService polygonWebService = retrofitBuilder.create(PolygonWebService.class);
 
-        Call<ResponseBody> request = polygonWebService.deletePolygon("5b559f2c002a87000908ca8e",BuildConfig.AgroMonitorAPIKey);
+        Call<ResponseBody> request = polygonWebService.deletePolygon(polygonID,BuildConfig.AgroMonitorAPIKey);
 
         request.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -250,12 +245,17 @@ public class RemoteRepository
                     {
                         Log.d(DEBUG_TAG,"The polygon was successfully removed from the server");
                     }
+                    else
+                    {
+                        Log.e(DEBUG_TAG,"There was an error removing the polygon from the server");
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+            public void onFailure(Call<ResponseBody> call, Throwable t)
+            {
+                t.printStackTrace();
             }
         });
     }
@@ -263,7 +263,7 @@ public class RemoteRepository
     public void getListOfPolygons()
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -279,27 +279,27 @@ public class RemoteRepository
                     Log.d(DEBUG_TAG,"Getting list of polygons request if successful");
                     List<PolygonInfoPOJO> listOfPolygons = response.body();
                     Log.d(DEBUG_TAG,"Number of polygons = " + listOfPolygons.size());
-                    Log.d(DEBUG_TAG,"Name of Second Polygon = " + listOfPolygons.get(1).getName());
                 }
             }
 
             @Override
             public void onFailure(Call<List<PolygonInfoPOJO>> call, Throwable t) {
-
+                t.printStackTrace();
+                Log.e(DEBUG_TAG,"There was an error retrieving polygon list from the server");
             }
         });
     }
 
-    public void getPolygonInfo()
+    public void getPolygonInfo(String polygonID)
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PolygonWebService polygonWebService = retrofitBuilder.create(PolygonWebService.class);
 
-        Call<PolygonInfoPOJO> request = polygonWebService.getPolygonInfo("5b559f2c002a87000908ca8e",BuildConfig.AgroMonitorAPIKey);
+        Call<PolygonInfoPOJO> request = polygonWebService.getPolygonInfo(polygonID,BuildConfig.AgroMonitorAPIKey);
 
         request.enqueue(new Callback<PolygonInfoPOJO>() {
             @Override
@@ -315,7 +315,8 @@ public class RemoteRepository
 
             @Override
             public void onFailure(Call<PolygonInfoPOJO> call, Throwable t) {
-
+                t.printStackTrace();
+                Log.e(DEBUG_TAG,"There was an error retrieving info for a polygon");
             }
         });
     }
@@ -324,37 +325,20 @@ public class RemoteRepository
     public void sendPolygon(List<LatLng> points,String polygonName)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.agromonitoring.com/agro/1.0/")
+                .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
 
 
 
         PolygonWebService service = retrofit.create(PolygonWebService.class);
 
 
-
         PolygonPOJO polygonPOJO = new PolygonPOJO();
         polygonPOJO.setName(polygonName);
 
-
         double[][] coordinatesArray = new double[5][2];
 
-//        coordinatesArray[0][0] = 41.621653;
-//        coordinatesArray[0][1] = 26.434190;
-//
-//        coordinatesArray[1][0] = 41.623153;
-//        coordinatesArray[1][1] = 26.435756;
-//
-//        coordinatesArray[2][0] = 41.624701;
-//        coordinatesArray[2][1] = 26.433063;
-//
-//        coordinatesArray[3][0] = 41.623177;
-//        coordinatesArray[3][1] = 26.431121;
-//
-//        coordinatesArray[4][0] = 41.621653;
-//        coordinatesArray[4][1] = 26.434190;
 
         coordinatesArray[0][0] = points.get(0).latitude;
         coordinatesArray[0][1] = points.get(0).longitude;
@@ -380,39 +364,27 @@ public class RemoteRepository
         GeoJSON data = new GeoJSON(new PolygonProperties(),polygonGeometry);
 
         polygonPOJO.setGeo_json(data);
-
-
+        
         Call<PolygonPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
 
-        Log.d("DEBUG",bodyToString(responsePOJOCall.request().body()));
+        Log.d(DEBUG_TAG,bodyToString(responsePOJOCall.request().body()));
 
         responsePOJOCall.enqueue(new Callback<PolygonPOJO>() {
             @Override
             public void onResponse(Call<PolygonPOJO> call, Response<PolygonPOJO> response) {
 
                 if(response.isSuccessful()) {
-                    Log.d("DEBUG", "Response message from polygon =  " + response.toString());
+                    Log.d(DEBUG_TAG, "Response message from polygon =  " + response.toString());
                 }
                 else
                 {
-                    try {
-                        Log.d("DEBUG", String.valueOf(call.request().body().contentLength()));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    Log.d("DEBUG","Response error body = " + response.errorBody());
-                    Log.d("DEBUG","Response error  = " + response.toString());
-                    Log.d("DEBUG","Respone message = " + response.message() );
-                    Log.d("DEBUG","Respone message = " + response.body() );
-                    Log.d("DEBUG","Respone message = " + response.raw() );
-
+                    Log.d(DEBUG_TAG,"Respone message = " + response.message() );
                 }
             }
 
             @Override
             public void onFailure(Call<PolygonPOJO> call, Throwable t) {
-                Log.e("DEBUG","There was an error");
+                Log.e(DEBUG_TAG,"There was an error sending polygon to the server");
                 t.printStackTrace();
             }
         });

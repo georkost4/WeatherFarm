@@ -81,3 +81,5 @@ q
 Aapp/src/main/java/com/dsktp/sora/weatherfarm/ui/MainActivity.java,f\c\fc80e4c4db91e1b8835b2f84e042667367b1107f
 p
 @app/src/main/java/com/dsktp/sora/weatherfarm/ui/MapActivity.java,2\1\21cc3fe1f7858bb4c2fd7338b2193b752398a704
+m
+=app/src/main/java/com/dsktp/sora/weatherfarm/utils/Utils.java,3\5\35a58f0f851bf3e49e53c7f83c2fe553e0bb833b

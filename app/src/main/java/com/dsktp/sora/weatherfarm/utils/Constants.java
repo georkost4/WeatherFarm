@@ -8,5 +8,5 @@ package com.dsktp.sora.weatherfarm.utils;
  */
 public class Constants
 {
-
+    public static final String BASE_AGRO_MONITORING_URL ="https://api.agromonitoring.com/agro/1.0/";
 }
