@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
@@ -13,7 +14,7 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MapActivity" />
+    tools:context=".ui.FragmentMap" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/toogle_map_fab"
@@ -25,15 +26,25 @@
 
         android:src="@android:drawable/ic_input_add" />
 
-    <android.support.design.widget.FloatingActionButton
+    <Button
         android:id="@+id/sendBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
+        android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:clickable="true"
         android:visibility="gone"
+        android:text="Send"
+        android:background="@drawable/shape"
         app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading_map_activity"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center"
+        android:visibility="gone" />
 
 
 </FrameLayout>

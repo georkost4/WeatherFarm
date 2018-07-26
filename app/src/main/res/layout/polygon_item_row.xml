@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/polygon_row_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/polygon_row_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/polygon_row_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/nullable"
+        app:layout_constraintStart_toEndOf="@+id/polygon_row_name_label"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Rizia" />
+
+    <Button
+        android:id="@+id/polygon_row_btn"
+        android:layout_width="79dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="72dp"
+        android:text="@string/polygon_row_btn_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/polygon_row_name_value"
+        app:layout_constraintStart_toEndOf="@+id/polygon_row_name_value" />
+</android.support.constraint.ConstraintLayout>

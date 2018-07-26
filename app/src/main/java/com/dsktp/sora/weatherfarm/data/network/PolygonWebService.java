@@ -25,7 +25,7 @@ public interface PolygonWebService
 {
     @Headers({"Content-Type: application/json"})
     @POST("polygons")
-    Call<PolygonPOJO> sendPolygon(@Query("appid") String API_KEY, @Body PolygonPOJO body);
+    Call<PolygonInfoPOJO> sendPolygon(@Query("appid") String API_KEY, @Body PolygonPOJO body);
 
     @GET("polygons/{polyID}")
     Call<PolygonInfoPOJO> getPolygonInfo(@Path("polyID") String polyID, @Query("appid") String API_KEY);

@@ -1,0 +1,20 @@
+
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›É†ñ8¶ ×­Í,
+zsquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "_query".(Œá‚¶8¶ ×­Í,
+osquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬áÍıÿÿÿÿ8¶ ×­Í,
+lsquid:S00116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ8¶ ×­Í,
+‹squid:S00116"nRename this field "__insertionAdapterOfPolygonInfoPOJO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»‘˜Í8¶ ×­Í,
+Šsquid:S00116"hRename this field "__preparedStmtOfDeletePolygon" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ¢çÿşÿÿÿÿ8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ©ñÿÿÿÿÿ8¶ ×­Í,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¡Š¦8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øç“‚ùÿÿÿÿ8¶ ×­Í,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ×—³ùÿÿÿÿ8¶ ×­Í,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŠ•8¶ ×­Í,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›É†ñ8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊˆÃáşÿÿÿÿ8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø„šÛúÿÿÿÿ8¶ ×­Í,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÊ÷€ûÿÿÿÿ8¶ ×­Í,
+zsquid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±8¶ ×­Í,
+squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ8¶ ×­Í,
+squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ8¶ ×­Í,

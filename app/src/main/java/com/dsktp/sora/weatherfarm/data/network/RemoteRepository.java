@@ -1,8 +1,8 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
+import android.content.Context;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
-import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Ground.Soil;
 import com.dsktp.sora.weatherfarm.data.model.Ground.UVindex;
@@ -11,6 +11,10 @@ import com.dsktp.sora.weatherfarm.data.model.Polygons.Geometry;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonProperties;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
+import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
+import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
+import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
+import com.dsktp.sora.weatherfarm.ui.FragmentMap;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -25,7 +29,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.DELETE;
 
 import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_URL;
 
@@ -38,9 +41,39 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_UR
  */
 public class RemoteRepository
 {
-    private  String DEBUG_TAG = "#" + getClass().getSimpleName();
+    private  static  String DEBUG_TAG = "#RemoteRepository.java";
+    private onSucces mCallback;
+    private onFailure mMapCallback;
+    private deliveryCallBack mPolyListCallback;
+    private static RemoteRepository sInstance;
 
-    public void getForecastLatLon(String lat,String lon) {
+    private RemoteRepository() {
+
+    }
+    public static RemoteRepository getsInstance()
+    {
+        if(sInstance == null)
+        {
+            Log.d(DEBUG_TAG,"Created new instance");
+            return sInstance = new RemoteRepository();
+        }
+        return sInstance;
+    }
+
+    public void setmPolyListCallback(deliveryCallBack mPolyListCallback) {
+        this.mPolyListCallback = mPolyListCallback;
+    }
+
+    public void setmMapCallback(onFailure mMapCallback) {
+        this.mMapCallback = mMapCallback;
+    }
+
+    public void setmCallback(onSucces mCallback)
+    {
+        this.mCallback = mCallback;
+    }
+
+    public void getForecastLatLon(String lat, String lon) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -225,7 +258,7 @@ public class RemoteRepository
 
     }
 
-    public void removePolygon(String polygonID)
+    public void removePolygon(final String polygonID, final Context context)
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -244,6 +277,17 @@ public class RemoteRepository
                     if(response.code() == 204)
                     {
                         Log.d(DEBUG_TAG,"The polygon was successfully removed from the server");
+                        //remove the polygon also from the local database
+                        final PolygonDao dao = AppDatabase.getsDbInstance(context).polygonDao();
+                        AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                int rowsAffected = dao.deletePolygon(polygonID);
+                                //show a toast to the user to confirm the deletion
+                                Log.i(DEBUG_TAG,"Rows deleted = " + rowsAffected);
+                            }
+                        });
+                        mPolyListCallback.updateUI();
                     }
                     else
                     {
@@ -278,6 +322,7 @@ public class RemoteRepository
                 {
                     Log.d(DEBUG_TAG,"Getting list of polygons request if successful");
                     List<PolygonInfoPOJO> listOfPolygons = response.body();
+                    mPolyListCallback.populateList(listOfPolygons);
                     Log.d(DEBUG_TAG,"Number of polygons = " + listOfPolygons.size());
                 }
             }
@@ -322,7 +367,7 @@ public class RemoteRepository
     }
 
 
-    public void sendPolygon(List<LatLng> points,String polygonName)
+    public void sendPolygon(List<LatLng> points, String polygonName, final Context context)
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -364,26 +409,40 @@ public class RemoteRepository
         GeoJSON data = new GeoJSON(new PolygonProperties(),polygonGeometry);
 
         polygonPOJO.setGeo_json(data);
-        
-        Call<PolygonPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
+
+        Call<PolygonInfoPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
 
         Log.d(DEBUG_TAG,bodyToString(responsePOJOCall.request().body()));
 
-        responsePOJOCall.enqueue(new Callback<PolygonPOJO>() {
+        responsePOJOCall.enqueue(new Callback<PolygonInfoPOJO>() {
             @Override
-            public void onResponse(Call<PolygonPOJO> call, Response<PolygonPOJO> response) {
+            public void onResponse(Call<PolygonInfoPOJO> call, final Response<PolygonInfoPOJO> response) {
 
                 if(response.isSuccessful()) {
+                    FragmentMap.hideLoadingIndicator();
                     Log.d(DEBUG_TAG, "Response message from polygon =  " + response.toString());
+                    final PolygonDao mDao = AppDatabase.getsDbInstance(context).polygonDao();
+                    AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            // insert the response to the local database
+                            long rowsAffected = mDao.insertPolygon(response.body());
+                            mCallback.updateUI();
+                            Log.i(DEBUG_TAG,"Rows affected = " + rowsAffected);
+
+                        }
+                    });
+
                 }
                 else
                 {
                     Log.d(DEBUG_TAG,"Respone message = " + response.message() );
+                    mMapCallback.updateMapUI();
                 }
             }
 
             @Override
-            public void onFailure(Call<PolygonPOJO> call, Throwable t) {
+            public void onFailure(Call<PolygonInfoPOJO> call, Throwable t) {
                 Log.e(DEBUG_TAG,"There was an error sending polygon to the server");
                 t.printStackTrace();
             }
@@ -403,5 +462,22 @@ public class RemoteRepository
             return "Could not read request body data";
         }
     }
+
+    public interface onSucces
+    {
+        void updateUI();
+    }
+
+    public interface  onFailure
+    {
+        void updateMapUI();
+    }
+
+    public interface deliveryCallBack
+    {
+        void populateList(List<PolygonInfoPOJO> polygonList);
+        void updateUI();
+    }
+
 
 }

@@ -1,9 +1,6 @@
 
-gsquid:UselessImportCheck"?Remove this unused import 'android.support.annotation.NonNull'.(¼Åß8Â”óÌ,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(´éÑŠ8Â”óÌ,
-ksquid:UselessImportCheck"BRemove this unused import 'com.google.maps.android.data.Geometry'.(ŒæÎè8Â”óÌ,
-qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8Â”óÌ,
-vsquid:UselessImportCheck"HRemove this unused import 'com.google.android.gms.common.util.MapUtils'.(¥¨âıÿÿÿÿ8Â”óÌ,
-Xsquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8Â”óÌ,
-Bsquid:S1481"&Remove this unused "i" local variable.(ËÌü8Â”óÌ,
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(óêæï8Â”óÌ,
+Ysquid:S2696;"6Make the enclosing method "static" or remove this set.(ñãŸ°ùÿÿÿÿ8¨¯ø¯Í,
+Usquid:S1135R"2Complete the task associated to this TODO comment.(»©¡Úüÿÿÿÿ8¨¯ø¯Í,
+Psquid:S1135m"2Complete the task associated to this TODO comment.(´éÑŠ8¨¯ø¯Í,
+psquid:S3776K"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(óêæï8¨¯ø¯Í,
+ssquid:S00116$"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8¨¯ø¯Í,

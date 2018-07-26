@@ -27,17 +27,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".ui.MapActivity"
-            android:label="@string/title_activity_map">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <!--<activity-->
+            <!--android:name=".ui.FragmentMap"-->
+            <!--android:label="@string/title_activity_map"-->
+            <!--android:screenOrientation="portrait">-->
+        <!--</activity>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".ui.ActivityMain"
             android:label="Main Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

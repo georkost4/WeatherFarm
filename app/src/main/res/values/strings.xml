@@ -3,4 +3,10 @@
     <string name="title_activity_map">Map</string>
     <string name="toolbar_name">Toolbar Name</string>
     <string name="main_image_weather_condition_desc">Image indicating the weather state</string>
+    <string name="my_polygons_button">Polygons</string>
+    <string name="fragment_polygons_list_table">List of my polygons</string>
+    <string name="nullable">null</string>
+    <string name="polygon_row_label">Name</string>
+    <string name="polygon_row_btn_text">Delete</string>
+    <string name="map_button">Map</string>
 </resources>

@@ -1,27 +1,16 @@
 
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÁåÜŒ8“¸ÆóÌ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(±†üúÿÿÿÿ8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "There was an error" 6 times.(§»±˜8“¸ÆóÌ,
-Psquid:S1066"/Merge this if statement with the enclosing one.(ë©ªÂüÿÿÿÿ8“¸ÆóÌ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Response error  = " 6 times.(þö«¶8“¸ÆóÌ,
-qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ðžÎ¬8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
-hsquid:S1192"GDefine a constant instead of duplicating this literal "DEBUG" 36 times.(˜ù•åúÿÿÿÿ8“¸ÆóÌ,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰Óñâ8“¸ÆóÌ,
-Šsquid:S1192"iDefine a constant instead of duplicating this literal "https://api.agromonitoring.com/agro/1.0/" 9 times.(Ù–ÔÆûÿÿÿÿ8“¸ÆóÌ,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(êÇ¼˜8“¸ÆóÌ,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(½£±‹ÿÿÿÿÿ8“¸ÆóÌ,
-ksquid:S1192"JDefine a constant instead of duplicating this literal "41.725584" 4 times.(ï’Ê·ûÿÿÿÿ8“¸ÆóÌ,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ëü¬Ë8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8“¸ÆóÌ,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.( ïñëþÿÿÿÿ8“¸ÆóÌ,
-ksquid:S1192"JDefine a constant instead of duplicating this literal "26.425015" 4 times.(ï’Ê·ûÿÿÿÿ8“¸ÆóÌ,
-gsquid:UselessImportCheck"9Remove this unused import 'com.dsktp.sora.weatherfarm.R'.(žË¶ÿÿÿÿÿ8“¸ÆóÌ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 8 times.(•À²‚8“¸ÆóÌ,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»ŽÞÃýÿÿÿÿ8“¸ÆóÌ,
-rsquid:S1192"WDefine a constant instead of duplicating this literal "Response error body = " 6 times.(¨©Ÿ8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8“¸ÆóÌ,
+ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ý¹Ä8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬Û©8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8£‚Ï¶Í,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8£‚Ï¶Í,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8£‚Ï¶Í,
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8£‚Ï¶Í,
