@@ -6,13 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.dsktp.sora.weatherfarm.R;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
-
-import java.util.List;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -22,9 +25,11 @@ import java.util.List;
  */
 public class ActivityMain extends AppCompatActivity implements RemoteRepository.onSucces
 {
-    private Fragment mapFragment , PolygonFragment;
+    private static final String DEBUG_TAG = "#ActivityMain";
+    private Fragment mMapFragment , mPolygonFragment,mWeatherFragment;
     private FragmentManager mFragmentManager;
     private RemoteRepository mRepo;
+    private Button polygonButton;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,25 +40,77 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
         mRepo.setmCallback(this);
         mFragmentManager = getSupportFragmentManager();
 
+        Toolbar toolbar = findViewById(R.id.app_toolbar);
+        setSupportActionBar(toolbar);
+
+
+        // show the Weather forecast fragment
+        if(mFragmentManager.findFragmentByTag("weatherFragment") == null) //check to see if it already exists before re-creating
+        {
+            Log.i(DEBUG_TAG,"Creating weather fragment");
+            mWeatherFragment = new FragmentWeatherForecast();
+            mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,"weatherFragment").commit();
+        }
+
+
 
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.user_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int itemID = item.getItemId();
+        switch (itemID)
+        {
+            case R.id.settings_btn:
+            {
+                FragmentSettings settings = new FragmentSettings();
+                mFragmentManager.beginTransaction().replace(R.id.fragment_container,settings,"settings").addToBackStack("").commit();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(mFragmentManager.getBackStackEntryCount() == 0) findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE); //show the button if the user navigates to first screen
+    }
+
+    @Override
     public void updateUI() {
-        getSupportFragmentManager().beginTransaction().remove(mapFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).commit();
+        getSupportFragmentManager().beginTransaction().remove(mMapFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).commit();
     }
 
 
 
     public void onPolygonsClick(View view)
     {
-        PolygonFragment = new FragmentMyPolygons();
-        mFragmentManager.beginTransaction().add(R.id.fragment_container,PolygonFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
+        if(mFragmentManager.findFragmentByTag("PolygonFragment") == null )
+        {
+            Log.i(DEBUG_TAG,"Creating polygon fragment");
+            findViewById(R.id.btn_my_polygons).setVisibility(View.GONE); // hide the polygon button from the toolbar
+            mPolygonFragment = new FragmentMyPolygons();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
+        }
+
     }
 
     public void onMapClick(View view)
     {
-        mapFragment = new FragmentMap();
-        mFragmentManager.beginTransaction().replace(R.id.fragment_container,mapFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+        if(mFragmentManager.findFragmentByTag("MapFragment") == null)
+        {
+            Log.i(DEBUG_TAG,"Creating map fragment");
+            mMapFragment = new FragmentMap();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container,mMapFragment,"MapFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+        }
+
     }
 }

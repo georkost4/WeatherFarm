@@ -22,13 +22,9 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/app_toolbar">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/toolbar_name"/>
 
             <Button
                 android:onClick="onPolygonsClick"
@@ -40,15 +36,7 @@
                 android:id="@+id/btn_my_polygons"
                 android:text="@string/my_polygons_button"/>
 
-            <Button
-                android:onClick="onMapClick"
-                android:layout_width="wrap_content"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:background="?android:attr/selectableItemBackground"
-                android:layout_gravity="end"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_map"
-                android:text="@string/map_button"/>
+
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

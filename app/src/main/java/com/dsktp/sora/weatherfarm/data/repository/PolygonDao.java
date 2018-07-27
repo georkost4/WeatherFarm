@@ -1,5 +1,6 @@
 package com.dsktp.sora.weatherfarm.data.repository;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -19,7 +20,7 @@ import java.util.List;
 public interface PolygonDao
 {
     @Query("SELECT * FROM polygonTable")
-    List<PolygonInfoPOJO> getPolygons();
+    LiveData<List<PolygonInfoPOJO>> getPolygons();
 
     @Insert
     long insertPolygon(PolygonInfoPOJO polygonInfoPOJO);

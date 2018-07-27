@@ -1,11 +1,15 @@
 package com.dsktp.sora.weatherfarm.ui;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +32,12 @@ import java.util.List;
  */
 public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.PolygonRowCallback,RemoteRepository.deliveryCallBack
 {
+    private static final String DEBUG_TAG = "#FragmentMyPolygons";
     private View mInflatedView;
     private RecyclerView rvPolygons;
     private PolygonAdapter mAdapter;
     private RemoteRepository mRepo;
+    private PolygonDao mPolyDao;
 
     @Nullable
     @Override
@@ -42,6 +48,18 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         mRepo = RemoteRepository.getsInstance();
         mRepo.setmPolyListCallback(this);
         mRepo.getListOfPolygons();
+
+        mPolyDao = AppDatabase.getsDbInstance(getContext()).polygonDao();
+
+        LiveData<List<PolygonInfoPOJO>> livePolygonInfo = mPolyDao.getPolygons();
+
+        livePolygonInfo.observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
+            @Override
+            public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
+                Log.d(DEBUG_TAG,"Live data to the rescue...");
+                mAdapter.setPolygonList(polygonInfoPOJOS);
+            }
+        });
 
 
         //inflate the list of the polygons
@@ -75,7 +93,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 
     @Override
     public void updateUI() {
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
     }
 
 

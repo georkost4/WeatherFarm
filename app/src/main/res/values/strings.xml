@@ -9,4 +9,6 @@
     <string name="polygon_row_label">Name</string>
     <string name="polygon_row_btn_text">Delete</string>
     <string name="map_button">Map</string>
+    <string name="forecast_lable_text">5 Day Forecast</string>
+    <string name="settings_btn">Settings</string>
 </resources>

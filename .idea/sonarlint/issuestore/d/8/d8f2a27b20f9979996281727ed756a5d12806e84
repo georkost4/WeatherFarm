@@ -1,7 +1,7 @@
 
-zsquid:S1450"^Remove the "PolygonFragment" field and declare it as a local variable in the relevant methods.(†‹ø¿8î˜¾¶Í,
-usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8î˜¾¶Í,
-Isquid:S1659"-Declare "PolygonFragment" on a separate line.(†‹ø¿8î˜¾¶Í,
-‰squid:UselessImportCheck"[Remove this unused import 'com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO'.(ÎÈ´¤ûÿÿÿÿ8î˜¾¶Í,
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8î˜¾¶Í,
-wsquid:S00116"ZRename this field "PolygonFragment" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†‹ø¿8î˜¾¶Í,
+Isquid:S1659"-Declare "PolygonFragment" on a separate line.(†‹ø¿8Íµñ¿Í,
+zsquid:S1450"^Remove the "PolygonFragment" field and declare it as a local variable in the relevant methods.(†‹ø¿8Íµñ¿Í,
+usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8Íµñ¿Í,
+wsquid:S00116"ZRename this field "PolygonFragment" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†‹ø¿8Íµñ¿Í,
+Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Íµñ¿Í,
+‰squid:UselessImportCheck"[Remove this unused import 'com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO'.(ÎÈ´¤ûÿÿÿÿ8Íµñ¿Í,

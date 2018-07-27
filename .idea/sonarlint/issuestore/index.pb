@@ -73,8 +73,6 @@ Tapp/src/main/java/com/dsktp/sora/weatherfarm/data/repository/WeatherForecastDao
 Oapp/src/androidTest/java/com/dsktp/sora/weatherfarm/WeatherForecastDaoTest.java,f\b\fbcdffb5e67197b99a7db5301d9c76e333883fb9
 ‰
 Yapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Forecast/WeatherForecastPOJO.java,3\4\34e33ca494414b351642800bb844b46a9dcee8b3
-p
-@app/src/main/java/com/dsktp/sora/weatherfarm/ui/MapActivity.java,2\1\21cc3fe1f7858bb4c2fd7338b2193b752398a704
 m
 =app/src/main/java/com/dsktp/sora/weatherfarm/utils/Utils.java,3\5\35a58f0f851bf3e49e53c7f83c2fe553e0bb833b
 S
