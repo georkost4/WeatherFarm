@@ -11,4 +11,6 @@
     <string name="map_button">Map</string>
     <string name="forecast_lable_text">5 Day Forecast</string>
     <string name="settings_btn">Settings</string>
+    <string name="settings_current_location_text">Select current Location</string>
+    <string name="temperature_settings_label">Temperature Settings</string>
 </resources>

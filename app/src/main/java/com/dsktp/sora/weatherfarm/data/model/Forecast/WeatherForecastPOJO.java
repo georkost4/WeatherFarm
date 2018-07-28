@@ -15,7 +15,8 @@ import java.util.ArrayList;
 @Entity(tableName = "weatherForecastTable")
 public class WeatherForecastPOJO
 {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    private int _id;
     private int dt;
     private ArrayList<Weather> weather;
     private Main main;
@@ -30,6 +31,14 @@ public class WeatherForecastPOJO
 
     public int getDt() {
         return dt;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public ArrayList<Weather> getWeather() {

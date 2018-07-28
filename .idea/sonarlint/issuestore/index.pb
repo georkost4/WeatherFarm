@@ -99,3 +99,13 @@ e
 5app/src/main/res/layout/fragment_current_forecast.xml,8\2\82f23b2f5b920c63b393d2b6a6559a744c5418ca
 p
 @app/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentMap.java,1\5\1527c5169c4fa8e7ee5fe6237b021f588eb19ae5
+S
+#app/src/main/res/menu/user_menu.xml,2\f\2f4b4c3eb8339109794868dfd79a80a55e568a7c
+]
+-app/src/main/res/layout/fragment_settings.xml,4\f\4fc5b33bc32b9fda83e2938a513ac8733024f0ff
+u
+Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentSettings.java,7\2\72d8165a3292d3d97ac0fe8092de13b20fe62c52
+~
+Napp/src/main/java/com/dsktp/sora/weatherfarm/data/adapters/WeatherAdapter.java,f\e\fe47274e1618153ce79e8216136bc568422c9ec8
+|
+Lapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentWeatherForecast.java,e\9\e91cad4081c4fab4ee1774026d0a12858351ac1a

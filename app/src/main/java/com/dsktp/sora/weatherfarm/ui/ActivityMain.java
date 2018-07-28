@@ -47,6 +47,7 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
         // show the Weather forecast fragment
         if(mFragmentManager.findFragmentByTag("weatherFragment") == null) //check to see if it already exists before re-creating
         {
+            RemoteRepository.getsInstance().getForecastLatLon("41","26",getBaseContext()); // todo remove from this place
             Log.i(DEBUG_TAG,"Creating weather fragment");
             mWeatherFragment = new FragmentWeatherForecast();
             mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,"weatherFragment").commit();

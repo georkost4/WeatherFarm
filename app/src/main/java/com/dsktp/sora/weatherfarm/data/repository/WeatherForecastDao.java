@@ -1,5 +1,6 @@
 package com.dsktp.sora.weatherfarm.data.repository;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -19,10 +20,10 @@ import java.util.List;
 public interface WeatherForecastDao
 {
     @Query("SELECT * FROM weatherForecastTable")
-    List<WeatherForecastPOJO> getWeatherEntries();
+    LiveData<List<WeatherForecastPOJO>> getWeatherEntries();
 
     @Insert
-    long insertWeatherForecastEntry(WeatherForecastPOJO entrie);
+    void insertWeatherForecastEntry(List<WeatherForecastPOJO> entrie);
 
     @Query("DELETE FROM weatherForecastTable WHERE dt = :entryID")
     int deleteForecastEntry(int  entryID);

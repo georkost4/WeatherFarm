@@ -29,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.DELETE;
 
 import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_URL;
 
@@ -73,7 +74,7 @@ public class RemoteRepository
         this.mCallback = mCallback;
     }
 
-    public void getForecastLatLon(String lat, String lon) {
+    public void getForecastLatLon(String lat, String lon, final Context context) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -86,15 +87,18 @@ public class RemoteRepository
 
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
-            public void onResponse(Call<List<WeatherForecastPOJO>> call, Response<List<WeatherForecastPOJO>> response) {
+            public void onResponse(Call<List<WeatherForecastPOJO>> call, final Response<List<WeatherForecastPOJO>> response) {
 
                 if (response.isSuccessful())
                 {
-                    int time = response.body().get(0).getDt();
-                    Log.d(DEBUG_TAG, "time in first element = " + time);
-
-                    int time1 = response.body().get(4).getDt();
-                    Log.d(DEBUG_TAG, "time in third element = " + time1);
+                    final List<WeatherForecastPOJO> weatherForecastPOJO = response.body();
+                    Log.d(DEBUG_TAG,"List size  from response = " + weatherForecastPOJO.size());
+                    AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            AppDatabase.getsDbInstance(context).weatherForecastDao().insertWeatherForecastEntry(weatherForecastPOJO);
+                        }
+                    });
                 } else
                     {
                     Log.d(DEBUG_TAG, "Response message = " + response.message());
@@ -148,7 +152,7 @@ public class RemoteRepository
 
     }
 
-    public void getCurrentForecast(String lat,String lon)
+    public void getCurrentForecast(String lat, String lon, final Context context)
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -166,8 +170,16 @@ public class RemoteRepository
             public void onResponse(Call<WeatherForecastPOJO> call, Response<WeatherForecastPOJO> response) {
 
                 if(response.isSuccessful()) {
-                    int time = response.body().getDt();
-                    Log.d(DEBUG_TAG, "time = " + time);
+                    final WeatherForecastPOJO weatherForecastPOJO = response.body();
+                    double humidity = weatherForecastPOJO.getMain().getHumidity();
+                    Log.d(DEBUG_TAG,"Humidity = " + humidity);
+                    AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+//                            AppDatabase.getsDbInstance(context).weatherForecastDao().insertWeatherForecastEntry(weatherForecastPOJO); //todo fix the list
+                        }
+                    });
+
                 }
                 else
                 {
