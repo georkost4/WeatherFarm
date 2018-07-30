@@ -22,4 +22,6 @@ What I built is an Android app that communicates with a remote API and displays 
  - *AdMob* for displaying user ads
 
 
- ## Application Screenshots (**coming soon**)
+ ## Application Screenshots (**early look**)
+
+ <img src="appScreenshots/weather_forecast_screen.png" width=280px> <img src="appScreenshots/my_polygons_screen.png" width=280px> <img src="appScreenshots/map_screen.png" width=280px>  <img src="appScreenshots/settings_screen.png" width=280px>

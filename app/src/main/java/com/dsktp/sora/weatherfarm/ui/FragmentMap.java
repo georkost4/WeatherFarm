@@ -47,6 +47,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          mInflatedView = inflater.inflate(R.layout.fragment_map,container,false);
 
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Draw a polygon");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

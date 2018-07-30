@@ -5,4 +5,7 @@
     <color name="colorAccent">#ff6d00</color>
     <color name="background_material_light">#c8cbcb</color>
     <color name="holo_blue_dark">#066382</color>
+    <!--colors for the place auto-complete fragment-->
+    <color name="place_autocomplete_search_text">#000000</color>
+    <color name="place_autocomplete_search_hint">#5a70cc</color>
 </resources>

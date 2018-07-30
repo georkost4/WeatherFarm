@@ -52,6 +52,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         mRepo.getListOfPolygons(mInflatedView.getContext());
 
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("My Polygons");
 
         ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
             @Override

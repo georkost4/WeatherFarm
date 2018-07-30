@@ -48,6 +48,7 @@ public class FragmentSettings extends Fragment
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Settings");
 
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {

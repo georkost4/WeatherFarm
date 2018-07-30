@@ -21,10 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="16dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="16dp"
 
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@drawable/ic_layers_black_24dp" />
 
     <Button
         android:id="@+id/sendBtn"

@@ -45,6 +45,9 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_current_forecast,container,false);
 
+        //name the toolbar
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Weather Forecast");
+
         //bind the views
         mRecyclerView = mInflatedView.findViewById(R.id.rv_5_day_forecast);
         final TextView tvCondition = (mInflatedView.findViewById(R.id.tv_weather_condition_label));
