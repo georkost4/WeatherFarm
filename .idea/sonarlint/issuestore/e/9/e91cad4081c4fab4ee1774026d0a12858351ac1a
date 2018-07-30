@@ -1,6 +1,4 @@
 
-zsquid:S1450 "WRemove the "mAdapter" field and declare it as a local variable in the relevant methods.(ü®ò¦ıÿÿÿÿ8ŸÔîÍ,
-Ssquid:S1068"0Remove this unused "mWeatherData" private field.(©ÚÄ“üÿÿÿÿ8‘··îÍ,
-ysquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8‘··îÍ,
-squid:S1450"\Remove the "mRecyclerView" field and declare it as a local variable in the relevant methods.(Òéıÿÿÿÿ8ìƒĞîÍ,
-~squid:S1450"[Remove the "mWeatherData" field and declare it as a local variable in the relevant methods.(©ÚÄ“üÿÿÿÿ8‘··îÍ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8Ù»ŞÎ,
+|squid:S1450"[Remove the "mWeatherData" field and declare it as a local variable in the relevant methods.(©ÚÄ“üÿÿÿÿ8Ù»ŞÎ,
+~squid:UselessImportCheck"URemove this unused import 'com.dsktp.sora.weatherfarm.data.network.RemoteRepository'.(Õ±ûÿ8Ù»ŞÎ,

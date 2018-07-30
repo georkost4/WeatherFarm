@@ -1,6 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -15,6 +16,7 @@ import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
 import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
 import com.dsktp.sora.weatherfarm.ui.FragmentMap;
+import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -85,6 +87,9 @@ public class RemoteRepository
 
         Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherLatLongForecast(lat, lon, BuildConfig.AgroMonitorAPIKey);
 
+
+        AppUtils appUtils = new AppUtils(PreferenceManager.getDefaultSharedPreferences(context));
+        if(appUtils.getLastUpdated()==0) return;
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
             public void onResponse(Call<List<WeatherForecastPOJO>> call, final Response<List<WeatherForecastPOJO>> response) {

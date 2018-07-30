@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_day_label"
@@ -21,31 +20,43 @@
         android:id="@+id/iv_weather_icon"
         android:layout_width="49dp"
         android:layout_height="44dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_day_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_row_description_label"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_image_placeholder" />
 
     <TextView
         android:id="@+id/tv_temperature_min_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/nullable"
-        app:layout_constraintStart_toEndOf="@+id/iv_weather_icon"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_temperature_max_label"
+        app:layout_constraintEnd_toStartOf="@+id/tv_temperature_max_label"
         tools:text="21 C" />
 
     <TextView
         android:id="@+id/tv_temperature_max_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="28dp"
         android:text="@string/nullable"
-        app:layout_constraintStart_toEndOf="@+id/tv_temperature_min_label"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="35 C" />
+
+    <TextView
+        android:id="@+id/tv_weather_row_description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_day_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_day_label"
+        tools:text="Cloudy" />
 </android.support.constraint.ConstraintLayout>

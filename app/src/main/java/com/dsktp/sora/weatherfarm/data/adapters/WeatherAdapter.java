@@ -2,7 +2,6 @@ package com.dsktp.sora.weatherfarm.data.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,12 @@ import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
-import com.dsktp.sora.weatherfarm.utils.Utils;
+import com.dsktp.sora.weatherfarm.utils.ImageUtils;
+import com.dsktp.sora.weatherfarm.utils.TempUtils;
+import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.http.DELETE;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -29,11 +28,14 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
 {
     private static final String DEBUG_TAG = "#WeatherAdapter";
     private List<WeatherForecastPOJO> mList;
+    private List<WeatherForecastPOJO> mDailyList;
+
     private onClickListener mCallback;
 
     public WeatherAdapter()
     {
         mList = new ArrayList<>();
+        mDailyList = new ArrayList<>();
     }
 
     public interface onClickListener
@@ -44,6 +46,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     public void setList(List<WeatherForecastPOJO> mList)
     {
         this.mList = mList;
+        mDailyList = TimeUtils.filterListByDay(mList);
         notifyDataSetChanged();
     }
 
@@ -63,82 +66,20 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     @Override
     public void onBindViewHolder(@NonNull MyWeatherViewholder myWeatherViewholder, int i)
     {
-        int j = i;
-        long epoch = System.currentTimeMillis()/1000;
-        String today = Utils.Time.unixToDay(epoch);
-        String tomorrow = Utils.Time.unixToDay(epoch + 86400);
-        String tomorrow1 = Utils.Time.unixToDay(epoch + 86400);
-        String tomorrow2 = Utils.Time.unixToDay(epoch + 86400);
-        String tomorrow3 = Utils.Time.unixToDay(epoch + 86400);
-//        String tomorrow4 = Utils.Time.unixToDay(epoch + 86400);
-
-        Log.d("DEBUG","List size = " + mList.size());
-        switch (i)
-        {
-            case 0:
-            {
-                while(Utils.Time.unixToDay(mList.get(i).getDt()).equals(today))
-                {
-                    i++;
-                    j = i;
-                }
-                break;
-            }
-            case 1:
-            {
-                while(Utils.Time.unixToDay(mList.get(i).getDt()).equals(tomorrow))
-                {
-                    i++;
-                    j = i;
-                }
-                break;
-            }
-            case 2:
-            {
-                while(Utils.Time.unixToDay(mList.get(i).getDt()).equals(tomorrow1))
-                {
-                    i++;
-                    j = i;
-                }
-                break;
-            }
-            case 3:
-            {
-                while(Utils.Time.unixToDay(mList.get(i).getDt()).equals(tomorrow2))
-                {
-                    i++;
-                    j = i;
-                }
-                break;
-            }
-            case 4:
-            {
-                while(Utils.Time.unixToDay(mList.get(i).getDt()).equals(tomorrow3))
-                {
-                    i++;
-                    j = i;
-                }
-                break;
-            }
-
-        }
-
-
-        WeatherForecastPOJO itemToBind = mList.get(j);
-        myWeatherViewholder.day.setText(Utils.Time.unixToDate(itemToBind.getDt()));
-        myWeatherViewholder.temperature_min.setText(Utils.Temperature.kelvingToCelcius(itemToBind.getMain().getTemp_min()));
-        myWeatherViewholder.temperature_max.setText(Utils.Temperature.kelvingToCelcius(itemToBind.getMain().getTemp_max()));
-        myWeatherViewholder.icon.setImageResource(Utils.Image.getIcon(itemToBind.getWeather().get(0).getIcon()));
-        Log.d(DEBUG_TAG,"temperature mix = " + myWeatherViewholder.temperature_max.getText());
-        Log.d(DEBUG_TAG,"temperature max = " + myWeatherViewholder.temperature_min.getText());
-
-
+        WeatherForecastPOJO itemToBind = mDailyList.get(i);
+        myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
+        String temperatureMinText = TempUtils.kelvingToCelcius(itemToBind.getMain().getTemp_min()) + " °C"; // todo create util method for formatting the sign
+        String temperatureMaxText = TempUtils.kelvingToCelcius(itemToBind.getMain().getTemp_max()) + " °C";
+        myWeatherViewholder.temperature_min.setText(temperatureMinText);
+        myWeatherViewholder.temperature_max.setText(temperatureMaxText);
+        myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getIcon()));
+        myWeatherViewholder.weatherDescription.setText(itemToBind.getWeather().get(0).getDescription());
 
     }
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return mDailyList.size();
     }
 
     public class MyWeatherViewholder extends RecyclerView.ViewHolder {
@@ -147,6 +88,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
         private TextView temperature_min;
         private TextView temperature_max;
         private ImageView icon;
+        private TextView weatherDescription;
 
         public MyWeatherViewholder(@NonNull final View itemView)
         {
@@ -154,6 +96,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
             day = itemView.findViewById(R.id.tv_day_label);
             temperature_min = itemView.findViewById(R.id.tv_temperature_min_label);
             temperature_max = itemView.findViewById(R.id.tv_temperature_max_label);
+            weatherDescription = itemView.findViewById(R.id.tv_weather_row_description_label);
             icon = itemView.findViewById(R.id.iv_weather_icon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

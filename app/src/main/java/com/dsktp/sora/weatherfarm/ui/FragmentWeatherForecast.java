@@ -2,6 +2,7 @@ package com.dsktp.sora.weatherfarm.ui;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,12 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
-import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
-import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
+import com.dsktp.sora.weatherfarm.data.viewmodel.WeatherForecastViewModel;
+import com.dsktp.sora.weatherfarm.utils.TempUtils;
+
 
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class FragmentWeatherForecast extends Fragment
     private RecyclerView mRecyclerView;
     private LiveData<List<WeatherForecastPOJO>> mWeatherData;
     private WeatherAdapter mAdapter;
+    private WeatherForecastViewModel mViewModel;
 
 
     @Nullable
@@ -47,24 +51,24 @@ public class FragmentWeatherForecast extends Fragment
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+        final TextView tvCondition = (mInflatedView.findViewById(R.id.tv_weather_condition_label));
+        final TextView tvTemperature = (mInflatedView.findViewById(R.id.tv_weather_day_temperature));
 
+//        mWeatherData = AppDatabase.getsDbInstance(getContext()).weatherForecastDao().getWeatherEntries(); //load the forecast from the db
+         mViewModel = ViewModelProviders.of(this).get(WeatherForecastViewModel.class);
 
-        mWeatherData = AppDatabase.getsDbInstance(getContext()).weatherForecastDao().getWeatherEntries(); //load the forecast from the db
-
-        mWeatherData.observe(getViewLifecycleOwner(), new Observer<List<WeatherForecastPOJO>>() {
+        mViewModel.getWeatherList().observe(getViewLifecycleOwner(), new Observer<List<WeatherForecastPOJO>>() {
             @Override
             public void onChanged(@Nullable List<WeatherForecastPOJO> weatherForecastPOJOS)
             {
                 Log.d(DEBUG_TAG,"On Changed called");
-                mRecyclerView.setAdapter(mAdapter);
-                mAdapter.setList(weatherForecastPOJOS);
-            }
-        });
-
-
-
-
-
+                if(weatherForecastPOJOS.size()>0) //todo remove if necessary {
+                    tvCondition.setText(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription());
+                    tvTemperature.setText(TempUtils.kelvingToCelcius(weatherForecastPOJOS.get(0).getMain().getTemp()));
+                    mRecyclerView.setAdapter(mAdapter);
+                    mAdapter.setList(weatherForecastPOJOS);
+                }
+            });
 
         return mInflatedView;
     }

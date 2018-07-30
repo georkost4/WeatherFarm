@@ -1,6 +1,7 @@
 package com.dsktp.sora.weatherfarm.ui;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import android.widget.Button;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
+import com.dsktp.sora.weatherfarm.utils.AppUtils;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -48,6 +50,8 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
         if(mFragmentManager.findFragmentByTag("weatherFragment") == null) //check to see if it already exists before re-creating
         {
             RemoteRepository.getsInstance().getForecastLatLon("41","26",getBaseContext()); // todo remove from this place
+            AppUtils appUtils = new AppUtils(PreferenceManager.getDefaultSharedPreferences(this));
+            appUtils.saveValues(0);
             Log.i(DEBUG_TAG,"Creating weather fragment");
             mWeatherFragment = new FragmentWeatherForecast();
             mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,"weatherFragment").commit();
@@ -86,8 +90,15 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
     }
 
     @Override
-    public void updateUI() {
-        getSupportFragmentManager().beginTransaction().remove(mMapFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).commit();
+    public void updateUI()
+    {
+        if(mFragmentManager.findFragmentByTag("weatherFragment") == null)
+        {
+            mWeatherFragment = new FragmentWeatherForecast();
+
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mWeatherFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).commit();
+        findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
     }
 
 
@@ -99,7 +110,7 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
             Log.i(DEBUG_TAG,"Creating polygon fragment");
             findViewById(R.id.btn_my_polygons).setVisibility(View.GONE); // hide the polygon button from the toolbar
             mPolygonFragment = new FragmentMyPolygons();
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit(); //todo move this line out of the if statement
         }
 
     }

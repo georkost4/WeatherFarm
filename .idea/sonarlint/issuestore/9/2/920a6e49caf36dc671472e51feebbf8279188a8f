@@ -1,16 +1,19 @@
 
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8—·ƒîÍ,
-nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8—·ƒîÍ,
-usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬Û©8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8—·ƒîÍ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8—·ƒîÍ,
-c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8—·ƒîÍ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8–ªÅÎ,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬Û©8–ªÅÎ,
+Isquid:S1172".Remove this unused method parameter "context".(›÷Àn8–ªÅÎ,
+usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8–ªÅÎ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(†²Øİ8–ªÅÎ,
+`squid:UselessImportCheck"2Remove this unused import 'retrofit2.http.DELETE'.(ù³ç°ûÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8–ªÅÎ,
+ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8–ªÅÎ,

@@ -1,10 +1,10 @@
 package com.dsktp.sora.weatherfarm.ui;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
-import com.dsktp.sora.weatherfarm.utils.Utils;
+import com.dsktp.sora.weatherfarm.utils.AreaUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -104,7 +104,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                     pointList.add(latLng);
                     if(markerList.size() == 4) // the polygon will be shaped from 4 points
                     {
-                        double polygonArea = Utils.Area.squareMetersToHectares(SphericalUtil.computeArea(pointList));
+                        double polygonArea = AreaUtils.squareMetersToHectares(SphericalUtil.computeArea(pointList));
                         Toast.makeText(mInflatedView.getContext(),"Total area = " + String.format("%.2f",polygonArea) + " ha",Toast.LENGTH_SHORT).show();
                         if(polygonArea<2000) // todo replace this with the actual remaining area of the user
                         {

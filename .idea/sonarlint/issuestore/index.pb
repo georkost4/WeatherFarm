@@ -109,3 +109,7 @@ Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentSettings.java,7\2\72d8
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/adapters/WeatherAdapter.java,f\e\fe47274e1618153ce79e8216136bc568422c9ec8
 |
 Lapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentWeatherForecast.java,e\9\e91cad4081c4fab4ee1774026d0a12858351ac1a
+e
+5app/src/main/res/layout/weather_forecast_row_item.xml,8\7\8744803905947e77bc17fa250deda667689f2039
+œ
+lapp/build/generated/source/apt/debug/com/dsktp/sora/weatherfarm/data/repository/WeatherForecastDao_Impl.java,3\4\34409afdea95e152de2aeac5d8f81de115a2d5de

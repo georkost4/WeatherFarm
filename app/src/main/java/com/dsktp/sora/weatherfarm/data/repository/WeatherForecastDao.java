@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Transaction;
 
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 
@@ -27,6 +28,9 @@ public interface WeatherForecastDao
 
     @Query("DELETE FROM weatherForecastTable WHERE dt = :entryID")
     int deleteForecastEntry(int  entryID);
+
+    @Query("DELETE FROM weatherForecastTable")
+    int deleteOldData();
 
 
 }
