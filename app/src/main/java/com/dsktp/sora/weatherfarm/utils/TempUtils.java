@@ -17,12 +17,16 @@ public class TempUtils
         return null;
     }
 
-    public static String kelvingToCelcius(double kelvinTemperature)
+    public static String kelvinToCelsius(double kelvinTemperature)
     {
         //todo to be implemented
         DecimalFormat df2 = new DecimalFormat(".1");
         double temperature = kelvinTemperature-272.15;
         return df2.format(temperature);
+    }
+    public static String formatToCelsiousSing(String unformattedTemp)
+    {
+        return unformattedTemp + " °C";
     }
 
 }

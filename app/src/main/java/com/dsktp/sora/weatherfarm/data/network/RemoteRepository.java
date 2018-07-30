@@ -1,6 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
@@ -17,6 +18,7 @@ import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
 import com.dsktp.sora.weatherfarm.ui.FragmentMap;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
+import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -88,8 +90,9 @@ public class RemoteRepository
         Call<List<WeatherForecastPOJO>> responsePOJOCall = service.WeatherLatLongForecast(lat, lon, BuildConfig.AgroMonitorAPIKey);
 
 
-        AppUtils appUtils = new AppUtils(PreferenceManager.getDefaultSharedPreferences(context));
-        if(appUtils.getLastUpdated()==0) return;
+
+        if(TimeUtils.secondsEllapsed(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
+        Log.d(DEBUG_TAG,"Making a request for the forecast data to the server");
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
             public void onResponse(Call<List<WeatherForecastPOJO>> call, final Response<List<WeatherForecastPOJO>> response) {
@@ -101,12 +104,16 @@ public class RemoteRepository
                     AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
                         @Override
                         public void run() {
+                            Log.d(DEBUG_TAG,"Deleting old data from database");
+                            AppDatabase.getsDbInstance(context).weatherForecastDao().deleteOldData();
+                            Log.d(DEBUG_TAG,"Inserting new data from database");
                             AppDatabase.getsDbInstance(context).weatherForecastDao().insertWeatherForecastEntry(weatherForecastPOJO);
                         }
                     });
-                } else
-                    {
-                    Log.d(DEBUG_TAG, "Response message = " + response.message());
+                }
+                else
+                {
+                    Log.e(DEBUG_TAG, "Response message = " + response.toString());
                 }
             }
 
@@ -321,7 +328,7 @@ public class RemoteRepository
         });
     }
 
-    public void getListOfPolygons()
+    public void getListOfPolygons(Context context)
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -331,6 +338,9 @@ public class RemoteRepository
         PolygonWebService polygonWebService = retrofitBuilder.create(PolygonWebService.class);
 
         Call<List<PolygonInfoPOJO>> request = polygonWebService.getListOfPolygons(BuildConfig.AgroMonitorAPIKey);
+
+
+        if(TimeUtils.secondsEllapsed(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
 
         request.enqueue(new Callback<List<PolygonInfoPOJO>>() {
             @Override
@@ -444,7 +454,7 @@ public class RemoteRepository
                         public void run() {
                             // insert the response to the local database
                             long rowsAffected = mDao.insertPolygon(response.body());
-                            mCallback.updateUI();
+//                            mCallback.updateUI(); //todo implement UI thread Executor
                             Log.i(DEBUG_TAG,"Rows affected = " + rowsAffected);
 
                         }

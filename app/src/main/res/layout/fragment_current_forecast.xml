@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_weather_forecast_icon"
         android:layout_width="148dp"
         android:layout_height="120dp"
 
@@ -25,21 +25,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="92dp"
-        android:text="Today"
+        android:text="Today , "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Monday" />
+        tools:text="Today ," />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_5_day_forecast"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_forecast_forecast_label_text" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_forecast_forecast_label_text"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/fragment_forecast_forecast_label_text"
@@ -49,16 +52,16 @@
         android:layout_marginTop="16dp"
         android:text="@string/forecast_lable_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_weather_forecast_icon" />
 
     <TextView
         android:id="@+id/tv_weather_day_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_weather_day_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_weather_day_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_weather_condition_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_condition_label"
         tools:text="31 °C" />
 
     <TextView
@@ -71,5 +74,15 @@
         app:layout_constraintStart_toStartOf="@+id/tv_weather_day_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_weather_day_label"
         tools:text="Clouds" />
+
+    <TextView
+        android:id="@+id/tv_weather_location_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_weather_day_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_day_label"
+        tools:text="Rizia" />
 
 </android.support.constraint.ConstraintLayout>

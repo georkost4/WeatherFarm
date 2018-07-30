@@ -29,7 +29,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dsktp.sora.weatherfarm"
-        minSdkVersion 27
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -69,4 +69,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.1"
+    // Firebase Job Dispatched dependency
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
 }

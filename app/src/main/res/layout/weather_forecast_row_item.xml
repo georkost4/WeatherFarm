@@ -17,7 +17,7 @@
         tools:text="Tomorrow" />
 
     <ImageView
-        android:id="@+id/iv_weather_icon"
+        android:id="@+id/iv_weather_icon_row"
         android:layout_width="49dp"
         android:layout_height="44dp"
         android:layout_marginBottom="8dp"

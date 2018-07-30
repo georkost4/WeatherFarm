@@ -14,8 +14,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
+import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 
@@ -25,33 +28,33 @@ import com.dsktp.sora.weatherfarm.utils.AppUtils;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class ActivityMain extends AppCompatActivity implements RemoteRepository.onSucces
+public class ActivityMain extends AppCompatActivity implements FragmentSettings.SettingsChangeCallback
 {
     private static final String DEBUG_TAG = "#ActivityMain";
-    private Fragment mMapFragment , mPolygonFragment,mWeatherFragment;
+    private FragmentMap mMapFragment;
+    private FragmentWeatherForecast mWeatherFragment;
+    private FragmentMyPolygons mPolygonFragment;
+    private FragmentSettings mFragmentSettings;
     private FragmentManager mFragmentManager;
-    private RemoteRepository mRepo;
-    private Button polygonButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        mRepo = RemoteRepository.getsInstance();
-        mRepo.setmCallback(this);
         mFragmentManager = getSupportFragmentManager();
 
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
 
+
         // show the Weather forecast fragment
         if(mFragmentManager.findFragmentByTag("weatherFragment") == null) //check to see if it already exists before re-creating
         {
-            RemoteRepository.getsInstance().getForecastLatLon("41","26",getBaseContext()); // todo remove from this place
-            AppUtils appUtils = new AppUtils(PreferenceManager.getDefaultSharedPreferences(this));
-            appUtils.saveValues(0);
+            AppUtils.saveValues(this,System.currentTimeMillis());
+            String[] latlngSet =  AppUtils.getSelectedPosition(this);
+            RemoteRepository.getsInstance().getForecastLatLon(latlngSet[1],latlngSet[2],getBaseContext()); // todo remove from this place
             Log.i(DEBUG_TAG,"Creating weather fragment");
             mWeatherFragment = new FragmentWeatherForecast();
             mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,"weatherFragment").commit();
@@ -76,8 +79,21 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
         {
             case R.id.settings_btn:
             {
-                FragmentSettings settings = new FragmentSettings();
-                mFragmentManager.beginTransaction().replace(R.id.fragment_container,settings,"settings").addToBackStack("").commit();
+                mFragmentSettings = new FragmentSettings();
+                mFragmentManager.beginTransaction().replace(R.id.fragment_container,mFragmentSettings,"settings").addToBackStack("").commit();
+                mFragmentSettings.setCallback(this);
+                break;
+            }
+            case android.R.id.home:
+            {
+                mFragmentManager.popBackStack();
+                if(mFragmentManager.getBackStackEntryCount() == 1)
+                {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+                }
+
+                break;
             }
         }
         return super.onOptionsItemSelected(item);
@@ -86,32 +102,26 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(mFragmentManager.getBackStackEntryCount() == 0) findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE); //show the button if the user navigates to first screen
-    }
-
-    @Override
-    public void updateUI()
-    {
-        if(mFragmentManager.findFragmentByTag("weatherFragment") == null)
+        if(mFragmentManager.getBackStackEntryCount() == 0)
         {
-            mWeatherFragment = new FragmentWeatherForecast();
-
+            findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE); //show the button if the user navigates to first screen
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mWeatherFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).commit();
-        findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
     }
-
-
 
     public void onPolygonsClick(View view)
     {
         if(mFragmentManager.findFragmentByTag("PolygonFragment") == null )
         {
             Log.i(DEBUG_TAG,"Creating polygon fragment");
-            findViewById(R.id.btn_my_polygons).setVisibility(View.GONE); // hide the polygon button from the toolbar
             mPolygonFragment = new FragmentMyPolygons();
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit(); //todo move this line out of the if statement
         }
+        findViewById(R.id.btn_my_polygons).setVisibility(View.GONE); // hide the polygon button from the toolbar
+
+        mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").
+                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack("")
+                .commit(); //todo move this line out of the if statement
 
     }
 
@@ -125,4 +135,13 @@ public class ActivityMain extends AppCompatActivity implements RemoteRepository.
         }
 
     }
+
+    @Override
+    public void onSettingsChanged() {
+        Log.d(DEBUG_TAG,"On settings change");
+        // lets assume the position has changed so re fetch data for the new location
+        String[] newLocationArray = AppUtils.getSelectedPosition(this);
+        RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
+    }
+
 }

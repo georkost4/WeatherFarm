@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -29,7 +28,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     private static final String DEBUG_TAG = "#WeatherAdapter";
     private List<WeatherForecastPOJO> mList;
     private List<WeatherForecastPOJO> mDailyList;
-
     private onClickListener mCallback;
 
     public WeatherAdapter()
@@ -40,7 +38,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
 
     public interface onClickListener
     {
-        void handleClick();
+        void handleClick(WeatherForecastPOJO weatherForecastPOJO);
     }
 
     public void setList(List<WeatherForecastPOJO> mList)
@@ -59,7 +57,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     public MyWeatherViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
         View inflatedRowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.weather_forecast_row_item,viewGroup,false);
-
         return new MyWeatherViewholder(inflatedRowView);
     }
 
@@ -68,13 +65,10 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     {
         WeatherForecastPOJO itemToBind = mDailyList.get(i);
         myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
-        String temperatureMinText = TempUtils.kelvingToCelcius(itemToBind.getMain().getTemp_min()) + " °C"; // todo create util method for formatting the sign
-        String temperatureMaxText = TempUtils.kelvingToCelcius(itemToBind.getMain().getTemp_max()) + " °C";
-        myWeatherViewholder.temperature_min.setText(temperatureMinText);
-        myWeatherViewholder.temperature_max.setText(temperatureMaxText);
-        myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getIcon()));
+        myWeatherViewholder.temperature_min.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_min())));
+        myWeatherViewholder.temperature_max.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_max())));
+        myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getDescription()));
         myWeatherViewholder.weatherDescription.setText(itemToBind.getWeather().get(0).getDescription());
-
     }
 
     @Override
@@ -82,7 +76,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
         return mDailyList.size();
     }
 
-    public class MyWeatherViewholder extends RecyclerView.ViewHolder {
+    public class MyWeatherViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView day;
         private TextView temperature_min;
@@ -97,14 +91,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
             temperature_min = itemView.findViewById(R.id.tv_temperature_min_label);
             temperature_max = itemView.findViewById(R.id.tv_temperature_max_label);
             weatherDescription = itemView.findViewById(R.id.tv_weather_row_description_label);
-            icon = itemView.findViewById(R.id.iv_weather_icon);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //todo to be implemented
-                    Toast.makeText(itemView.getContext(),"To be implemented",Toast.LENGTH_SHORT).show();
-                }
-            });
+            icon = itemView.findViewById(R.id.iv_weather_icon_row);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mCallback.handleClick(mDailyList.get(getAdapterPosition()));
         }
     }
 }

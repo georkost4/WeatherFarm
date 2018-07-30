@@ -122,11 +122,15 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                                         RemoteRepository remoteRepository = RemoteRepository.getsInstance();
                                         remoteRepository.sendPolygon(pointList,"Test24",mInflatedView.getContext());
                                         sProgressBar.setVisibility(View.VISIBLE);
+                                        FragmentWeatherForecast fragment = (FragmentWeatherForecast) getActivity().getSupportFragmentManager().findFragmentByTag("weatherFragment");
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                                        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
                                     }
                                 });
                             }
                             mMap.addPolygon(polygonOptions);
                             Log.d(DEBUG_TAG,"Number of points = " + polygonOptions.getPoints().size() );
+
                         }
                         else
                         {

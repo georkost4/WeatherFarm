@@ -1,6 +1,7 @@
 package com.dsktp.sora.weatherfarm.ui;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dsktp.sora.weatherfarm.R;
-import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
+import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
-import com.google.android.gms.maps.model.LatLng;
 
 
 /**
@@ -29,6 +28,16 @@ public class FragmentSettings extends Fragment
 {
     private static final String DEBUG_TAG = "#FragmentSettings";
     private View mInflatedView;
+    private SettingsChangeCallback mCallback;
+
+    public void setCallback(SettingsChangeCallback mCallback) {
+        this.mCallback = mCallback;
+    }
+
+    public interface SettingsChangeCallback
+    {
+        void onSettingsChanged();
+    }
 
 
     @Nullable
@@ -38,6 +47,9 @@ public class FragmentSettings extends Fragment
 
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
+        ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -45,8 +57,8 @@ public class FragmentSettings extends Fragment
                 Log.i(DEBUG_TAG,"Latitude = " + place.getLatLng().latitude);
                 Log.i(DEBUG_TAG,"Longitude = " + place.getLatLng().longitude);
 
-                LatLng latLng = place.getLatLng();
-                RemoteRepository.getsInstance().getCurrentForecast(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude),getContext());
+                AppUtils.saveSelectedPosition(place,getContext());
+                mCallback.onSettingsChanged();
 
             }
 

@@ -68,6 +68,17 @@ public class TimeUtils
 
     }
 
+    public static long secondsEllapsed(long timeInMilli)
+    {
+        long currentTime = System.currentTimeMillis();
+        Log.d(DEBUG_TAG,"Current time in millis " + currentTime);
+        Log.d(DEBUG_TAG,"Last updated time in millis " + timeInMilli);
+        long ellapsedTime = currentTime - timeInMilli;
+
+        Log.d(DEBUG_TAG,"Ellapsed seconds = " + ellapsedTime);
+        return ellapsedTime;
+    }
+
 
     public static String unixToDate(long timeInMilli)
     {

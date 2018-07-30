@@ -21,6 +21,7 @@ import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
 import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
+import com.dsktp.sora.weatherfarm.data.viewmodel.PolygonViewModel;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     private PolygonAdapter mAdapter;
     private RemoteRepository mRepo;
     private PolygonDao mPolyDao;
+    private PolygonViewModel mViewModel;
 
     @Nullable
     @Override
@@ -47,19 +49,18 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         //get the polygon list
         mRepo = RemoteRepository.getsInstance();
         mRepo.setmPolyListCallback(this);
-        mRepo.getListOfPolygons();
+        mRepo.getListOfPolygons(mInflatedView.getContext());
 
-        mPolyDao = AppDatabase.getsDbInstance(getContext()).polygonDao();
+        ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        LiveData<List<PolygonInfoPOJO>> livePolygonInfo = mPolyDao.getPolygons();
-
-        livePolygonInfo.observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
+        ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
             @Override
             public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
                 Log.d(DEBUG_TAG,"Live data to the rescue...");
                 mAdapter.setPolygonList(polygonInfoPOJOS);
             }
         });
+
 
 
         //inflate the list of the polygons
