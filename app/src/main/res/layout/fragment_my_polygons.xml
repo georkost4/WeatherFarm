@@ -49,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:listitem="@layout/polygon_item_row" />
+        tools:listitem="@layout/recycler_view_polygon_item_row" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_map"

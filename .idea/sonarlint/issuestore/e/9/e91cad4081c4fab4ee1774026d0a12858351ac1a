@@ -1,4 +1,4 @@
 
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8Ù»ŞÎ,
-|squid:S1450"[Remove the "mWeatherData" field and declare it as a local variable in the relevant methods.(©ÚÄ“üÿÿÿÿ8Ù»ŞÎ,
-~squid:UselessImportCheck"URemove this unused import 'com.dsktp.sora.weatherfarm.data.network.RemoteRepository'.(Õ±ûÿ8Ù»ŞÎ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8è²ºçÎ,
+zsquid:S1450"YRemove the "mViewModel" field and declare it as a local variable in the relevant methods.(Ä×³Îüÿÿÿÿ8è²ºçÎ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(¦ø”êøÿÿÿÿ8è²ºçÎ,

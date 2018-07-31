@@ -1,6 +1,6 @@
 
-Nsquid:S1135"2Complete the task associated to this TODO comment.(´éÑŠ8ëÂ­¶Í,
-qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8ëÂ­¶Í,
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(óêæï8ëÂ­¶Í,
-Wsquid:S2696"6Make the enclosing method "static" or remove this set.(ñãŸ°ùÿÿÿÿ8ëÂ­¶Í,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(»©¡Úüÿÿÿÿ8ëÂ­¶Í,
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(óêæï8Ï²‰çÎ,
+qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8Ï²‰çÎ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(´éÑŠ8Ï²‰çÎ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(»©¡Úüÿÿÿÿ8Ï²‰çÎ,
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(ñãŸ°ùÿÿÿÿ8Ï²‰çÎ,

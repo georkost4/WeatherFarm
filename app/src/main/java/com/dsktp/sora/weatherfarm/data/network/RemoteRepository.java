@@ -47,7 +47,6 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_UR
 public class RemoteRepository
 {
     private  static  String DEBUG_TAG = "#RemoteRepository.java";
-    private onSucces mCallback;
     private onFailure mMapCallback;
     private deliveryCallBack mPolyListCallback;
     private static RemoteRepository sInstance;
@@ -73,10 +72,6 @@ public class RemoteRepository
         this.mMapCallback = mMapCallback;
     }
 
-    public void setmCallback(onSucces mCallback)
-    {
-        this.mCallback = mCallback;
-    }
 
     public void getForecastLatLon(String lat, String lon, final Context context) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -311,7 +306,6 @@ public class RemoteRepository
                                 Log.i(DEBUG_TAG,"Rows deleted = " + rowsAffected);
                             }
                         });
-                        mPolyListCallback.updateUI();
                     }
                     else
                     {
@@ -328,7 +322,7 @@ public class RemoteRepository
         });
     }
 
-    public void getListOfPolygons(Context context)
+    public void getListOfPolygons(final Context context)
     {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -340,16 +334,21 @@ public class RemoteRepository
         Call<List<PolygonInfoPOJO>> request = polygonWebService.getListOfPolygons(BuildConfig.AgroMonitorAPIKey);
 
 
-        if(TimeUtils.secondsEllapsed(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
-
         request.enqueue(new Callback<List<PolygonInfoPOJO>>() {
             @Override
             public void onResponse(Call<List<PolygonInfoPOJO>> call, Response<List<PolygonInfoPOJO>> response) {
                 if(response.isSuccessful())
                 {
                     Log.d(DEBUG_TAG,"Getting list of polygons request if successful");
-                    List<PolygonInfoPOJO> listOfPolygons = response.body();
-                    mPolyListCallback.populateList(listOfPolygons);
+                    final List<PolygonInfoPOJO> listOfPolygons = response.body();
+//                    mPolyListCallback.populateList(listOfPolygons);
+                    AppUtils.setPolygonListBeenSynced(context); // save that the polygon list has been synced
+                    AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            AppDatabase.getsDbInstance(context).polygonDao().insertPolygonList(listOfPolygons);
+                        }
+                    });
                     Log.d(DEBUG_TAG,"Number of polygons = " + listOfPolygons.size());
                 }
             }
@@ -490,10 +489,6 @@ public class RemoteRepository
         }
     }
 
-    public interface onSucces
-    {
-        void updateUI();
-    }
 
     public interface  onFailure
     {
@@ -503,7 +498,6 @@ public class RemoteRepository
     public interface deliveryCallBack
     {
         void populateList(List<PolygonInfoPOJO> polygonList);
-        void updateUI();
     }
 
 

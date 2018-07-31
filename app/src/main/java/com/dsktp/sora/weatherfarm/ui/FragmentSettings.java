@@ -1,7 +1,6 @@
 package com.dsktp.sora.weatherfarm.ui;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,18 +38,16 @@ public class FragmentSettings extends Fragment
         void onSettingsChanged();
     }
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_settings,container,false);
 
-        SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-
+        //set the toolbar title and enable the up button
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Settings");
 
-
+        SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -72,4 +69,20 @@ public class FragmentSettings extends Fragment
 
         return mInflatedView;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().findViewById(R.id.settings_btn).setVisibility(View.GONE);
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+    }
+
+
 }

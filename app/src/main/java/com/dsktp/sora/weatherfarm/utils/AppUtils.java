@@ -70,4 +70,14 @@ public class AppUtils
     {
         //todo to be implemented
     }
+
+    public static void setPolygonListBeenSynced(Context context)
+    {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("polygon_sync_boolean_key",true).apply();
+    }
+    public static boolean hasThePolygonListSynced(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("polygon_sync_boolean_key",false);
+    }
+
 }

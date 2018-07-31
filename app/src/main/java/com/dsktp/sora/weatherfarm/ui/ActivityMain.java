@@ -1,26 +1,25 @@
 package com.dsktp.sora.weatherfarm.ui;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
-import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
-import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
+import com.dsktp.sora.weatherfarm.utils.Constants;
+
+import static com.dsktp.sora.weatherfarm.utils.Constants.DETAILED_FORECAST_FRAGMENT_TAG;
+import static com.dsktp.sora.weatherfarm.utils.Constants.MAP_FRAGMENT_TAG;
+import static com.dsktp.sora.weatherfarm.utils.Constants.POLYGON_FRAGMENT_TAG;
+import static com.dsktp.sora.weatherfarm.utils.Constants.SETTINGS_FRAGMENT_TAG;
+import static com.dsktp.sora.weatherfarm.utils.Constants.WEATHER_FORECAST_FRAGMENT_TAG;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -36,6 +35,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     private FragmentMyPolygons mPolygonFragment;
     private FragmentSettings mFragmentSettings;
     private FragmentManager mFragmentManager;
+    private FragmentDetailedWeatherInfo mDetailWeatherForecast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,28 +47,23 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-
+        findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+        findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
 
         // show the Weather forecast fragment
-        if(mFragmentManager.findFragmentByTag("weatherFragment") == null) //check to see if it already exists before re-creating
+        if(mFragmentManager.findFragmentByTag(WEATHER_FORECAST_FRAGMENT_TAG) == null) //check to see if it already exists before re-creating
         {
             AppUtils.saveValues(this,System.currentTimeMillis());
             String[] latlngSet =  AppUtils.getSelectedPosition(this);
             RemoteRepository.getsInstance().getForecastLatLon(latlngSet[1],latlngSet[2],getBaseContext()); // todo remove from this place
             Log.i(DEBUG_TAG,"Creating weather fragment");
             mWeatherFragment = new FragmentWeatherForecast();
-            mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,"weatherFragment").commit();
+            mFragmentManager.beginTransaction().add(R.id.fragment_container,mWeatherFragment,WEATHER_FORECAST_FRAGMENT_TAG).commit();
         }
 
 
 
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.user_menu,menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -77,22 +72,13 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         int itemID = item.getItemId();
         switch (itemID)
         {
-            case R.id.settings_btn:
-            {
-                mFragmentSettings = new FragmentSettings();
-                mFragmentManager.beginTransaction().replace(R.id.fragment_container,mFragmentSettings,"settings").addToBackStack("").commit();
-                mFragmentSettings.setCallback(this);
-                break;
-            }
             case android.R.id.home:
             {
                 mFragmentManager.popBackStack();
-                if(mFragmentManager.getBackStackEntryCount() == 1)
+                if(mFragmentManager.getBackStackEntryCount() == 1) // stack count == 1 means that the user is in the FIRST screen so HIDE the up nav button
                 {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
                 }
-
                 break;
             }
         }
@@ -111,17 +97,13 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     public void onPolygonsClick(View view)
     {
-        if(mFragmentManager.findFragmentByTag("PolygonFragment") == null )
+        if(mFragmentManager.findFragmentByTag(Constants.SETTINGS_FRAGMENT_TAG)!=null) // if the click came from settings dont add it to the back stack
         {
             Log.i(DEBUG_TAG,"Creating polygon fragment");
             mPolygonFragment = new FragmentMyPolygons();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,POLYGON_FRAGMENT_TAG).
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
         }
-        findViewById(R.id.btn_my_polygons).setVisibility(View.GONE); // hide the polygon button from the toolbar
-
-        mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment,"PolygonFragment").
-                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack("")
-                .commit(); //todo move this line out of the if statement
 
     }
 
@@ -131,7 +113,33 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         {
             Log.i(DEBUG_TAG,"Creating map fragment");
             mMapFragment = new FragmentMap();
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container,mMapFragment,"MapFragment").setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container,mMapFragment,MAP_FRAGMENT_TAG)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .addToBackStack("")
+                    .commit();
+        }
+
+    }
+    public void onSettingsClicked(View view)
+    {
+        view.setVisibility(View.GONE); // todo maybe remove this
+        if(mFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG) == null) {
+            mFragmentSettings = new FragmentSettings();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragmentSettings, SETTINGS_FRAGMENT_TAG).addToBackStack("").commit();
+            mFragmentSettings.setCallback(this);
+        }
+    }
+
+    public void onWeatherDetailsClicked(View view)
+    {
+        if(mFragmentManager.findFragmentByTag(DETAILED_FORECAST_FRAGMENT_TAG) == null)
+        {
+            Bundle dataToSend = new Bundle();
+//            dataToSend.putParcelable("") implement this
+            mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container,mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
+                    .addToBackStack("")
+                    .commit();
         }
 
     }
@@ -143,5 +151,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         String[] newLocationArray = AppUtils.getSelectedPosition(this);
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
     }
+
 
 }

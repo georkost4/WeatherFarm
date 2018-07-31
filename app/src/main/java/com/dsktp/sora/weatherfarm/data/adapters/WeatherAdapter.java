@@ -56,7 +56,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     @Override
     public MyWeatherViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
-        View inflatedRowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.weather_forecast_row_item,viewGroup,false);
+        View inflatedRowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_weather_forecast_row_item,viewGroup,false);
         return new MyWeatherViewholder(inflatedRowView);
     }
 

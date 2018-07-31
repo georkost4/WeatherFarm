@@ -1,30 +1,0 @@
-
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(µÅ«8ß—‘Î,
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(ÎˆÅ”8ß—‘Î,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(›®²£8ß—‘Î,
-Ysquid:S1854"8Remove this useless assignment to local variable "mera".(ÑÖÜöşÿÿÿÿ8ß—‘Î,
-Ysquid:S1854"8Remove this useless assignment to local variable "mera".(¯ì®úÿÿÿÿ8ß—‘Î,
-Tsquid:S1854"8Remove this useless assignment to local variable "mera".(óÀ§ÿ8ß—‘Î,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(›®²£8ß—‘Î,
-Nsquid:S1199"-Extract this nested code block into a method.(ĞÎö¬øÿÿÿÿ8ß—‘Î,
-Tsquid:UselessImportCheck"+Remove this unused import 'java.util.Date'.(¸…¼ü8ß—‘Î,
-[squid:S1118":Add a private constructor to hide the implicit public one.(ò¼îıøÿÿÿÿ8ß—‘Î,
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ì»¾úÿÿÿÿ8ß—‘Î,
-Nsquid:S1199"-Extract this nested code block into a method.(†ø´üÿÿÿÿ8ß—‘Î,
-[squid:S1118":Add a private constructor to hide the implicit public one.(Ì«ú¦ÿÿÿÿÿ8ß—‘Î,
-Isquid:S1199"-Extract this nested code block into a method.(¬‹ş8ß—‘Î,
-Nsquid:S1172"2Remove this unused method parameter "timeInMilli".(¢Á–8ß—‘Î,
-Isquid:S1199"-Extract this nested code block into a method.(­Õñˆ8ß—‘Î,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(›®²£8ß—‘Î,
-Ssquid:S1172"8Remove this unused method parameter "kelvinTemperature".(¨†¢"8ß—‘Î,
-Isquid:S1199"-Extract this nested code block into a method.(´Œ8ß—‘Î,
-Isquid:S1199"-Extract this nested code block into a method.(İœÆ¢8ß—‘Î,
-Ysquid:S1854"8Remove this useless assignment to local variable "mera".(ÒÈ–İùÿÿÿÿ8ß—‘Î,
-Tsquid:S1854"8Remove this useless assignment to local variable "mera".(òãŒ‹8ß—‘Î,
-Tsquid:S1854"8Remove this useless assignment to local variable "mera".(«Û’°8ß—‘Î,
-Gsquid:S1172"+Remove this unused method parameter "icon".(³Ğ±¼8ß—‘Î,
-Isquid:S1199"-Extract this nested code block into a method.(Ô£Ë8ß—‘Î,
-[squid:S1118":Add a private constructor to hide the implicit public one.(°“·èùÿÿÿÿ8ß—‘Î,
-Ysquid:S1854"8Remove this useless assignment to local variable "mera".(ÆÔÆ™ùÿÿÿÿ8ß—‘Î,
-msquid:UselessImportCheck"?Remove this unused import 'android.graphics.drawable.Drawable'.(Á‰º„ùÿÿÿÿ8ß—‘Î,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(›®²£8ß—‘Î,

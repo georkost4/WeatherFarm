@@ -22,6 +22,7 @@ import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
 import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
 import com.dsktp.sora.weatherfarm.data.viewmodel.PolygonViewModel;
+import com.dsktp.sora.weatherfarm.utils.AppUtils;
 
 import java.util.List;
 
@@ -46,13 +47,24 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
 
-        //get the polygon list
-        mRepo = RemoteRepository.getsInstance();
-        mRepo.setmPolyListCallback(this);
-        mRepo.getListOfPolygons(mInflatedView.getContext());
+        //get the polygon list only if the polygon list hasn't been synced
+        //otherwise query the local database
+        if(!AppUtils.hasThePolygonListSynced(getContext()))
+        {
+            mRepo = RemoteRepository.getsInstance();
+            mRepo.getListOfPolygons(mInflatedView.getContext());
+        }
 
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle("My Polygons");
+
+        //inflate the list of the polygons
+        rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
+        mAdapter = new PolygonAdapter(getContext());
+        rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPolygons.setAdapter(mAdapter);
+
+        mAdapter.setmCallback(this);
 
         ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
             @Override
@@ -64,13 +76,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 
 
 
-        //inflate the list of the polygons
-        rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
-        mAdapter = new PolygonAdapter(getContext());
-        rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvPolygons.setAdapter(mAdapter);
 
-        mAdapter.setmCallback(this);
         return mInflatedView;
     }
 
@@ -94,9 +100,14 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     }
 
     @Override
-    public void updateUI() {
-//        mAdapter.notifyDataSetChanged();
+    public void onStart() {
+        super.onStart();
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+    }
 }

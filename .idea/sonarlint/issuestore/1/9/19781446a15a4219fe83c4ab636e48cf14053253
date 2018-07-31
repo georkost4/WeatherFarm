@@ -1,0 +1,20 @@
+
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ì»¾úÿÿÿÿ8”ó€İÎ,
+Psquid:S1066"/Merge this if statement with the enclosing one.(¤ÖÈ“ÿÿÿÿÿ8”ó€İÎ,
+Jsquid:S1066"/Merge this if statement with the enclosing one.(ÉØÉG8”ó€İÎ,
+Ksquid:S1066"/Merge this if statement with the enclosing one.(ÿæŸ8”ó€İÎ,
+Nsquid:S1199"-Extract this nested code block into a method.(ĞÎö¬øÿÿÿÿ8”ó€İÎ,
+Isquid:S1199"-Extract this nested code block into a method.(¬‹ş8”ó€İÎ,
+Isquid:S1199"-Extract this nested code block into a method.(´Œ8”ó€İÎ,
+Isquid:S1199"-Extract this nested code block into a method.(İœÆ¢8”ó€İÎ,
+Isquid:S1199"-Extract this nested code block into a method.(Ô£Ë8”ó€İÎ,
+Isquid:S1199"-Extract this nested code block into a method.(­Õñˆ8”ó€İÎ,
+Nsquid:S1199"-Extract this nested code block into a method.(†ø´üÿÿÿÿ8”ó€İÎ,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ş¬À8”ó€İÎ,
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(†üõŒùÿÿÿÿ8”ó€İÎ,
+}squid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "date".(½Ã¹Şÿÿÿÿÿ8”ó€İÎ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(›®²£8”ó€İÎ,
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(©³‹şÿÿÿÿ8”ó€İÎ,
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(³ÌÇ¦8”ó€İÎ,
+Nsquid:S1172"2Remove this unused method parameter "timeInMilli".(¢Á–8”ó€İÎ,

@@ -25,6 +25,9 @@ public interface PolygonDao
     @Insert
     long insertPolygon(PolygonInfoPOJO polygonInfoPOJO);
 
+    @Insert
+    void insertPolygonList(List<PolygonInfoPOJO> polygonInfoPOJOS);
+
     @Query("DELETE FROM polygonTable WHERE id = :polygonID")
     int deletePolygon(String polygonID);
 }

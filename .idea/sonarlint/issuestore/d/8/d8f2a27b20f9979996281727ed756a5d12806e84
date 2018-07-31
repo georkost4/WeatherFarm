@@ -1,11 +1,10 @@
 
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ËÔ¸øÿÿÿÿ8–×ÑÎ,
-Isquid:S1659".Declare "mPolygonFragment" on a separate line.(¯×¸8–×ÑÎ,
-Isquid:S1659".Declare "mWeatherFragment" on a separate line.(¯×¸8–×ÑÎ,
-Rsquid:S1068"1Remove this unused "polygonButton" private field.(›šõıÿÿÿÿ8–×ÑÎ,
-Nsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8–×ÑÎ,
-zsquid:S1450"_Remove the "mPolygonFragment" field and declare it as a local variable in the relevant methods.(¯×¸8–×ÑÎ,
-zsquid:S1450"_Remove the "mWeatherFragment" field and declare it as a local variable in the relevant methods.(¯×¸8–×ÑÎ,
-usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8–×ÑÎ,
-lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ËÔ¸øÿÿÿÿ8–×ÑÎ,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(éÕ‡ß8–×ÑÎ,
+Nsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8ªˆÇèÎ,
+€squid:S1450"_Remove the "mWeatherFragment" field and declare it as a local variable in the relevant methods.(‹¤ùÿÿÿÿ8ªˆÇèÎ,
+Nsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8ªˆÇèÎ,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ËÔ¸øÿÿÿÿ8ªˆÇèÎ,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ËÔ¸øÿÿÿÿ8ªˆÇèÎ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(êÍÍâ8ªˆÇèÎ,
+|squid:S1450"`Remove the "mFragmentSettings" field and declare it as a local variable in the relevant methods.(è´®Š8ªˆÇèÎ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(ïÉÍıÿÿÿÿ8ªˆÇèÎ,
+|squid:S1450"[Remove the "mMapFragment" field and declare it as a local variable in the relevant methods.(ÿáá™ûÿÿÿÿ8ªˆÇèÎ,

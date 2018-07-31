@@ -1,4 +1,4 @@
 
-Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8¯ıªÎ,
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8¯ıªÎ,
-‰squid:UselessImportCheck"`Remove this unused import 'com.google.android.gms.location.places.ui.PlaceAutocompleteFragment'.(ë‘ş8¯ıªÎ,
+jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8ğŸøçÎ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8ğŸøçÎ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8ğŸøçÎ,

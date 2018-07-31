@@ -16,8 +16,6 @@ import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.http.DELETE;
-
 /**
  * This file created by Georgios Kostogloudis
  * and was last modified on 26/7/2018.
@@ -50,7 +48,7 @@ public class PolygonAdapter extends RecyclerView.Adapter<PolygonAdapter.PolygonV
 
     public void setPolygonList(List<PolygonInfoPOJO> mPolygonList)
     {
-        Log.d(DEBUG_TAG,"Setting the polygon list nad notifying the adapter");
+        Log.d(DEBUG_TAG,"Setting the polygon list and notifying the adapter");
         this.mPolygonList = mPolygonList;
         notifyDataSetChanged();
     }
@@ -61,7 +59,7 @@ public class PolygonAdapter extends RecyclerView.Adapter<PolygonAdapter.PolygonV
         @Override
         public PolygonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
         {
-            View inflatedItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.polygon_item_row,viewGroup,false);
+            View inflatedItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_polygon_item_row,viewGroup,false);
             PolygonViewHolder polygonViewHolder = new PolygonViewHolder(inflatedItemView);
             return polygonViewHolder;
         }
