@@ -16,4 +16,7 @@ public class Constants
     public static final String POLYGON_FRAGMENT_TAG = "PolygonFragment";
     public static final String MAP_FRAGMENT_TAG = "MapFragment";
     public static final String DETAILED_FORECAST_FRAGMENT_TAG = "weatherDetailedFragment";
+
+    //bundle keys
+    public static final String DETAILED_FORECAST_ARGUMENT_KEY = "detailed_weather_object_key";
 }

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +22,13 @@ import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.viewmodel.WeatherForecastViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
+import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
 
 import java.util.List;
+
+import static com.dsktp.sora.weatherfarm.utils.Constants.DETAILED_FORECAST_FRAGMENT_TAG;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -38,12 +42,28 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     private RecyclerView mRecyclerView;
     private WeatherAdapter mAdapter;
     private WeatherForecastViewModel mViewModel;
+    private Button mDetailsButton;
+    private FragmentDetailedWeatherInfo mDetailWeatherForecast;
+    private WeatherForecastPOJO dataToSend;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_current_forecast,container,false);
+
+        mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details);
+        mDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onWeatherDetailsClicked(view);
+            }
+        });
 
         //name the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Weather Forecast");
@@ -70,6 +90,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                 if(!weatherForecastPOJOS.isEmpty()) //todo remove if necessary
                 {
                     Log.d(DEBUG_TAG,"WeatherForecastPOJOS list size = " + weatherForecastPOJOS.size());
+                    dataToSend = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
                     // populate the UI
                     tvCondition.setText(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription());
                     tvTemperature.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOS.get(0).getMain().getTemp())));
@@ -88,5 +109,24 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     public void handleClick(WeatherForecastPOJO weatherForecastPOJO) {
         Toast.makeText(getContext(),"To be implemented",Toast.LENGTH_SHORT).show();
     }
+
+    public void onWeatherDetailsClicked(View view)
+    {
+        if(getActivity().getSupportFragmentManager().findFragmentByTag(DETAILED_FORECAST_FRAGMENT_TAG) == null)
+        {
+            mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
+            // create and save the first item of the forecast into a bundle to send it to the fragment
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY,dataToSend);
+            mDetailWeatherForecast.setArguments(bundle);
+
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
+                    .addToBackStack("")
+                    .commit();
+        }
+    }
+
+
+
 }
 

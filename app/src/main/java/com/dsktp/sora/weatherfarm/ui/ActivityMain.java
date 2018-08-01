@@ -97,7 +97,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     public void onPolygonsClick(View view)
     {
-        if(mFragmentManager.findFragmentByTag(Constants.SETTINGS_FRAGMENT_TAG)!=null) // if the click came from settings dont add it to the back stack
+        if(mFragmentManager.findFragmentByTag(Constants.POLYGON_FRAGMENT_TAG) == null) // if the click came from settings dont add it to the back stack
         {
             Log.i(DEBUG_TAG,"Creating polygon fragment");
             mPolygonFragment = new FragmentMyPolygons();
@@ -130,19 +130,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         }
     }
 
-    public void onWeatherDetailsClicked(View view)
-    {
-        if(mFragmentManager.findFragmentByTag(DETAILED_FORECAST_FRAGMENT_TAG) == null)
-        {
-            Bundle dataToSend = new Bundle();
-//            dataToSend.putParcelable("") implement this
-            mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container,mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
-                    .addToBackStack("")
-                    .commit();
-        }
 
-    }
 
     @Override
     public void onSettingsChanged() {

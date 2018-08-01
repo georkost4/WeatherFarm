@@ -1,22 +1,22 @@
 
-xsquid:S2293—"YReplace the type specification in this constructor call with the diamond operator ("<>").(›É†ñ8ˆˆ‚éÎ,
-|squid:S1488L"^Immediately return this expression instead of assigning it to the temporary variable "_query".(Œá‚¶8ˆˆ‚éÎ,
-qsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬áÍıÿÿÿÿ8ˆˆ‚éÎ,
-nsquid:S00116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ8ˆˆ‚éÎ,
-squid:S00116"nRename this field "__insertionAdapterOfPolygonInfoPOJO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»‘˜Í8ˆˆ‚éÎ,
-Œsquid:S00116"hRename this field "__preparedStmtOfDeletePolygon" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ¢çÿşÿÿÿÿ8ˆˆ‚éÎ,
-ssquid:S00116‚"TRename this field "_observer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èÛŸ58ˆˆ‚éÎ,
-usquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ©ñÿÿÿÿÿ8ˆˆ‚éÎ,
-psquid:S00117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¡Š¦8ˆˆ‚éÎ,
-usquid:S00117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øç“‚ùÿÿÿÿ8ˆˆ‚éÎ,
-psquid:S00117n"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€8ˆˆ‚éÎ,
-vsquid:S00117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ×—³ùÿÿÿÿ8ˆˆ‚éÎ,
-qsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŠ•8ˆˆ‚éÎ,
-qsquid:S00117—"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›É†ñ8ˆˆ‚éÎ,
-vsquid:S00117™"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊˆÃáşÿÿÿÿ8ˆˆ‚éÎ,
-vsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø„šÛúÿÿÿÿ8ˆˆ‚éÎ,
-vsquid:S00117¦"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÊ÷€ûÿÿÿÿ8ˆˆ‚éÎ,
-|squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±8ˆˆ‚éÎ,
-squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ8ˆˆ‚éÎ,
-squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ8ˆˆ‚éÎ,
-h"squid:ObjectFinalizeOverridenCheckº"-Do not override the Object.finalize() method.(œäºÒúÿÿÿÿ8ˆˆ‚éÎ,
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›É†ñ8»Ö¨Ï,
+zsquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "_query".(Œá‚¶8»Ö¨Ï,
+osquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¬áÍıÿÿÿÿ8»Ö¨Ï,
+lsquid:S00116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ8»Ö¨Ï,
+‹squid:S00116"nRename this field "__insertionAdapterOfPolygonInfoPOJO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»‘˜Í8»Ö¨Ï,
+Šsquid:S00116"hRename this field "__preparedStmtOfDeletePolygon" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ¢çÿşÿÿÿÿ8»Ö¨Ï,
+psquid:S00116"TRename this field "_observer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èÛŸ58»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ©ñÿÿÿÿÿ8»Ö¨Ï,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¡Š¦8»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øç“‚ùÿÿÿÿ8»Ö¨Ï,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€8»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ×—³ùÿÿÿÿ8»Ö¨Ï,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŠ•8»Ö¨Ï,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›É†ñ8»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊˆÃáşÿÿÿÿ8»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø„šÛúÿÿÿÿ8»Ö¨Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÊ÷€ûÿÿÿÿ8»Ö¨Ï,
+zsquid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±8»Ö¨Ï,
+squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ8»Ö¨Ï,
+squid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ8»Ö¨Ï,
+e"squid:ObjectFinalizeOverridenCheck"-Do not override the Object.finalize() method.(œäºÒúÿÿÿÿ8»Ö¨Ï,

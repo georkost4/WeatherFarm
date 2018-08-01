@@ -1,7 +1,7 @@
 
-Osquid:S1068".Remove this unused "mViewModel" private field.(‡´Êÿþÿÿÿÿ8ç®ÿèÎ,
-Hsquid:S1068",Remove this unused "mPolyDao" private field.(ˆÆ½¶8ç®ÿèÎ,
-zsquid:S1450"YRemove the "rvPolygons" field and declare it as a local variable in the relevant methods.(‚œåóøÿÿÿÿ8ç®ÿèÎ,
-esquid:UselessImportCheck"<Remove this unused import 'android.arch.lifecycle.LiveData'.(Úò›Ž8ç®ÿèÎ,
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8ç®ÿèÎ,
-usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8ç®ÿèÎ,
+Hsquid:S1068",Remove this unused "mPolyDao" private field.(ˆÆ½¶8íßÍÏ,
+Osquid:S1068".Remove this unused "mViewModel" private field.(‡´Êÿþÿÿÿÿ8íßÍÏ,
+usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8íßÍÏ,
+esquid:UselessImportCheck"<Remove this unused import 'android.arch.lifecycle.LiveData'.(Úò›Ž8íßÍÏ,
+zsquid:S1450"YRemove the "rvPolygons" field and declare it as a local variable in the relevant methods.(‚œåóøÿÿÿÿ8íßÍÏ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8íßÍÏ,

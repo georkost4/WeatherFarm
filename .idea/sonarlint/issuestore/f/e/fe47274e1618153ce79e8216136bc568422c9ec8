@@ -1,7 +1,7 @@
 
-Isquid:S1068"-Remove this unused "DEBUG_TAG" private field.(³×˜Û8òëªäÎ,
 Jsquid:S1068")Remove this unused "mList" private field.(Öº¤ñùÿÿÿÿ8òëªäÎ,
-‚"squid:ClassVariableVisibilityCheck"OMake day a static final constant or non-public and provide accessors if needed.(ÍìÇ™8òëªäÎ,
-ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ü»ïÿşÿÿÿÿ8òëªäÎ,
 wsquid:S00116"ZRename this field "temperature_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ï ï8òëªäÎ,
 |squid:S00116"ZRename this field "temperature_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½öŸõüÿÿÿÿ8òëªäÎ,
+ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ü»ïÿşÿÿÿÿ8òëªäÎ,
+Isquid:S1068"-Remove this unused "DEBUG_TAG" private field.(³×˜Û8òëªäÎ,
+‚"squid:ClassVariableVisibilityCheck"OMake day a static final constant or non-public and provide accessors if needed.(ÍìÇ™8òëªäÎ,

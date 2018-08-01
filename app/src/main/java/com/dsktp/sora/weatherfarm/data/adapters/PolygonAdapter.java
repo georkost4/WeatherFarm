@@ -33,6 +33,7 @@ public class PolygonAdapter extends RecyclerView.Adapter<PolygonAdapter.PolygonV
     public interface PolygonRowCallback
     {
         void handleDeleteButtonClick(String polygonID);
+        void handleForecastButtonClick(String polygonID);
     }
 
     public PolygonAdapter(Context context)
@@ -79,19 +80,24 @@ public class PolygonAdapter extends RecyclerView.Adapter<PolygonAdapter.PolygonV
         class PolygonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             private TextView polygonName;
             private Button deleteBtn;
+            private Button forecastButton;
 
             public PolygonViewHolder(@NonNull View itemView)
             {
                 super(itemView);
                 deleteBtn = itemView.findViewById(R.id.polygon_row_btn);
                 polygonName = itemView.findViewById(R.id.polygon_row_name_value);
+                forecastButton = itemView.findViewById(R.id.btn_row_forecast);
                 deleteBtn.setOnClickListener(this);
+                forecastButton.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View view) {
-                mCallback.handleDeleteButtonClick(mPolygonList.get(getAdapterPosition()).getId());
+                if(view.getId() == deleteBtn.getId())  mCallback.handleDeleteButtonClick(mPolygonList.get(getAdapterPosition()).getId());
+                else if(view.getId() == forecastButton.getId()) mCallback.handleForecastButtonClick(mPolygonList.get(getAdapterPosition()).getId());
             }
+
         }
 }
 

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class TimeUtils
 {
-    private static final String DEBUG_TAG = "#Utils";
+    private static final String DEBUG_TAG = "#TimeUtils";
 
 
     public static List<WeatherForecastPOJO> filterListByDay(List<WeatherForecastPOJO> list)
@@ -24,12 +24,14 @@ public class TimeUtils
         String tomorrow = unixToDay((Calendar.getInstance().getTimeInMillis())/1000 + 86400);
         String tomorrow1 = unixToDay((System.currentTimeMillis()/1000 + 86400*2));
         String tomorrow2 = unixToDay(System.currentTimeMillis()/1000 + 86400*3);
+        String tomorrow3 = unixToDay(System.currentTimeMillis()/1000 + 86400*4);
 
         List<WeatherForecastPOJO> filteredList = new ArrayList<>();
         filteredList.add(list.get(0));
         boolean flagTommorrow = false;
         boolean flagTomorrow1 = false;
         boolean flagTomorrow2 = false;
+        boolean flagTomorrow3 = false;
 
         Log.d(DEBUG_TAG,"List size = " + list.size());
         for(int i=0;i<list.size();i++)
@@ -62,13 +64,23 @@ public class TimeUtils
                 }
 
             }
+            if(unixToDay(list.get(i).getDt()).equals(tomorrow3))
+            {
+                if(!flagTomorrow3)
+                {
+                    Log.d(DEBUG_TAG,"Added for tomorrow3");
+                    filteredList.add(list.get(i));
+                    flagTomorrow3 = true;
+                }
+
+            }
 
         }
         return filteredList;
 
     }
 
-    public static long secondsEllapsed(long timeInMilli)
+    public static long secondsEllapsedSinceSync(long timeInMilli)
     {
         long currentTime = System.currentTimeMillis();
         Log.d(DEBUG_TAG,"Current time in millis " + currentTime);
@@ -83,8 +95,8 @@ public class TimeUtils
     public static String unixToDate(long timeInMilli)
     {
         //todo to be implemented
-
-        return null;
+        String date = new java.text.SimpleDateFormat("MMM d").format(new java.util.Date (timeInMilli*1000));
+        return date;
     }
 
     public static String unixToDay(long timeInMilli)

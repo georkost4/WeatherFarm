@@ -2,6 +2,8 @@ package com.dsktp.sora.weatherfarm.data.model.Forecast;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
  */
 
 @Entity(tableName = "weatherForecastTable")
-public class WeatherForecastPOJO
+public class WeatherForecastPOJO implements Parcelable
 {
     @PrimaryKey(autoGenerate = true)
     private int _id;
@@ -24,6 +26,16 @@ public class WeatherForecastPOJO
     private Rain rain;
     private Cloud clouds;
     private Snow snow;
+
+    public WeatherForecastPOJO(int dt, ArrayList<Weather> weather, Main main, Wind wind, Rain rain, Cloud clouds, Snow snow) {
+        this.dt = dt;
+        this.weather = weather;
+        this.main = main;
+        this.wind = wind;
+        this.rain = rain;
+        this.clouds = clouds;
+        this.snow = snow;
+    }
 
     public Snow getSnow() {
         return snow;
@@ -87,5 +99,45 @@ public class WeatherForecastPOJO
 
     public void setSnow(Snow snow) {
         this.snow = snow;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeInt(dt);
+        dest.writeList(weather);
+        dest.writeParcelable(main,flags);
+        dest.writeParcelable(wind,flags);
+        dest.writeParcelable(rain,flags);
+        dest.writeParcelable(clouds,flags);
+        dest.writeParcelable(snow,flags);
+    }
+
+    public static final Parcelable.Creator<WeatherForecastPOJO> CREATOR = new Parcelable.Creator<WeatherForecastPOJO>()
+    {
+        public WeatherForecastPOJO createFromParcel(Parcel in) {
+            return new WeatherForecastPOJO(in);
+        }
+
+        public WeatherForecastPOJO[] newArray(int size) {
+            return new WeatherForecastPOJO[size];
+        }
+    };
+
+
+    private WeatherForecastPOJO(Parcel in) {
+        setDt(in.readInt());
+        setWeather(in.readArrayList(null));
+        setMain((Main) in.readParcelable(null));
+        setWind((Wind) in.readParcelable(null));
+        setRain((Rain) in.readParcelable(null));
+        setClouds((Cloud) in.readParcelable(null));
+        setSnow((Snow) in.readParcelable(null));
+
     }
 }

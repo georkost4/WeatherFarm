@@ -1,8 +1,6 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
 import android.content.Context;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -33,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.DELETE;
 
 import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_URL;
 
@@ -86,7 +83,7 @@ public class RemoteRepository
 
 
 
-        if(TimeUtils.secondsEllapsed(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
+        if(TimeUtils.secondsEllapsedSinceSync(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
         Log.d(DEBUG_TAG,"Making a request for the forecast data to the server");
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
@@ -120,7 +117,7 @@ public class RemoteRepository
         });
     }
 
-        public void getForecastPolygon(String polygonID)
+        public void getForecastPolygon(String polygonID, final Context context)
         {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_AGRO_MONITORING_URL)
@@ -137,12 +134,9 @@ public class RemoteRepository
                 @Override
                 public void onResponse(Call<List<WeatherForecastPOJO>> call, Response<List<WeatherForecastPOJO>> response) {
 
-                    if(response.isSuccessful()) {
-                        int time = response.body().get(0).getDt();
-                        Log.d(DEBUG_TAG, "time in first element = " + time);
-
-                        int time1 = response.body().get(4).getDt();
-                        Log.d(DEBUG_TAG, "time in third element = " + time1);
+                    if(response.isSuccessful())
+                    {
+                        mPolyListCallback.populateList(response.body());
                     }
                     else
                     {
@@ -341,7 +335,6 @@ public class RemoteRepository
                 {
                     Log.d(DEBUG_TAG,"Getting list of polygons request if successful");
                     final List<PolygonInfoPOJO> listOfPolygons = response.body();
-//                    mPolyListCallback.populateList(listOfPolygons);
                     AppUtils.setPolygonListBeenSynced(context); // save that the polygon list has been synced
                     AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
                         @Override
@@ -497,7 +490,7 @@ public class RemoteRepository
 
     public interface deliveryCallBack
     {
-        void populateList(List<PolygonInfoPOJO> polygonList);
+        void populateList(List<WeatherForecastPOJO> polygonList);
     }
 
 

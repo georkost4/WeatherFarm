@@ -19,7 +19,7 @@
         android:id="@+id/polygon_row_name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="@string/nullable"
         app:layout_constraintStart_toEndOf="@+id/polygon_row_name_label"
@@ -30,8 +30,17 @@
         android:id="@+id/polygon_row_btn"
         android:layout_width="79dp"
         android:layout_height="41dp"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="8dp"
         android:text="@string/polygon_row_btn_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_row_forecast"
+        app:layout_constraintStart_toEndOf="@+id/btn_row_forecast" />
+
+    <Button
+        android:id="@+id/btn_row_forecast"
+        android:layout_width="100dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:text="Forecast"
         app:layout_constraintBaseline_toBaselineOf="@+id/polygon_row_name_value"
         app:layout_constraintStart_toEndOf="@+id/polygon_row_name_value" />
 </android.support.constraint.ConstraintLayout>

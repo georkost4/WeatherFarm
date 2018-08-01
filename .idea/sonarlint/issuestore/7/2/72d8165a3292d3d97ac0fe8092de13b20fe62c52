@@ -1,4 +1,3 @@
 
-jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8ğŸøçÎ,
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8ğŸøçÎ,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8ğŸøçÎ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8ûêÏ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8ûêÏ,

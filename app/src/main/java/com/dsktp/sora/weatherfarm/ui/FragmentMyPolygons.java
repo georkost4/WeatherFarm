@@ -4,18 +4,23 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.PolygonAdapter;
+import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
@@ -23,7 +28,9 @@ import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
 import com.dsktp.sora.weatherfarm.data.viewmodel.PolygonViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
+import com.dsktp.sora.weatherfarm.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,13 +46,12 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     private RecyclerView rvPolygons;
     private PolygonAdapter mAdapter;
     private RemoteRepository mRepo;
-    private PolygonDao mPolyDao;
-    private PolygonViewModel mViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
+
 
         //get the polygon list only if the polygon list hasn't been synced
         //otherwise query the local database
@@ -93,10 +99,25 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         });
     }
 
+    @Override
+    public void handleForecastButtonClick(String polygonID) {
+        RemoteRepository.getsInstance().setmPolyListCallback(this);
+        RemoteRepository.getsInstance().getForecastPolygon(polygonID,getContext());
+    }
+
 
     @Override
-    public void populateList(List<PolygonInfoPOJO> polygonList) {
-        mAdapter.setPolygonList(polygonList);
+    public void populateList(List<WeatherForecastPOJO> polygonList)
+    {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY, polygonList.get(0));
+        if(getActivity().getSupportFragmentManager().findFragmentByTag(Constants.DETAILED_FORECAST_FRAGMENT_TAG) == null)
+        {
+            FragmentDetailedWeatherInfo fragmentDetailedWeatherInfo = new FragmentDetailedWeatherInfo();
+            fragmentDetailedWeatherInfo.setArguments(bundle);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentDetailedWeatherInfo).addToBackStack("").commit();
+        }
+
     }
 
     @Override

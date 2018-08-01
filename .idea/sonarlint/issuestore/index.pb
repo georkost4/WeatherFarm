@@ -87,8 +87,6 @@ Y
 )app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
 w
 Gapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentMyPolygons.java,d\0\d0848c2a10ac6ff166068270a9db5acce1440f96
-\
-,app/src/main/res/layout/polygon_item_row.xml,b\a\ba3b94fd64cb446b6e61759b0473862522be45c8
 `
 0app/src/main/res/layout/fragment_my_polygons.xml,1\b\1b6fe719e10de5819129cc1a1e32e73934e15cd5
 ~
@@ -97,8 +95,6 @@ e
 5app/src/main/res/layout/fragment_current_forecast.xml,8\2\82f23b2f5b920c63b393d2b6a6559a744c5418ca
 p
 @app/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentMap.java,1\5\1527c5169c4fa8e7ee5fe6237b021f588eb19ae5
-S
-#app/src/main/res/menu/user_menu.xml,2\f\2f4b4c3eb8339109794868dfd79a80a55e568a7c
 ]
 -app/src/main/res/layout/fragment_settings.xml,4\f\4fc5b33bc32b9fda83e2938a513ac8733024f0ff
 u
@@ -107,8 +103,6 @@ Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentSettings.java,7\2\72d8
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/adapters/WeatherAdapter.java,f\e\fe47274e1618153ce79e8216136bc568422c9ec8
 |
 Lapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentWeatherForecast.java,e\9\e91cad4081c4fab4ee1774026d0a12858351ac1a
-e
-5app/src/main/res/layout/weather_forecast_row_item.xml,8\7\8744803905947e77bc17fa250deda667689f2039
 œ
 lapp/build/generated/source/apt/debug/com/dsktp/sora/weatherfarm/data/repository/WeatherForecastDao_Impl.java,3\4\34409afdea95e152de2aeac5d8f81de115a2d5de
 ‚
@@ -129,3 +123,11 @@ R
 "app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 p
 @app/src/main/java/com/dsktp/sora/weatherfarm/utils/AppUtils.java,7\a\7aa16b76781a9b437de1718a602db58f96945170
+u
+Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/HeadLessFragment.java,3\a\3ab238468d88c14c8b76bb1b9e13f14d9e6f21b5
+s
+Capp/src/main/res/layout/recycler_view_weather_forecast_row_item.xml,d\8\d82a727ec0920db063dc5bd08c28e4abb46877dd
+n
+>app/src/main/res/layout/fragment_detailed_weather_forecast.xml,1\2\1203a888831d3b02c28d7baf1cf89ff8d084b784
+€
+Papp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentDetailedWeatherInfo.java,4\1\41cad0d238e37af318bfbe6e0c903dcfd9593688

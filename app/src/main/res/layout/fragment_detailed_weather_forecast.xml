@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="75dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -107,20 +107,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Main Data"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_detail_weather_condition_value"
-        tools:text="Main Data" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_weather_condition_value" />
 
     <ImageView
         android:id="@+id/iv_detail_weather_condition_value"
-        android:layout_width="96dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_detail_day_value"
+        android:layout_width="105dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="52dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toEndOf="@+id/tv_detail_current_location_value"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_image_placeholder" />
 
@@ -228,12 +228,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Wind"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        tools:text="Wind" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/tv_detail_wind_speed_label"
