@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.utils.AreaUtils;
+import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,7 +48,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          mInflatedView = inflater.inflate(R.layout.fragment_map,container,false);
 
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Draw a polygon");
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.map_toolbar_title);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -121,9 +122,9 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                                     @Override
                                     public void onClick(View view) {
                                         RemoteRepository remoteRepository = RemoteRepository.getsInstance();
-                                        remoteRepository.sendPolygon(pointList,"Test24",mInflatedView.getContext());
+                                        remoteRepository.sendPolygon(pointList,"Test24",mInflatedView.getContext()); // todo show to the user a editext to name the polygon
                                         sProgressBar.setVisibility(View.VISIBLE);
-                                        FragmentWeatherForecast fragment = (FragmentWeatherForecast) getActivity().getSupportFragmentManager().findFragmentByTag("weatherFragment");
+                                        FragmentWeatherForecast fragment = (FragmentWeatherForecast) getActivity().getSupportFragmentManager().findFragmentByTag(Constants.WEATHER_FORECAST_FRAGMENT_TAG);
                                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                                         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
                                     }
@@ -154,10 +155,24 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
 
     @Override
     public void updateMapUI() {
-        Toast.makeText(mInflatedView.getContext(),"Try making a rectangular",Toast.LENGTH_LONG).show();
+        Toast.makeText(mInflatedView.getContext(), R.string.wrong_polygon_error_text,Toast.LENGTH_LONG).show();
         markerList.clear();
         mMap.clear();
         pointList.clear();
         sProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
+        getActivity().findViewById(R.id.settings_btn).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
     }
 }

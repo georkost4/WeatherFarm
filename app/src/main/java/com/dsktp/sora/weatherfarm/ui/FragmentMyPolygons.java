@@ -62,7 +62,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         }
 
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("My Polygons");
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
 
         //inflate the list of the polygons
         rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);

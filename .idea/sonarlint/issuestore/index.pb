@@ -131,3 +131,7 @@ n
 >app/src/main/res/layout/fragment_detailed_weather_forecast.xml,1\2\1203a888831d3b02c28d7baf1cf89ff8d084b784
 €
 Papp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentDetailedWeatherInfo.java,4\1\41cad0d238e37af318bfbe6e0c903dcfd9593688
+j
+:app/src/main/res/layout/recycler_view_polygon_item_row.xml,9\a\9a8367d34ac7bb46da3949f5a921c179952e48c8
+b
+2app/src/main/res/drawable/ic_layers_black_24dp.xml,8\b\8b672373006fb273943c2bda375b1f0db3227378

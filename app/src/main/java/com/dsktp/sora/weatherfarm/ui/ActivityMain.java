@@ -1,7 +1,11 @@
 package com.dsktp.sora.weatherfarm.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +18,10 @@ import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
-import static com.dsktp.sora.weatherfarm.utils.Constants.DETAILED_FORECAST_FRAGMENT_TAG;
 import static com.dsktp.sora.weatherfarm.utils.Constants.MAP_FRAGMENT_TAG;
 import static com.dsktp.sora.weatherfarm.utils.Constants.POLYGON_FRAGMENT_TAG;
 import static com.dsktp.sora.weatherfarm.utils.Constants.SETTINGS_FRAGMENT_TAG;
@@ -27,8 +33,7 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.WEATHER_FORECAST_FRAGME
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class ActivityMain extends AppCompatActivity implements FragmentSettings.SettingsChangeCallback
-{
+public class ActivityMain extends AppCompatActivity implements FragmentSettings.SettingsChangeCallback {
     private static final String DEBUG_TAG = "#ActivityMain";
     private FragmentMap mMapFragment;
     private FragmentWeatherForecast mWeatherFragment;
@@ -36,6 +41,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     private FragmentSettings mFragmentSettings;
     private FragmentManager mFragmentManager;
     private FragmentDetailedWeatherInfo mDetailWeatherForecast;
+    private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,13 +53,39 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
+        //show the toolbar buttons
         findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
         findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            AppUtils.saveCurrentPosition(getBaseContext(),location);
+                            Log.d(DEBUG_TAG,"Location = " + location.getLatitude() + "  ,  " + location.getLongitude());
+                        }
+                    }
+                });
 
         // show the Weather forecast fragment
         if(mFragmentManager.findFragmentByTag(WEATHER_FORECAST_FRAGMENT_TAG) == null) //check to see if it already exists before re-creating
         {
-            AppUtils.saveValues(this,System.currentTimeMillis());
+            AppUtils.saveLastUpdatedValue(this,System.currentTimeMillis());
             String[] latlngSet =  AppUtils.getSelectedPosition(this);
             RemoteRepository.getsInstance().getForecastLatLon(latlngSet[1],latlngSet[2],getBaseContext()); // todo remove from this place
             Log.i(DEBUG_TAG,"Creating weather fragment");
@@ -109,7 +141,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     public void onMapClick(View view)
     {
-        if(mFragmentManager.findFragmentByTag("MapFragment") == null)
+        if(mFragmentManager.findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null)
         {
             Log.i(DEBUG_TAG,"Creating map fragment");
             mMapFragment = new FragmentMap();

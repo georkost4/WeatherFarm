@@ -1,7 +1,10 @@
 
-Hsquid:S1068",Remove this unused "mPolyDao" private field.(ˆÆ½¶8íßÍÏ,
-Osquid:S1068".Remove this unused "mViewModel" private field.(‡´Êÿşÿÿÿÿ8íßÍÏ,
-usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8íßÍÏ,
-esquid:UselessImportCheck"<Remove this unused import 'android.arch.lifecycle.LiveData'.(Úò›8íßÍÏ,
-zsquid:S1450"YRemove the "rvPolygons" field and declare it as a local variable in the relevant methods.(‚œåóøÿÿÿÿ8íßÍÏ,
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8íßÍÏ,
+wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8Šæ–¹Ï,
+zsquid:S1450"YRemove the "rvPolygons" field and declare it as a local variable in the relevant methods.(‚œåóøÿÿÿÿ8Šæ–¹Ï,
+usquid:S1450"TRemove the "mRepo" field and declare it as a local variable in the relevant methods.(Ÿ‡ËÎøÿÿÿÿ8Šæ–¹Ï,
+esquid:UselessImportCheck"<Remove this unused import 'android.support.v4.app.NavUtils'.(“•»ş8Šæ–¹Ï,
+Ysquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Šæ–¹Ï,
+`squid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8Šæ–¹Ï,
+[squid:UselessImportCheck"2Remove this unused import 'android.os.Parcelable'.(õÃÀ­8Šæ–¹Ï,
+esquid:UselessImportCheck"<Remove this unused import 'android.arch.lifecycle.LiveData'.(Úò›8Šæ–¹Ï,
+bsquid:UselessImportCheck"4Remove this unused import 'android.widget.TextView'.(„Ë‚ˆÿÿÿÿÿ8Šæ–¹Ï,

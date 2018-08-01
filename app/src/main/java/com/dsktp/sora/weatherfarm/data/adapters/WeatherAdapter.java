@@ -64,7 +64,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     public void onBindViewHolder(@NonNull MyWeatherViewholder myWeatherViewholder, int i)
     {
         WeatherForecastPOJO itemToBind = mDailyList.get(i);
-        myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
+        if(i==0)
+        {
+            myWeatherViewholder.day.setText(R.string.day_text_value);
+        }
+        else {
+            myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
+        }
         myWeatherViewholder.temperature_min.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_min())));
         myWeatherViewholder.temperature_max.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_max())));
         myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getDescription()));

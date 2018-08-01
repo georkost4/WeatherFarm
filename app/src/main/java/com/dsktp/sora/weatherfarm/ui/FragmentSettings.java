@@ -45,7 +45,7 @@ public class FragmentSettings extends Fragment
 
         //set the toolbar title and enable the up button
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Settings");
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.settings_toolbar_title);
 
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -78,8 +78,8 @@ public class FragmentSettings extends Fragment
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
         getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
     }

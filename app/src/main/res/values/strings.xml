@@ -1,16 +1,42 @@
 <resources>
     <string name="app_name">WeatherFarm</string>
-    <string name="title_activity_map">Map</string>
-    <string name="toolbar_name">Toolbar Name</string>
-    <string name="main_image_weather_condition_desc">Image indicating the weather state</string>
-    <string name="my_polygons_button">Polygons</string>
-    <string name="fragment_polygons_list_table">List of my polygons</string>
     <string name="nullable">null</string>
-    <string name="polygon_row_label">Name</string>
-    <string name="polygon_row_btn_text">Delete</string>
-    <string name="map_button">Map</string>
-    <string name="forecast_lable_text">5 Day Forecast</string>
+    <string name="toolbar_name">Toolbar Name</string>
+
+    <!--Toolbar  Strings-->
+    <string name="title_activity_map">Map</string>
+    <string name="settings_toolbar_title">Settings</string>
+    <string name="weather_forecast_toolbar_title">Weather Forecast</string>
+    <string name="my_polygons_toolbar_title">My Polygons</string>
+    <string name="map_toolbar_title">Draw a polygon</string>
     <string name="settings_btn">Settings</string>
+    <string name="my_polygons_button">Polygons</string>
+    <string name="detailed_forecast_toolbar_title">Detailed</string>
+
+    <!--Image Content Descriptions-->
+    <string name="main_image_weather_condition_desc">Image indicating the weather state</string>
+
+
+    <!--Settings Fragment Strings-->
     <string name="settings_current_location_text">Select current Location</string>
     <string name="temperature_settings_label">Temperature Settings</string>
+
+
+    <!--My Polygon Fragment Strings-->
+    <string name="fragment_polygons_list_table">List of my polygons</string>
+    <string name="map_button">Map</string>
+
+    <!--Polygon RecyclerView row items Strings -->
+    <string name="polygon_row_label">Name</string>
+    <string name="polygon_row_btn_text">Delete</string>
+
+    <!--Weather Forecast Fragment Strings-->
+    <string name="forecast_lable_text">5 Day Forecast</string>
+    <string name="day_text_value">Today</string>
+
+
+    <!--Map Fragment Strings-->
+    <string name="wrong_polygon_error_text">Try making a rectangular</string>
+
+
 </resources>

@@ -1,7 +1,7 @@
 
-Žsquid:S1319"rThe type of the "weather" object should be an interface such as "List" rather than the implementation "ArrayList".(³ƒµÌ8ëªíªÏ,
-ksquid:S00116"NRename this field "_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äî››8ëªíªÏ,
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ã¦ïÈ8ëªíªÏ,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©öùÙþÿÿÿÿ8ëªíªÏ,
-Œsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(½Ï©„8ëªíªÏ,
-“squid:S1319"rThe type of the "weather" object should be an interface such as "List" rather than the implementation "ArrayList".(¯±¥‰øÿÿÿÿ8ëªíªÏ,
+Žsquid:S1319"rThe type of the "weather" object should be an interface such as "List" rather than the implementation "ArrayList".(³ƒµÌ8™ÈÚ¸Ï,
+ksquid:S00116"NRename this field "_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äî››8™ÈÚ¸Ï,
+“squid:S1319"rThe type of the "weather" object should be an interface such as "List" rather than the implementation "ArrayList".(¯±¥‰øÿÿÿÿ8™ÈÚ¸Ï,
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ã¦ïÈ8™ÈÚ¸Ï,
+Œsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(½Ï©„8™ÈÚ¸Ï,
+ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©öùÙþÿÿÿÿ8™ÈÚ¸Ï,

@@ -1,24 +1,19 @@
 
-Nsquid:S1135"2Complete the task associated to this TODO comment.(êå³”8‚öûèÎ,
-jsquid:UselessImportCheck"ARemove this unused import 'android.preference.PreferenceManager'.(ìùÖõ8‚öûèÎ,
-ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8‚öûèÎ,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(†²Øİ8‚öûèÎ,
-c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Isquid:S1172".Remove this unused method parameter "context".(›÷Àn8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ìÑÇä8‚öûèÎ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8‚öûèÎ,
-|squid:S1450"`Remove the "mPolyListCallback" field and declare it as a local variable in the relevant methods.(äÂŸ8‚öûèÎ,
-`squid:UselessImportCheck"2Remove this unused import 'retrofit2.http.DELETE'.(ù³ç°ûÿÿÿÿ8‚öûèÎ,
-\squid:UselessImportCheck"3Remove this unused import 'android.os.SystemClock'.(÷Á±8‚öûèÎ,
-usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8‚öûèÎ,
-nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8‚öûèÎ,
-Qsquid:S1068"5Remove this unused "mPolyListCallback" private field.(äÂŸ8‚öûèÎ,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8²İ¼¹Ï,
+usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8²İ¼¹Ï,
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8²İ¼¹Ï,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(†²Øİ8²İ¼¹Ï,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(êå³”8²İ¼¹Ï,
+Osquid:S1172".Remove this unused method parameter "context".(ğ”«âøÿÿÿÿ8²İ¼¹Ï,
+Isquid:S1172".Remove this unused method parameter "context".(›÷Àn8²İ¼¹Ï,
+ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8²İ¼¹Ï,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8²İ¼¹Ï,

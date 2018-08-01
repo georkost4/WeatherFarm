@@ -66,7 +66,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         });
 
         //name the toolbar
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Weather Forecast");
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
 
         //bind the views
         mRecyclerView = mInflatedView.findViewById(R.id.rv_5_day_forecast);

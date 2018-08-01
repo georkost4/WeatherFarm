@@ -1,8 +1,8 @@
 
-squid:S1450"eRemove the "mDetailWeatherForecast" field and declare it as a local variable in the relevant methods.(ÊĞÇ 8ÉØƒ«Ï,
 wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8ÈØƒ«Ï,
+squid:S1450"eRemove the "mDetailWeatherForecast" field and declare it as a local variable in the relevant methods.(ÊĞÇ 8ÉØƒ«Ï,
+~squid:S1450"]Remove the "mDetailsButton" field and declare it as a local variable in the relevant methods.(Å†ôµøÿÿÿÿ8ÉØƒ«Ï,
+zsquid:S1450"YRemove the "mViewModel" field and declare it as a local variable in the relevant methods.(Ä×³Îüÿÿÿÿ8ÉØƒ«Ï,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(¦ø”êøÿÿÿÿ8ÉØƒ«Ï,
 Csquid:S1185"(Remove this method to simply inherit it.(¥Ë©8ÉØƒ«Ï,
 Gsquid:S1172"+Remove this unused method parameter "view".(ùÜÙ¿8ÉØƒ«Ï,
-~squid:S1450"]Remove the "mDetailsButton" field and declare it as a local variable in the relevant methods.(Å†ôµøÿÿÿÿ8ÉØƒ«Ï,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(¦ø”êøÿÿÿÿ8ÉØƒ«Ï,
-zsquid:S1450"YRemove the "mViewModel" field and declare it as a local variable in the relevant methods.(Ä×³Îüÿÿÿÿ8ÉØƒ«Ï,

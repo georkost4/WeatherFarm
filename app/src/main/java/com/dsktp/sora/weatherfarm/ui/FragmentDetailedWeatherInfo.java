@@ -61,7 +61,7 @@ public class FragmentDetailedWeatherInfo extends Fragment
 
         bindViews();
 
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle("Detailed");
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.detailed_forecast_toolbar_title);
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //todo populate the data from the database
