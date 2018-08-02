@@ -16,6 +16,8 @@ public class Constants
     public static final String POLYGON_FRAGMENT_TAG = "PolygonFragment";
     public static final String MAP_FRAGMENT_TAG = "MapFragment";
     public static final String DETAILED_FORECAST_FRAGMENT_TAG = "weatherDetailedFragment";
+    public static final String FRAGMENT_ERROR_LAYOUT_TAG = "errorLayoutFragmentTag";
+
 
     //bundle keys
     public static final String DETAILED_FORECAST_ARGUMENT_KEY = "detailed_weather_object_key";
@@ -33,8 +35,23 @@ public class Constants
     public static final String PREFERENCES_CURRENT_PLACE_LATITUDE_KEY = "current_place_lat_key";
     public static final String PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY = "current_place_lon_key";
 
+    //connectivity key
+    public static final String PREFERENCES_CONNECTIVITY_KEY = "connectivity_key";
+
     //FragmentMyPolygons.java Constants
 
     //polygon list is synced
     public static final String PREFERENCES_IS_POLYGON_LIST_SYNCED = "polygon_sync_boolean_key";
+
+//    error strings
+    public static final String NO_PLACE =" Unknown name";
+    public static final String NO_LATITUDE ="Unkown lat";
+    public static final String NO_LONGTITUDE =" Unknown lon";
+
+    //FragmentErrorLayout.java
+
+    //bundle key
+    public static final String FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY = "error_layout_bundle_key";
+    public static final String FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY = "error_layout_text_bundle_key";
+
 }

@@ -20,9 +20,11 @@ import android.widget.Toast;
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
+import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.viewmodel.WeatherForecastViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
+import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
 
@@ -80,6 +82,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         mAdapter = new WeatherAdapter();
         mAdapter.setCallback(this);
 
+
         //get the ViewModel and observe the LiveData object for changes
         mViewModel = ViewModelProviders.of(this).get(WeatherForecastViewModel.class);
         mViewModel.getWeatherList().observe(getViewLifecycleOwner(), new Observer<List<WeatherForecastPOJO>>() {
@@ -93,7 +96,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     dataToSend = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
                     // populate the UI
                     tvCondition.setText(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription());
-                    tvTemperature.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOS.get(0).getMain().getTemp())));
+                    tvTemperature.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOS.get(0).getMain().getTemp())));
                     ivWeatherImage.setImageResource(ImageUtils.getIcon(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription()));
                     tvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
                     //set the new data to the adapter

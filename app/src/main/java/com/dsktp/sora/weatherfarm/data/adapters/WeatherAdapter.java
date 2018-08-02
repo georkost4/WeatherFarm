@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
+import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
@@ -71,8 +72,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
         else {
             myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
         }
-        myWeatherViewholder.temperature_min.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_min())));
-        myWeatherViewholder.temperature_max.setText(TempUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_max())));
+        myWeatherViewholder.temperature_min.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_min())));
+        myWeatherViewholder.temperature_max.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_max())));
         myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getDescription()));
         myWeatherViewholder.weatherDescription.setText(itemToBind.getWeather().get(0).getDescription());
     }

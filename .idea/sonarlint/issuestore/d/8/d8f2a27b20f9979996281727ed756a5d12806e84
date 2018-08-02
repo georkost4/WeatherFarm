@@ -1,11 +1,13 @@
 
-|squid:S1450"`Remove the "mFragmentSettings" field and declare it as a local variable in the relevant methods.(è´®Š8Òñ²Ï,
-|squid:S1450"[Remove the "mMapFragment" field and declare it as a local variable in the relevant methods.(ÿáá™ûÿÿÿÿ8Òñ²Ï,
-Vsquid:S1068":Remove this unused "mDetailWeatherForecast" private field.(ÊĞÇ 8’„ˆ©Ï,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(ïÉÍıÿÿÿÿ8Òñ²Ï,
-lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ËÔ¸øÿÿÿÿ8Òñ²Ï,
-{squid:S1450"_Remove the "mPolygonFragment" field and declare it as a local variable in the relevant methods.(ãöãá8Òñ²Ï,
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ËÔ¸øÿÿÿÿ8Òñ²Ï,
-Nsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Òñ²Ï,
-€squid:S1450"_Remove the "mWeatherFragment" field and declare it as a local variable in the relevant methods.(‹¤ùÿÿÿÿ8Òñ²Ï,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(É¬üñıÿÿÿÿ8Òñ²Ï,
+|squid:S1450"[Remove the "mMapFragment" field and declare it as a local variable in the relevant methods.(ÿáá™ûÿÿÿÿ8©®ã»Ï,
+{squid:S1450"_Remove the "mPolygonFragment" field and declare it as a local variable in the relevant methods.(ãöãá8©®ã»Ï,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8©®ã»Ï,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(ïÉÍıÿÿÿÿ8©®ã»Ï,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ËÔ¸øÿÿÿÿ8©®ã»Ï,
+Vsquid:S1068":Remove this unused "mDetailWeatherForecast" private field.(ÊĞÇ 8©®ã»Ï,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ËÔ¸øÿÿÿÿ8©®ã»Ï,
+Nsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8©®ã»Ï,
+€squid:S1450"_Remove the "mWeatherFragment" field and declare it as a local variable in the relevant methods.(‹¤ùÿÿÿÿ8©®ã»Ï,
+squid:S1450"cRemove the "mFusedLocationClient" field and declare it as a local variable in the relevant methods.(Ğ×°ş8©®ã»Ï,
+|squid:S1450"`Remove the "mFragmentSettings" field and declare it as a local variable in the relevant methods.(è´®Š8©®ã»Ï,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(É¬üñıÿÿÿÿ8©®ã»Ï,

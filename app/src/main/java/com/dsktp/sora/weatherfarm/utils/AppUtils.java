@@ -8,6 +8,10 @@ import android.util.Log;
 
 import com.google.android.gms.location.places.Place;
 
+import static com.dsktp.sora.weatherfarm.utils.Constants.NO_LATITUDE;
+import static com.dsktp.sora.weatherfarm.utils.Constants.NO_LONGTITUDE;
+import static com.dsktp.sora.weatherfarm.utils.Constants.NO_PLACE;
+import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CONNECTIVITY_KEY;
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CURRENT_PLACE_LATITUDE_KEY;
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY;
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_IS_POLYGON_LIST_SYNCED;
@@ -53,9 +57,9 @@ public class AppUtils
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String[] values = new String[3];
 
-        values[0] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_NAME_KEY,"Unknown name");
-        values[1] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_LATITUDE_KEY,"Unkown lat");
-        values[2] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_LONGTITUDE_KEY,"Unknown long");
+        values[0] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_NAME_KEY,NO_PLACE);
+        values[1] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_LATITUDE_KEY,NO_LATITUDE);
+        values[2] = sharedPreferences.getString(Constants.PREFERENCES_SELECTED_PLACE_LONGTITUDE_KEY,NO_LONGTITUDE);
 
         Log.i(DEBUG_TAG,"Getting values.. name = "+ values[0] + " lat = " + values[1] + " lon = " + values[2]);
         return values;
@@ -70,14 +74,15 @@ public class AppUtils
         sharedPreferences.edit().putString(PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY, String.valueOf(location.getLongitude())).apply();
     }
 
-    public void getCurrentPosition(Context context)
+    public static String[] getCurrentPosition(Context context)
     {
         //todo to be implemented
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String[] values = new String[2];
 
-        values[0] = sharedPreferences.getString(PREFERENCES_CURRENT_PLACE_LATITUDE_KEY,"Unkown lat");
-        values[1] = sharedPreferences.getString(PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY,"Unknown long");
+        values[0] = sharedPreferences.getString(PREFERENCES_CURRENT_PLACE_LATITUDE_KEY,NO_LATITUDE);
+        values[1] = sharedPreferences.getString(PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY,NO_LONGTITUDE);
+        return  values;
     }
 
     public static void setPolygonListBeenSynced(Context context)
@@ -87,6 +92,15 @@ public class AppUtils
     public static boolean hasThePolygonListSynced(Context context)
     {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PREFERENCES_IS_POLYGON_LIST_SYNCED,false);
+    }
+
+    public static void saveNetworkState(Context context,boolean value)
+    {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(PREFERENCES_CONNECTIVITY_KEY,value).apply();
+    }
+    public static boolean getNetworkState(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PREFERENCES_CONNECTIVITY_KEY,false);
     }
 
 }

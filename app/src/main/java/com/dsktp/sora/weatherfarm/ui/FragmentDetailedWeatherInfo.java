@@ -14,9 +14,12 @@ import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
+import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
+
+import static com.dsktp.sora.weatherfarm.utils.TempUtils.kelvinToCelsius;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -67,30 +70,34 @@ public class FragmentDetailedWeatherInfo extends Fragment
         //todo populate the data from the database
         mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt())); // todo implement method to convert dt to day
         mTvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
-        mTvTemp.setText(TempUtils.kelvinToCelsius(mWeatherForecastData.getMain().getTemp()));
+        mTvTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp())));
         mIvWeatherIcon.setImageResource(ImageUtils.getIcon(mWeatherForecastData.getWeather().get(0).getDescription()));
         //Main Data
-        mTvMinTemp.setText(TempUtils.kelvinToCelsius(mWeatherForecastData.getMain().getTemp_min()));
-        mTvMaxTemp.setText(TempUtils.kelvinToCelsius(mWeatherForecastData.getMain().getTemp_max()));
-        mTvPressure.setText(String.valueOf(mWeatherForecastData.getMain().getPressure())); // todo implement method in utils to format pressure field
-        mTvHumidity.setText(String.valueOf(mWeatherForecastData.getMain().getHumidity())); // todo implement method in utils to format humidity field
+        mTvMinTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp_min())));
+        mTvMaxTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp_max())));
+        mTvPressure.setText(FormatUtils.formatPressure(mWeatherForecastData.getMain().getPressure()));
+        mTvHumidity.setText(FormatUtils.formatHumidity(mWeatherForecastData.getMain().getHumidity()));
         //Wind
-        mTvWindSpeed.setText(String.valueOf(mWeatherForecastData.getWind().getSpeed())); //todo implement method in utils to format wind speed properly
-        mTvWindDegrees.setText(String.valueOf(mWeatherForecastData.getWind().getDeg())); //todo implement method in utils to format wind degrees properly
+        mTvWindSpeed.setText(FormatUtils.formatWindSpeed(mWeatherForecastData.getWind().getSpeed()));
+        mTvWindDegrees.setText(FormatUtils.formatWindDegrees(mWeatherForecastData.getWind().getDeg()));
         //Clouds
-        mTvCloudiness.setText(mWeatherForecastData.getClouds().getAll()+ " %"); // todo implement method to format cloudiness properly
+        mTvCloudiness.setText(FormatUtils.formatCloudiness(mWeatherForecastData.getClouds().getAll()));
         //Rain
         if(mWeatherForecastData.getRain()!=null)
         {
+            //make the rain section layout visible
+            mInflatedView.findViewById(R.id.detail_rain_section).setVisibility(View.VISIBLE);
             //show rain data
-//            mTvRainVolume.setText(String.valueOf(mWeatherForecastData.getRain().getThreeHourRainVolume())); // todo format text properly
+            mTvRainVolume.setText(String.valueOf(mWeatherForecastData.getRain().getThreeHourRainVolume())); // todo format text properly
 
         }
         //        Snow
         if(mWeatherForecastData.getSnow()!=null)
         {
+            //make the snow section layout visible
+            mInflatedView.findViewById(R.id.detail_snow_section).setVisibility(View.VISIBLE);
             //show snow data
-//            mTvSnowVolume.setText(String.valueOf(mWeatherForecastData.getSnow().getThreeHourSnowVolume())); // todo format proeprly
+            mTvSnowVolume.setText(String.valueOf(mWeatherForecastData.getSnow().getThreeHourSnowVolume())); // todo format proeprly
 
         }
 

@@ -135,3 +135,5 @@ j
 :app/src/main/res/layout/recycler_view_polygon_item_row.xml,9\a\9a8367d34ac7bb46da3949f5a921c179952e48c8
 b
 2app/src/main/res/drawable/ic_layers_black_24dp.xml,8\b\8b672373006fb273943c2bda375b1f0db3227378
+S
+#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e

@@ -38,5 +38,14 @@
     <!--Map Fragment Strings-->
     <string name="wrong_polygon_error_text">Try making a rectangular</string>
 
+    <!--Widget Strings-->
+    <string name="add_widget">Add widget</string>
+
+    <!--Error Layout Strings-->
+    <string name="error_layout_text_value">No internet connection , check your settings and try again</string>
+    <string name="add_new_location_text_value">Couldn\'t locate device please add a location.</string>
+    <string name="no_connection_text">No network available</string>
+    <string name="select_a_location_from_search_bar_text">The application can not find the location of the device , please select a location from the search bar</string>
+
 
 </resources>

@@ -23,6 +23,9 @@ public interface WeatherForecastDao
     @Query("SELECT * FROM weatherForecastTable")
     LiveData<List<WeatherForecastPOJO>> getWeatherEntries();
 
+    @Query("SELECT * FROM weatherForecastTable")
+    List<WeatherForecastPOJO> getWeatherEntriesList();
+
     @Insert
     void insertWeatherForecastEntry(List<WeatherForecastPOJO> entrie);
 

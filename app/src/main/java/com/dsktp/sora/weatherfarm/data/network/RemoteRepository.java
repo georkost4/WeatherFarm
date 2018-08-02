@@ -1,6 +1,9 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import com.dsktp.sora.weatherfarm.BuildConfig;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -17,6 +20,7 @@ import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
 import com.dsktp.sora.weatherfarm.ui.FragmentMap;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
+import com.dsktp.sora.weatherfarm.widget.MyWidgetProvider;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -100,6 +104,15 @@ public class RemoteRepository
                             AppDatabase.getsDbInstance(context).weatherForecastDao().deleteOldData();
                             Log.d(DEBUG_TAG,"Inserting new data from database");
                             AppDatabase.getsDbInstance(context).weatherForecastDao().insertWeatherForecastEntry(weatherForecastPOJO);
+
+                            //send a broadcast to update the Widget info
+                            Intent intent = new Intent(context, MyWidgetProvider.class);
+                            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                            int[] ids = AppWidgetManager.getInstance(context.getApplicationContext()).getAppWidgetIds(new ComponentName(context.getApplicationContext(), MyWidgetProvider.class));
+                            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+                            context.sendBroadcast(intent);
+
+
                         }
                     });
                 }

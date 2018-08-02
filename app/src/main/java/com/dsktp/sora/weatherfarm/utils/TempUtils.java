@@ -24,9 +24,6 @@ public class TempUtils
         double temperature = kelvinTemperature-272.15;
         return df2.format(temperature);
     }
-    public static String formatToCelsiousSing(String unformattedTemp)
-    {
-        return unformattedTemp + " °C";
-    }
+
 
 }
