@@ -123,8 +123,6 @@ R
 "app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 p
 @app/src/main/java/com/dsktp/sora/weatherfarm/utils/AppUtils.java,7\a\7aa16b76781a9b437de1718a602db58f96945170
-u
-Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/HeadLessFragment.java,3\a\3ab238468d88c14c8b76bb1b9e13f14d9e6f21b5
 s
 Capp/src/main/res/layout/recycler_view_weather_forecast_row_item.xml,d\8\d82a727ec0920db063dc5bd08c28e4abb46877dd
 n

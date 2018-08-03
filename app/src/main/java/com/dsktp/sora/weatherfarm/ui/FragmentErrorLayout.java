@@ -96,8 +96,10 @@ public class FragmentErrorLayout extends Fragment
                 Log.i(DEBUG_TAG,"Latitude = " + place.getLatLng().latitude);
                 Log.i(DEBUG_TAG,"Longitude = " + place.getLatLng().longitude);
 
-                AppUtils.saveSelectedPosition(place,getContext());
+                AppUtils.saveSelectedPosition(place,getContext()); // save the current pos to preferences
+                //get forecast for the selected place
                 RemoteRepository.getsInstance().getForecastLatLon(String.valueOf(place.getLatLng().latitude),String.valueOf(place.getLatLng().longitude),getContext());
+                //show weather forecast fragment and make the toolbar buttons visible
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentWeatherForecast()).commit();
                 getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
                 getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);

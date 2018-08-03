@@ -25,3 +25,9 @@ What I built is an Android app that communicates with a remote API and displays 
  ## Application Screenshots (**early look**)
 
  <img src="appScreenshots/weather_forecast_screen.png" width=280px> <img src="appScreenshots/my_polygons_screen.png" width=280px> <img src="appScreenshots/map_screen.png" width=280px>  <img src="appScreenshots/settings_screen.png" width=280px>
+
+
+
+ ## Tip to run the app
+
+ Create a file name "sensitive_data.txt" and put there the AgroMonitoring API key. It will crash if you dont use the API key.
