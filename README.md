@@ -30,4 +30,4 @@ What I built is an Android app that communicates with a remote API and displays 
 
  ## Tip to run the app
 
- Create a file name "sensitive_data.txt" and put there the AgroMonitoring API key. It will crash if you dont use the API key.
+ Create a file name "sensitive_data.txt" and put there the AgroMonitoring API key. It will crash if you dont use the API key. You can get an API key from this [site](https://agromonitoring.com/).
