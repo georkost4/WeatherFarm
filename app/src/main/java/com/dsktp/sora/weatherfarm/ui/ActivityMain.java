@@ -140,7 +140,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 Log.d(DEBUG_TAG, "We dont have hte permissions");
                 //provide additional context to why you will need to access the devices location
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    Toast.makeText(getBaseContext(), "Location permission is needed to show you weather data for your current position", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), R.string.permission_needed_string, Toast.LENGTH_LONG).show();
                 }
                 //this is the first time we open the app so decide which error text you will show to the user
                 FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
@@ -155,7 +155,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                     if(AppUtils.getNetworkState(this)) // if we have internet
                     {
                         //show him the layout to select the place
-                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You must select one place from the search bar ");
+                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.select_place_from_search_bar));
                         bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,true);// show the search bar
 
                     }
@@ -163,7 +163,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                     {
                         //show him error indicating that he is offline and he should get online first
                         bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false); //dont show the search bar cause we dont have internet connection
-                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"Connect to the internet first and try again");
+                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.connect_first_and_try));
                     }
                 }
                 fragmentErrorLayout.setArguments(bundle);
@@ -184,7 +184,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
             // We have no internet , no cached weather info either for the current or the selected location
             // show the appropriate layout
             Bundle bundle = new Bundle();
-            bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You dont have internet connection , no selected place and we have no data of your current position. Please reconnect to the internet and select a place from the search bar");
+            bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.no_cache_no_internet_please_select_location));
             bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
             FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
             fragmentErrorLayout.setArguments(bundle);
@@ -233,13 +233,19 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     }
 
     public void onMapClick(View view) {
-        if (mFragmentManager.findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null) {
-            Log.i(DEBUG_TAG, "Creating map fragment");
-            mMapFragment = new FragmentMap();
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mMapFragment, MAP_FRAGMENT_TAG)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .addToBackStack("")
-                    .commit();
+        if(AppUtils.getNetworkState(this)) {
+            if (mFragmentManager.findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null) {
+                Log.i(DEBUG_TAG, "Creating map fragment");
+                mMapFragment = new FragmentMap();
+                mFragmentManager.beginTransaction().replace(R.id.fragment_container, mMapFragment, MAP_FRAGMENT_TAG)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack("")
+                        .commit();
+            }
+        }
+        else
+        {
+            Toast.makeText(this, R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
         }
 
     }

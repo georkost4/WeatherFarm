@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -62,13 +64,16 @@ public class FragmentDetailedWeatherInfo extends Fragment
     {
         mInflatedView = inflater.inflate(R.layout.fragment_detailed_weather_forecast,container,false);
 
+        //show loading indicator
+        mInflatedView.findViewById(R.id.detailed_fragment_loading_indicator).setVisibility(View.VISIBLE);
+
         bindViews();
 
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.detailed_forecast_toolbar_title);
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //todo populate the data from the database
-        mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt())); // todo implement method to convert dt to day
+
+        mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt()));
         mTvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
         mTvTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp())));
         mIvWeatherIcon.setImageResource(ImageUtils.getIcon(mWeatherForecastData.getWeather().get(0).getDescription()));
@@ -101,8 +106,8 @@ public class FragmentDetailedWeatherInfo extends Fragment
 
         }
 
-
-
+        //hide the loading indicator
+        mInflatedView.findViewById(R.id.detailed_fragment_loading_indicator).setVisibility(View.GONE);
 
         return mInflatedView;
 

@@ -64,20 +64,23 @@
         android:id="@+id/iv_detail_weather_condition_value"
         android:layout_width="105dp"
         android:layout_height="86dp"
-        android:layout_marginStart="124dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginTop="52dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/main_image_weather_condition_desc"
-        app:layout_constraintStart_toEndOf="@+id/tv_detail_current_location_value"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_image_placeholder" />
 
     <TextView
         android:id="@+id/tv_detail_current_location_value"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_detail_day_value"
+        app:layout_constraintEnd_toStartOf="@+id/iv_detail_weather_condition_value"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_day_value"
         tools:text="Rizia" />
 
@@ -355,8 +358,22 @@
             app:layout_constraintStart_toStartOf="parent" />
     </RelativeLayout>
 
-
-
+    <ProgressBar
+        android:id="@+id/detailed_fragment_loading_indicator"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/iv_detail_weather_condition_value"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toEndOf="@+id/tv_detail_temp_value"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921" />
 
 
 </android.support.constraint.ConstraintLayout>

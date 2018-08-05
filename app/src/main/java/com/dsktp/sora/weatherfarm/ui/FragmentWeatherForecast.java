@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,16 +21,20 @@ import android.widget.Toast;
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
+import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.viewmodel.WeatherForecastViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
+import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 
 import java.util.List;
 
 import static com.dsktp.sora.weatherfarm.utils.Constants.DETAILED_FORECAST_FRAGMENT_TAG;
+import static com.dsktp.sora.weatherfarm.utils.Constants.NO_PLACE;
+import static com.dsktp.sora.weatherfarm.utils.TimeUtils.unixToDate;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -53,6 +58,12 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,6 +84,39 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         //set the title of  the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
 
+        ImageButton refreshButton = getActivity().findViewById(R.id.toolbar_refresh_button);
+
+        refreshButton.setVisibility(View.VISIBLE);
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                if(AppUtils.getNetworkState(getContext()))
+                {
+                    // we have internet
+                    Toast.makeText(getContext(), R.string.updating_data_string, Toast.LENGTH_SHORT).show();
+                    if(AppUtils.getSelectedPosition(getContext())[0].equals(NO_PLACE))
+                    {
+                        //we have not selected a place so use the current position
+                        String[] selectedPosition = AppUtils.getCurrentPosition(getContext());
+                        RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[0],selectedPosition[1],getContext());
+                    }
+                    else
+                    {
+                        //use the selected position to fetch data
+                        String[] selectedPosition = AppUtils.getSelectedPosition(getContext());
+                        RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[1],selectedPosition[2],getContext());
+                    }
+
+
+                }
+                else
+                {
+                    Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         //bind the views
         mRecyclerView = mInflatedView.findViewById(R.id.rv_5_day_forecast);
@@ -109,6 +153,12 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
                     //hide the loading indicator
                     mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
+
+                    TextView tvLastUpdated = mInflatedView.findViewById(R.id.tv_last_updated_value);
+
+                    String date = TimeUtils.unixToDateTime(AppUtils.getLastUpdated(getContext())/1000);
+                    tvLastUpdated.setText(date);
+
                 }
             }});
 

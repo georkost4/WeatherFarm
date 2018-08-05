@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
+import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.AreaUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,7 +37,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
 
     private  String DEBUG_TAG ="#" + getClass().getSimpleName() ;
     private GoogleMap mMap;
-    private static  ProgressBar sProgressBar;
+    private ProgressBar sProgressBar;
     private View mInflatedView;
     private final List<Marker> markerList = new ArrayList<>();
     private final List<LatLng> pointList = new ArrayList<>();
@@ -121,12 +122,15 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                                 btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        RemoteRepository remoteRepository = RemoteRepository.getsInstance();
-                                        remoteRepository.sendPolygon(pointList,"Test24",mInflatedView.getContext()); // todo show to the user a editext to name the polygon
-                                        sProgressBar.setVisibility(View.VISIBLE);
-                                        FragmentWeatherForecast fragment = (FragmentWeatherForecast) getActivity().getSupportFragmentManager().findFragmentByTag(Constants.WEATHER_FORECAST_FRAGMENT_TAG);
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-                                        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+                                        if(AppUtils.getNetworkState(getContext())) {
+                                            RemoteRepository remoteRepository = RemoteRepository.getsInstance();
+                                            remoteRepository.sendPolygon(pointList, "TestPolygon", mInflatedView.getContext()); // todo show to the user a editext to name the polygon
+                                            sProgressBar.setVisibility(View.VISIBLE);
+
+                                        }
+                                        else {
+                                            Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 });
                             }
@@ -147,19 +151,25 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
     }
 
 
-    public static void hideLoadingIndicator()
+    public  void hideLoadingIndicator()
     {
         sProgressBar.setVisibility(View.GONE);
 
     }
 
     @Override
-    public void updateMapUI() {
+    public void updateOnFailure() {
         Toast.makeText(mInflatedView.getContext(), R.string.wrong_polygon_error_text,Toast.LENGTH_LONG).show();
         markerList.clear();
         mMap.clear();
         pointList.clear();
         sProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateOnSuccess() {
+        getActivity().getSupportFragmentManager().popBackStack(); // go to polygons
+
     }
 
     @Override

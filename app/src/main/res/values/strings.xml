@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">WeatherFarm</string>
-    <string name="nullable">null</string>
+    <string name="nullable" translatable="false">null</string>
     <string name="toolbar_name">Toolbar Name</string>
 
     <!--Toolbar  Strings-->
@@ -12,6 +12,7 @@
     <string name="settings_btn">Settings</string>
     <string name="my_polygons_button">Polygons</string>
     <string name="detailed_forecast_toolbar_title">Detailed</string>
+    <string name="refresh_toolbar_button_content_description">this button refresh the UI with new data fetched from the server</string>
 
     <!--Image Content Descriptions-->
     <string name="main_image_weather_condition_desc">Image indicating the weather state</string>
@@ -33,19 +34,32 @@
     <!--Weather Forecast Fragment Strings-->
     <string name="forecast_lable_text">5 Day Forecast</string>
     <string name="day_text_value">Today</string>
+    <string name="weather_forecast_details_button_string">Details</string>
+    <string name="weather_forecast_last_updated_label">Last updated</string>
+
 
 
     <!--Map Fragment Strings-->
     <string name="wrong_polygon_error_text">Try making a rectangular</string>
+    <string name="settings_imperial_units_string">Imperial</string>
+    <string name="settings_metric_units_string">Metric</string>
 
     <!--Widget Strings-->
     <string name="add_widget">Add widget</string>
 
     <!--Error Layout Strings-->
     <string name="error_layout_text_value">No internet connection , check your settings and try again</string>
+    <string name="error_layout_image_content_desc">Image representing that there was an error. This error could be missing selected location , no internet connection or no cached data.</string>
+    <string name="error_layout_refresh_button_content_desc">Refresh button checking for internet connectivity</string>
     <string name="add_new_location_text_value">Couldn\'t locate device please add a location.</string>
     <string name="no_connection_text">No network available</string>
+    <string name="select_place_from_search_bar">You must select one place from the search bar</string>
     <string name="select_a_location_from_search_bar_text">The application can not find the location of the device , please select a location from the search bar</string>
+    <string name="no_cache_no_internet_please_select_location">You dont have internet connection , no selected place and we have no data of your current position. Please reconnect to the internet and select a place from the search bar</string>
+    <string name="error_internet_but_not_selected_place_error">Select a place from the search bar below</string>
+    <string name="permission_needed_string">Location permission is needed to show you weather data for your current position</string>
+
+    <!--Detail Forecast Fragment Strings-->
     <string name="widget_humidity_text">Humidity</string>
     <string name="widget_max_temp_string">Max</string>
     <string name="widget_pressure_string">Pressure</string>
@@ -66,9 +80,16 @@
     <string name="detail_forecast_main_max_temp_label">Max Temp</string>
     <string name="detail_forecast_main_min_temp_label">Min Temp</string>
     <string name="detail_forecast_main_data_label">Main Data</string>
-    <string name="weather_forecast_details_button_string">Details</string>
-    <string name="error_layout_image_content_desc">Image representing that there was an error. This error could be missing selected location , no internet connection or no cached data.</string>
-    <string name="error_layout_refresh_button_content_desc">Refresh button checking for internet connectivity</string>
+
+
+
+
+    <!--Toast messages Strings-->
+    <string name="no_internet_connection">No internet connection, try again</string>
+    <string name="updating_list_string">Updating list</string>
+    <string name="updating_data_string">Updating data</string>
+    <string name="connect_first_and_try">Connect to the internet first and try again</string>
+
 
 
 </resources>

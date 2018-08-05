@@ -38,7 +38,7 @@ public class UVindexDaoTest
 
 
     @Test
-    public void writeUserAndReadInList() throws Exception {
+    public void writeUserAndReadInList() {
         //create a dummy UVindex object
         UVindex uVindex = new UVindex(1212,4.5f);
         //insert the dummy object to the database
@@ -73,7 +73,7 @@ public class UVindexDaoTest
 
 
     @After
-    public void closeDb() throws IOException {
+    public void closeDb() {
         mDb.close();
     }
 }

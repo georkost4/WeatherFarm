@@ -3,7 +3,7 @@
     <color name="colorPrimary">#03a9f4</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff6d00</color>
-    <color name="background_material_light">#c8cbcb</color>
+    <color name="background__light">#c8cbcb</color>
     <color name="holo_blue_dark">#066382</color>
     <!--colors for the place auto-complete fragment-->
     <color name="place_autocomplete_search_text">#000000</color>

@@ -16,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.PolygonAdapter;
@@ -52,17 +54,39 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
 
-        //show the loading indicator
-        mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
 
-        //get the polygon list only if the polygon list hasn't been synced
-        //otherwise query the local database
-        if(!AppUtils.hasThePolygonListSynced(getContext()))
-        {
-            mRepo = RemoteRepository.getsInstance();
-            mRepo.getListOfPolygons(mInflatedView.getContext());
+
+        if(AppUtils.getNetworkState(getContext())) {
+            //show the loading indicator
+            mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
+
+            //get the polygon list only if the polygon list hasn't been synced
+            //otherwise query the local database
+            if (!AppUtils.hasThePolygonListSynced(getContext())) {
+                mRepo = RemoteRepository.getsInstance();
+                mRepo.getListOfPolygons(mInflatedView.getContext());
+            }
         }
-
+        else
+        {
+            ImageButton refresh = getActivity().findViewById(R.id.toolbar_refresh_button);
+            refresh.setVisibility(View.VISIBLE);
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(AppUtils.getNetworkState(getContext()))
+                    {
+                        Toast.makeText(getContext(), R.string.updating_list_string,Toast.LENGTH_SHORT).show();
+                        mRepo = RemoteRepository.getsInstance();
+                        mRepo.getListOfPolygons(mInflatedView.getContext());
+                    }
+                    else
+                    {
+                        Toast.makeText(getContext(), R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
 
@@ -104,8 +128,14 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 
     @Override
     public void handleForecastButtonClick(String polygonID) {
-        RemoteRepository.getsInstance().setmPolyListCallback(this);
-        RemoteRepository.getsInstance().getForecastPolygon(polygonID,getContext());
+        if(AppUtils.getNetworkState(getContext())) {
+            RemoteRepository.getsInstance().setmPolyListCallback(this);
+            RemoteRepository.getsInstance().getForecastPolygon(polygonID, getContext());
+        }
+        else
+        {
+            Toast.makeText(getContext(), R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -133,5 +163,11 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public void onPause() {
         super.onPause();
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
     }
 }

@@ -33,8 +33,6 @@ public class AppUtils
     }
     public static long getLastUpdated(Context context)
     {
-        //todo to be implemented
-
         long lastUpdated = PreferenceManager.getDefaultSharedPreferences(context).getLong(Constants.PREFERENCES_SAVE_LAST_UPDATED_KEY,-1);
         Log.d(DEBUG_TAG,"Last updated = " + lastUpdated );
         return lastUpdated;
@@ -42,7 +40,6 @@ public class AppUtils
     }
     public  static void saveSelectedPosition(Place place,Context context)
     {
-        //todo to be implemented
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPreferences.edit().putString(Constants.PREFERENCES_SELECTED_PLACE_NAME_KEY, String.valueOf(place.getName())).apply();
         sharedPreferences.edit().putString(Constants.PREFERENCES_SELECTED_PLACE_LATITUDE_KEY, String.valueOf(place.getLatLng().latitude)).apply();
@@ -53,7 +50,7 @@ public class AppUtils
 
     public static String[] getSelectedPosition(Context context)
     {
-        //todo to be implemented
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String[] values = new String[3];
 
@@ -76,7 +73,7 @@ public class AppUtils
 
     public static String[] getCurrentPosition(Context context)
     {
-        //todo to be implemented
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String[] values = new String[2];
 

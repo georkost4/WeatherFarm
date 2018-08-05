@@ -17,7 +17,6 @@ import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
 import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
 import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
-import com.dsktp.sora.weatherfarm.ui.FragmentMap;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 import com.dsktp.sora.weatherfarm.widget.MyWidgetProvider;
@@ -90,6 +89,9 @@ public class RemoteRepository
         if(TimeUtils.secondsEllapsedSinceSync(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
         Log.d(DEBUG_TAG,"Making a request for the forecast data to the server");
         //show the loading indicator
+
+        Log.d(DEBUG_TAG,"Last updated = " + System.currentTimeMillis());
+        AppUtils.saveLastUpdatedValue(context,System.currentTimeMillis());
 
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
@@ -454,7 +456,6 @@ public class RemoteRepository
             public void onResponse(Call<PolygonInfoPOJO> call, final Response<PolygonInfoPOJO> response) {
 
                 if(response.isSuccessful()) {
-                    FragmentMap.hideLoadingIndicator();
                     Log.d(DEBUG_TAG, "Response message from polygon =  " + response.toString());
                     final PolygonDao mDao = AppDatabase.getsDbInstance(context).polygonDao();
                     AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
@@ -462,7 +463,7 @@ public class RemoteRepository
                         public void run() {
                             // insert the response to the local database
                             long rowsAffected = mDao.insertPolygon(response.body());
-//                            mCallback.updateUI(); //todo implement UI thread Executor
+                            mMapCallback.updateOnSuccess();
                             Log.i(DEBUG_TAG,"Rows affected = " + rowsAffected);
 
                         }
@@ -472,7 +473,7 @@ public class RemoteRepository
                 else
                 {
                     Log.d(DEBUG_TAG,"Respone message = " + response.message() );
-                    mMapCallback.updateMapUI();
+                    mMapCallback.updateOnFailure();
                 }
             }
 
@@ -501,7 +502,8 @@ public class RemoteRepository
 
     public interface  onFailure
     {
-        void updateMapUI();
+        void updateOnFailure();
+        void updateOnSuccess();
     }
 
     public interface deliveryCallBack

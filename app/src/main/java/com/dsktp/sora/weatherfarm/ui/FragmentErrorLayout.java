@@ -75,7 +75,7 @@ public class FragmentErrorLayout extends Fragment
                    // we have internet
                     mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE);
                     //set the text to inform the user about his situation
-                    ((TextView)mInflatedView.findViewById(R.id.tv_error_text_value)).setText("Select a place from the search bar below");
+                    ((TextView)mInflatedView.findViewById(R.id.tv_error_text_value)).setText(R.string.error_internet_but_not_selected_place_error);
                 }
                 else
                 {

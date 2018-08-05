@@ -94,15 +94,17 @@ public class TimeUtils
 
     public static String unixToDate(long timeInMilli)
     {
-        //todo to be implemented
-        String date = new java.text.SimpleDateFormat("MMM d").format(new java.util.Date (timeInMilli*1000));
-        return date;
+        return new java.text.SimpleDateFormat("MMM d").format(new java.util.Date (timeInMilli*1000));
+    }
+
+    public static String unixToDateTime(long timeInMilli)
+    {
+        return new java.text.SimpleDateFormat("MMM d HH:mm").format(new java.util.Date (timeInMilli*1000));
     }
 
     public static String unixToDay(long timeInMilli)
     {
-        String date = new java.text.SimpleDateFormat("EEEE").format(new java.util.Date (timeInMilli*1000));
-        return date;
+        return new java.text.SimpleDateFormat("EEEE").format(new java.util.Date (timeInMilli*1000));
 
     }
 
@@ -147,8 +149,6 @@ public class TimeUtils
             }
             // etc.
         }
-//            Log.i(DEBUG_TAG,"Day = " + date);
-        System.out.println("day = " + mera);
         return mera;
     }
 
