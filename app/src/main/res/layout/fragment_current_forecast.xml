@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="92dp"
-        android:text="Today , "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Today ," />
@@ -33,12 +32,15 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_5_day_forecast"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_forecast_forecast_label_text" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_forecast_forecast_label_text"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/fragment_forecast_forecast_label_text"
@@ -53,30 +55,45 @@
         android:id="@+id/tv_weather_day_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_weather_condition_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_weather_condition_label"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_condition_value"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather_location_value"
         tools:text="31 °C" />
 
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        android:layout_width="47dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="288dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/rv_5_day_forecast"
+        app:layout_constraintEnd_toStartOf="@+id/iv_weather_forecast_icon"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toEndOf="@+id/tv_weather_day_temperature"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65999997" />
+
     <TextView
-        android:id="@+id/tv_weather_condition_label"
+        android:id="@+id/tv_weather_condition_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tv_weather_day_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weather_day_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_weather_day_temperature"
         tools:text="Clouds" />
 
     <TextView
-        android:id="@+id/tv_weather_location_label"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_weather_location_value"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_weather_day_label"
+        app:layout_constraintEnd_toStartOf="@+id/iv_weather_forecast_icon"
         app:layout_constraintStart_toEndOf="@+id/tv_weather_day_label"
         tools:text="Rizia" />
 
@@ -86,9 +103,9 @@
         android:layout_height="37dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="24dp"
-        android:text="Details"
+        android:text="@string/weather_forecast_details_button_string"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_weather_forecast_icon"
-        tools:text="Details" />
+         />
 
 </android.support.constraint.ConstraintLayout>

@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="75dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Tuesday" />
@@ -45,7 +44,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tv_detail_day_value"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_day_value"
         tools:text="32 C" />
@@ -56,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Main Data"
+        android:text="@string/detail_forecast_main_data_label"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +67,7 @@
         android:layout_marginStart="124dp"
         android:layout_marginTop="52dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/main_image_weather_condition_desc"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_current_location_value"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_image_placeholder" />
@@ -78,7 +77,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_detail_day_value"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_day_value"
         tools:text="Rizia" />
@@ -100,7 +98,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Min Temp"
+        android:text="@string/detail_forecast_main_min_temp_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -109,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Max Temp"
+        android:text="@string/detail_forecast_main_max_temp_label"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -119,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
-        android:text="Humidity"
+        android:text="@string/detail_forecast_main_umidity_label"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_min_temp_value"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -128,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Pressure"
+        android:text="@string/detail_forecast_main_pressure_label"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -137,7 +135,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         tools:text="38 C" />
@@ -147,7 +144,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tv_detail_min_temp_value"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_min_temp_value"
         tools:text="45 C" />
@@ -157,7 +153,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13"
         tools:text="38 %" />
@@ -166,7 +161,6 @@
         android:id="@+id/tv_detail_pressure_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/tv_detail_humidity_value"
         tools:text="78 hPa" />
@@ -177,7 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Wind"
+        android:text="@string/detail_forecast_wind_section_label"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -189,7 +183,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
-        android:text="Speed"
+        android:text="@string/detail_forecast_speed_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -198,7 +192,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_detail_wind_speed_label"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_wind_speed_label"
         tools:text="10 m/s" />
@@ -209,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="12dp"
-        android:text="Degrees"
+        android:text="@string/detail_forecast_degrees_label"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_wind_speed_value"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -218,7 +211,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_detail_wind_degrees_label"
         app:layout_constraintStart_toEndOf="@+id/tv_detail_wind_degrees_label"
         tools:text="4 deg" />
@@ -229,7 +221,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Cloudiness"
+        android:text="@string/detail_forecast_cloudiness_section"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -238,7 +230,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView24"
         app:layout_constraintStart_toEndOf="@+id/textView24"
         tools:text="70 %" />
@@ -249,7 +240,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Clouds"
+        android:text="@string/detail_forecast_clouds_section"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,7 +272,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="16dp"
-            android:text="Rain"
+            android:text="@string/detail_forecast_rain_section_string"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -293,7 +284,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView27"
             android:layout_alignTop="@+id/tv_detail_rain_volume_value"
-            android:text="Rain Volume 3h"
+            android:text="@string/detail_forecast_rain_volume_3h"
             app:layout_constraintStart_toStartOf="parent"
             />
 
@@ -305,7 +296,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="26dp"
             android:layout_marginStart="167dp"
-            android:text="TextView"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView28"
             app:layout_constraintStart_toEndOf="@+id/textView28"
             tools:text="45 cm" />
@@ -328,7 +318,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="13dp"
-            android:text="Snow"
+            android:text="@string/detail_forecast_fragment_snow_section_string"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent" />
@@ -341,7 +331,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="26dp"
             android:layout_marginTop="48dp"
-            android:text="Snow Volume 3h"
+            android:text="@string/detail_forecast_fragment_snow_volume_3h"
             app:layout_constraintStart_toStartOf="parent"/>
         <TextView
             android:id="@+id/tv_detail_snow_volume_value"
@@ -350,7 +340,6 @@
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/textView31"
             android:layout_marginStart="159dp"
-            android:text="TextView"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView31"
             app:layout_constraintStart_toEndOf="@+id/textView31"
             tools:text="30 cm" />

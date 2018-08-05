@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.adapters.WeatherAdapter;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
-import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.viewmodel.WeatherForecastViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
@@ -58,6 +57,10 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_current_forecast,container,false);
+        //show the loading indicator
+        mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.VISIBLE);
+
+        showToolbarButtons();
 
         mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details);
         mDetailsButton.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +70,16 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
             }
         });
 
-        //name the toolbar
+        //set the title of  the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
+
 
         //bind the views
         mRecyclerView = mInflatedView.findViewById(R.id.rv_5_day_forecast);
-        final TextView tvCondition = (mInflatedView.findViewById(R.id.tv_weather_condition_label));
+        final TextView tvCondition = (mInflatedView.findViewById(R.id.tv_weather_condition_value));
         final TextView tvTemperature = (mInflatedView.findViewById(R.id.tv_weather_day_temperature));
         final ImageView ivWeatherImage = mInflatedView.findViewById(R.id.iv_weather_forecast_icon);
-        final TextView tvLocation = mInflatedView.findViewById(R.id.tv_weather_location_label);
+        final TextView tvLocation = mInflatedView.findViewById(R.id.tv_weather_location_value);
 
         //setup RecyclerView
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -102,6 +106,9 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     //set the new data to the adapter
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.setList(weatherForecastPOJOS);
+
+                    //hide the loading indicator
+                    mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
                 }
             }});
 
@@ -127,6 +134,12 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     .addToBackStack("")
                     .commit();
         }
+    }
+
+    public void showToolbarButtons()
+    {
+        getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
     }
 
 

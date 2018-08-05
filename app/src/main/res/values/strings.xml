@@ -46,6 +46,29 @@
     <string name="add_new_location_text_value">Couldn\'t locate device please add a location.</string>
     <string name="no_connection_text">No network available</string>
     <string name="select_a_location_from_search_bar_text">The application can not find the location of the device , please select a location from the search bar</string>
+    <string name="widget_humidity_text">Humidity</string>
+    <string name="widget_max_temp_string">Max</string>
+    <string name="widget_pressure_string">Pressure</string>
+    <string name="widget_min_temp_string">Min</string>
+    <string name="recycler_view_polygon_row_forecast_button_string">Forecast</string>
+    <string name="map_fragment_send_button_text">Send</string>
+    <string name="detail_forecast_fragment_snow_volume_3h">Snow Volume 3h</string>
+    <string name="detail_forecast_fragment_snow_section_string">Snow</string>
+    <string name="detail_forecast_rain_volume_3h">Rain Volume 3h</string>
+    <string name="detail_forecast_rain_section_string">Rain</string>
+    <string name="detail_forecast_clouds_section">Clouds</string>
+    <string name="detail_forecast_cloudiness_section">Cloudiness</string>
+    <string name="detail_forecast_degrees_label">Degrees</string>
+    <string name="detail_forecast_speed_label">Speed</string>
+    <string name="detail_forecast_wind_section_label">Wind</string>
+    <string name="detail_forecast_main_pressure_label">Pressure</string>
+    <string name="detail_forecast_main_umidity_label">Humidity</string>
+    <string name="detail_forecast_main_max_temp_label">Max Temp</string>
+    <string name="detail_forecast_main_min_temp_label">Min Temp</string>
+    <string name="detail_forecast_main_data_label">Main Data</string>
+    <string name="weather_forecast_details_button_string">Details</string>
+    <string name="error_layout_image_content_desc">Image representing that there was an error. This error could be missing selected location , no internet connection or no cached data.</string>
+    <string name="error_layout_refresh_button_content_desc">Refresh button checking for internet connectivity</string>
 
 
 </resources>

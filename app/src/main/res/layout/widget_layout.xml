@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#616161"
     android:layout_margin="@dimen/widget_margin">
 
 
@@ -14,9 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="46dp"
-        android:text="TextView"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="28dp"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="01 Aug" />
@@ -25,10 +25,9 @@
         android:id="@+id/iv_widget_weather_icon"
         android:layout_width="79dp"
         android:layout_height="85dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tv_widget_date"
+        android:layout_marginEnd="70dp"
         android:contentDescription="@string/main_image_weather_condition_desc"
         app:srcCompat="@drawable/ic_image_placeholder" />
 
@@ -36,10 +35,8 @@
         android:id="@+id/tv_widget_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/tv_widget_location_value"
-        android:layout_marginStart="70dp"
-        android:text="TextView"
+        android:layout_alignEnd="@+id/tv_widget_date"
+        android:layout_below="@+id/tv_widget_location_value"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="32 C" />
@@ -59,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/tv_widget_min_temp_value"
-            android:text="Min" />
+            android:text="@string/widget_min_temp_string" />
 
         <TextView
             android:id="@+id/tv_widget_min_temp_value"
@@ -67,23 +64,22 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/tv_widget_max_temp_value"
             android:layout_alignTop="@+id/tv_widget_pressure_label"
-            android:text="32 C"
             tools:text="32 C" />
 
         <TextView
             android:id="@+id/tv_widget_pressure_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/tv_widget_humidity_label"
             android:layout_marginTop="12dp"
-            android:text="Pressure" />
+            android:text="@string/widget_pressure_string" />
 
         <TextView
             android:id="@+id/tv_widget_pressure_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/tv_widget_humidity_value"
+            android:layout_marginStart="8dp"
             android:layout_alignTop="@+id/tv_widget_min_temp_label"
             tools:text="78 hPa" />
 
@@ -94,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/tv_widget_min_temp_label"
             android:layout_centerVertical="true"
-            android:text="Max"
+            android:text="@string/widget_max_temp_string"
             android:textAlignment="center" />
 
         <TextView
@@ -104,7 +100,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="34dp"
-            android:text="45 C" />
+            tools:text="45 C" />
 
         <TextView
             android:id="@+id/tv_widget_humidity_label"
@@ -112,16 +108,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="74dp"
-            android:text="Humidity" />
+            android:layout_marginStart="88dp"
+            android:text="@string/widget_humidity_text" />
 
         <TextView
             android:id="@+id/tv_widget_humidity_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="142dp"
+            android:layout_marginStart="153dp"
             tools:text="78%" />
 
     </RelativeLayout>
@@ -132,8 +127,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/tv_widget_date"
-        android:layout_marginTop="92dp"
-        android:text="TextView"
+        android:layout_marginTop="79dp"
+        android:text="@string/nullable"
         tools:text="Rizia" />
 
 

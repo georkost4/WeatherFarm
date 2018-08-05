@@ -72,8 +72,10 @@ public class FragmentErrorLayout extends Fragment
             @Override
             public void onClick(View view) {
                 if(AppUtils.getNetworkState(getContext())) {
-                    //we have internet show the button to add a new location
-                    mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE); // make the layout for new location visible
+                   // we have internet
+                    mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE);
+                    //set the text to inform the user about his situation
+                    ((TextView)mInflatedView.findViewById(R.id.tv_error_text_value)).setText("Select a place from the search bar below");
                 }
                 else
                 {
@@ -97,6 +99,7 @@ public class FragmentErrorLayout extends Fragment
                 Log.i(DEBUG_TAG,"Longitude = " + place.getLatLng().longitude);
 
                 AppUtils.saveSelectedPosition(place,getContext()); // save the current pos to preferences
+
                 //get forecast for the selected place
                 RemoteRepository.getsInstance().getForecastLatLon(String.valueOf(place.getLatLng().latitude),String.valueOf(place.getLatLng().longitude),getContext());
                 //show weather forecast fragment and make the toolbar buttons visible

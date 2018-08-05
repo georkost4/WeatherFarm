@@ -52,6 +52,8 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
 
+        //show the loading indicator
+        mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
 
         //get the polygon list only if the polygon list hasn't been synced
         //otherwise query the local database
@@ -77,6 +79,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
             public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
                 Log.d(DEBUG_TAG,"Live data to the rescue...");
                 mAdapter.setPolygonList(polygonInfoPOJOS);
+                mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.GONE);
             }
         });
 

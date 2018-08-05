@@ -89,6 +89,8 @@ public class RemoteRepository
 
         if(TimeUtils.secondsEllapsedSinceSync(AppUtils.getLastUpdated(context))<20000) return; // if the ellapsed time is bigger than 10 seconds sync with the server
         Log.d(DEBUG_TAG,"Making a request for the forecast data to the server");
+        //show the loading indicator
+
         responsePOJOCall.enqueue(new Callback<List<WeatherForecastPOJO>>() {
             @Override
             public void onResponse(Call<List<WeatherForecastPOJO>> call, final Response<List<WeatherForecastPOJO>> response) {
@@ -104,6 +106,7 @@ public class RemoteRepository
                             AppDatabase.getsDbInstance(context).weatherForecastDao().deleteOldData();
                             Log.d(DEBUG_TAG,"Inserting new data from database");
                             AppDatabase.getsDbInstance(context).weatherForecastDao().insertWeatherForecastEntry(weatherForecastPOJO);
+
 
                             //send a broadcast to update the Widget info
                             Intent intent = new Intent(context, MyWidgetProvider.class);

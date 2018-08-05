@@ -40,7 +40,7 @@
         android:layout_width="100dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:text="Forecast"
+        android:text="@string/recycler_view_polygon_row_forecast_button_string"
         app:layout_constraintBaseline_toBaselineOf="@+id/polygon_row_name_value"
         app:layout_constraintStart_toEndOf="@+id/polygon_row_name_value" />
 </android.support.constraint.ConstraintLayout>

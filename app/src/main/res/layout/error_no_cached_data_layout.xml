@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,6 +30,7 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/error_layout_image_content_desc"
         app:srcCompat="@drawable/ic_error_black_24dp" />
 
     <RelativeLayout
@@ -60,6 +60,7 @@
         android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="52dp"
+        android:contentDescription="@string/error_layout_refresh_button_content_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_refresh_black_24dp" />

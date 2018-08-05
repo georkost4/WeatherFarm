@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
@@ -88,8 +89,13 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
         requestLocationPermissionFromTheUser();
 
+        //if we have cached data show the weather forecast fragment to the user
+        if(!AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)||!AppUtils.getCurrentPosition(this)[1].equals(NO_LATITUDE)) //check for cached data
+        {
+            //we have cached data so show them to the user
+            showWeatherForecastFragment();
 
-        showWeatherForecastFragment();
+        }
 
 
     }
@@ -104,31 +110,13 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         // show the Weather forecast fragment
         if (mFragmentManager.findFragmentByTag(WEATHER_FORECAST_FRAGMENT_TAG) == null) //check to see if it already exists before re-creating
         {
-            //if the user has selected a place get info for that place
-            if(!AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE))
-            {
-                //check for internet connection
-                if(AppUtils.getNetworkState(this))
-                {
-                    //we have internet so update
-                    AppUtils.saveLastUpdatedValue(this, System.currentTimeMillis());
-                    String[] latlngSet = AppUtils.getSelectedPosition(this);
-
-                    RemoteRepository.getsInstance().getForecastLatLon(latlngSet[1], latlngSet[2], getBaseContext());
-                }
-                else
-                {
-                    //we dont have internet
-                    Toast.makeText(this, R.string.no_connection_text,Toast.LENGTH_LONG);
-                    checkForNetworkAndCachedData();
-                }
-
-            }
             Log.i(DEBUG_TAG, "Creating weather fragment");
             mWeatherFragment = new FragmentWeatherForecast();
-            mFragmentManager.beginTransaction().add(R.id.fragment_container, mWeatherFragment, WEATHER_FORECAST_FRAGMENT_TAG).commit();
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container, mWeatherFragment, WEATHER_FORECAST_FRAGMENT_TAG).commit();
         }
+
     }
+
 
     public void requestLocationPermissionFromTheUser()
     {
@@ -154,6 +142,34 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     Toast.makeText(getBaseContext(), "Location permission is needed to show you weather data for your current position", Toast.LENGTH_LONG).show();
                 }
+                //this is the first time we open the app so decide which error text you will show to the user
+                FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
+                Bundle bundle = new Bundle();
+                //here is the user case he have
+                //We have no permissions to get the current position data info
+                //We also have no previously selected place to get info for that either
+                //if the user has internet show him a layout to select a place
+                //if the user has no internet show him a layout indicating that he should get online
+                if(AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)) // if the selected position is == NO_PLACE means we dont have a previously selected place
+                {
+                    if(AppUtils.getNetworkState(this)) // if we have internet
+                    {
+                        //show him the layout to select the place
+                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You must select one place from the search bar ");
+                        bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,true);// show the search bar
+
+                    }
+                    else
+                    {
+                        //show him error indicating that he is offline and he should get online first
+                        bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false); //dont show the search bar cause we dont have internet connection
+                        bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"Connect to the internet first and try again");
+                    }
+                }
+                fragmentErrorLayout.setArguments(bundle);
+                mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout).commit(); //show the error layout
+                hideToolbarButtons();
+
 
 
                 //ask for permissions again
@@ -167,7 +183,12 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         {
             // We have no internet , no cached weather info either for the current or the selected location
             // show the appropriate layout
-            mFragmentManager.beginTransaction().replace(R.id.fragment_container,new FragmentErrorLayout(),FRAGMENT_ERROR_LAYOUT_TAG).commit();
+            Bundle bundle = new Bundle();
+            bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You dont have internet connection , no selected place and we have no data of your current position. Please reconnect to the internet and select a place from the search bar");
+            bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
+            FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
+            fragmentErrorLayout.setArguments(bundle);
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout,FRAGMENT_ERROR_LAYOUT_TAG).commit();
             //hide the toolbar buttons
             hideToolbarButtons();
             return true;
@@ -247,6 +268,8 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                             {
                                 //fetch data for this location
                                 RemoteRepository.getsInstance().getForecastLatLon(String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()), getBaseContext());
+                                //show the weather forecast fragment
+                                showWeatherForecastFragment();
                             }
                             Log.d(DEBUG_TAG, "Location = " + location.getLatitude() + "  ,  " + location.getLongitude());
 
@@ -254,7 +277,21 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                         {
                             Log.e(DEBUG_TAG, "Location == null");
                             //open the settings fragment so the user chooses the location
-
+                            FragmentErrorLayout errorLayout = new FragmentErrorLayout();
+                            Bundle dataToSend = new Bundle();
+                            if(AppUtils.getNetworkState(getBaseContext())) {
+                                dataToSend.putBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY, true); // show the search bar
+                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"The location of the device cannot be found please enter it manually using the search bar.");
+                            }
+                            else
+                            {
+                                //we have no internet
+                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You have no internet connection , please check your connection and enter your location using the search bar.");
+                                dataToSend.putBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
+                            }
+                            errorLayout.setArguments(dataToSend);
+                            mFragmentManager.beginTransaction().replace(R.id.fragment_container,errorLayout).commit();
+                            hideToolbarButtons();
                         }
                     }
                 });
@@ -267,17 +304,8 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         String[] newLocationArray = AppUtils.getSelectedPosition(this);
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
 
-        AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(4000);
+        showWeatherForecastFragment();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
     }
 
@@ -304,8 +332,19 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 //open the settings menu to choose location
                 FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
                 Bundle bundle = new Bundle();
-                bundle.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.select_a_location_from_search_bar_text));
-                bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,true);
+
+                if(AppUtils.getNetworkState(this))
+                {
+                    //we have  internet so hide the search bar until reconnect
+                    bundle.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.select_a_location_from_search_bar_text));
+                    bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,true);
+                }
+                else
+                {
+                    //we have no internet so hide the search bar until reconnect
+                    bundle.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"Please reconnect to the internet and select the place from the search bar");
+                    bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
+                }
                 fragmentErrorLayout.setArguments(bundle);
                 mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout).commit();
                 hideToolbarButtons();
@@ -321,4 +360,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
         findViewById(R.id.settings_btn).setVisibility(View.GONE);
     }
+
+
 }

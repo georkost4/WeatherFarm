@@ -135,3 +135,13 @@ b
 2app/src/main/res/drawable/ic_layers_black_24dp.xml,8\b\8b672373006fb273943c2bda375b1f0db3227378
 S
 #app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
+g
+7app/src/main/res/layout/error_no_cached_data_layout.xml,f\b\fbf78ebab1297d5dffd0ef743c4d77a14120f82d
+~
+Napp/src/main/java/com/dsktp/sora/weatherfarm/data/network/networkReceiver.java,d\1\d19a20d660e1261aafe5ecc76b4a999f36626bbc
+€
+Papp/src/main/java/com/dsktp/sora/weatherfarm/ui/Presenter/ActivityPresenter.java,a\5\a5ac5e91fa36aa010f790d7cabdd1f23dd084e1c
+x
+Happ/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentErrorLayout.java,5\8\5860652e4d53fab19d41f410070ae6e40c753c98
+Y
+)app/src/main/res/layout/widget_layout.xml,a\f\af1e8a366f32f6b23c7f4b7203574e0e1365b9a2
