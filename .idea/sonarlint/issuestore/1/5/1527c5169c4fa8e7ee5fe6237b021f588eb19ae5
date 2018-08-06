@@ -1,7 +1,7 @@
 
-Ssquid:S1135"2Complete the task associated to this TODO comment.(»©¡Úüÿÿÿÿ8·¼Ï,
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(óêæï8·¼Ï,
-qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8·¼Ï,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(´éÑŠ8·¼Ï,
-Nsquid:S1135"2Complete the task associated to this TODO comment.(âÙ¬Ï8³©¼Ï,
-Wsquid:S2696"6Make the enclosing method "static" or remove this set.(ñãŸ°ùÿÿÿÿ8·¼Ï,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(»©¡Úüÿÿÿÿ8ˆÉŞİĞ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(´éÑŠ8ˆÉŞİĞ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(î÷ââüÿÿÿÿ8ˆÉŞİĞ,
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(óêæï8ˆÉŞİĞ,
+qsquid:S00116"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÎ¬8ˆÉŞİĞ,
+usquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.Constants'.(Œ”ªúşÿÿÿÿ8ˆÉŞİĞ,

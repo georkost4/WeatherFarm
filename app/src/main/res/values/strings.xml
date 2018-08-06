@@ -26,6 +26,7 @@
     <!--My Polygon Fragment Strings-->
     <string name="fragment_polygons_list_table">List of my polygons</string>
     <string name="map_button">Map</string>
+    <string name="add_new_polygon_string">You have no polygons please add a new</string>
 
     <!--Polygon RecyclerView row items Strings -->
     <string name="polygon_row_label">Name</string>

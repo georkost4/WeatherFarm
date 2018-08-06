@@ -88,7 +88,6 @@ public class MyWidgetProvider extends AppWidgetProvider {
         if(intent.getAction().equals(ACTION_APPWIDGET_UPDATE))
         {
             int[] ids = (int[]) intent.getExtras().get(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-            Toast.makeText(context,"Widget updated",Toast.LENGTH_LONG).show();
             onUpdate(context,getInstance(context),ids);
         }
     }

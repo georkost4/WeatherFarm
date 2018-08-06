@@ -102,6 +102,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
             @Override
             public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
                 Log.d(DEBUG_TAG,"Live data to the rescue...");
+                if(polygonInfoPOJOS.size() == 0) Toast.makeText(getContext(), R.string.add_new_polygon_string,Toast.LENGTH_LONG).show();
                 mAdapter.setPolygonList(polygonInfoPOJOS);
                 mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.GONE);
             }

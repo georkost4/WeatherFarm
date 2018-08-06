@@ -77,8 +77,6 @@ S
 #app/src/main/res/drawable/shape.xml,b\b\bbc2de0791509fab49963a1c7d7dda246bf35bc0
 ~
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/repository/AppExecutors.java,f\0\f06ef93f513b899b8f9f08e087c7f12a769fcf95
-”
-dapp/build/generated/source/apt/debug/com/dsktp/sora/weatherfarm/data/repository/PolygonDao_Impl.java,2\5\25ff8467140b5d565889cc5d680b91016a1a0367
 X
 (app/src/main/res/layout/fragment_map.xml,9\0\900c63acfabb70626a0c19905e5315c147fc9452
 q
@@ -103,8 +101,6 @@ Eapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentSettings.java,7\2\72d8
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/adapters/WeatherAdapter.java,f\e\fe47274e1618153ce79e8216136bc568422c9ec8
 |
 Lapp/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentWeatherForecast.java,e\9\e91cad4081c4fab4ee1774026d0a12858351ac1a
-œ
-lapp/build/generated/source/apt/debug/com/dsktp/sora/weatherfarm/data/repository/WeatherForecastDao_Impl.java,3\4\34409afdea95e152de2aeac5d8f81de115a2d5de
 ‚
 Rapp/src/test/java/com/dsktp/sora/weatherfarm/WeatherAdapterBindViewholderTest.java,0\a\0a0a3880f28428e66b839007dc093269d34abebf
 q
@@ -139,9 +135,9 @@ g
 7app/src/main/res/layout/error_no_cached_data_layout.xml,f\b\fbf78ebab1297d5dffd0ef743c4d77a14120f82d
 ~
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/network/networkReceiver.java,d\1\d19a20d660e1261aafe5ecc76b4a999f36626bbc
-€
-Papp/src/main/java/com/dsktp/sora/weatherfarm/ui/Presenter/ActivityPresenter.java,a\5\a5ac5e91fa36aa010f790d7cabdd1f23dd084e1c
 x
 Happ/src/main/java/com/dsktp/sora/weatherfarm/ui/FragmentErrorLayout.java,5\8\5860652e4d53fab19d41f410070ae6e40c753c98
 Y
 )app/src/main/res/layout/widget_layout.xml,a\f\af1e8a366f32f6b23c7f4b7203574e0e1365b9a2
+`
+0app/src/main/res/xml/my_widget_provider_info.xml,5\5\558f471200b4e38dcccd58c0ace577a4a0ca898a

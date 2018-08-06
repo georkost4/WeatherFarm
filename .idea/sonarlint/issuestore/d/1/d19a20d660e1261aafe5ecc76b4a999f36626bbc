@@ -1,4 +1,4 @@
 
 Gsquid:S1199"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-hsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(³šæ»úÿÿÿÿ
 Xsquid:UselessImportCheck"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ
+hsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(³šæ»úÿÿÿÿ

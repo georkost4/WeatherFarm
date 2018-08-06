@@ -83,14 +83,15 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
-
         showToolbarButtons();
+
+        checkForNetworkAndCachedData();
 
 
         requestLocationPermissionFromTheUser();
 
         //if we have cached data show the weather forecast fragment to the user
-        if(!AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)||!AppUtils.getCurrentPosition(this)[1].equals(NO_LATITUDE)) //check for cached data
+        if(!AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)||!AppUtils.getCurrentPosition(this)[0].equals(NO_LATITUDE)) //check for cached data
         {
             //we have cached data so show them to the user
             showWeatherForecastFragment();
@@ -178,9 +179,12 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         }
     }
 
-    private boolean checkForNetworkAndCachedData() {
+    private void checkForNetworkAndCachedData() {
         if(!AppUtils.getNetworkState(this)&&AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)&&AppUtils.getCurrentPosition(this)[0].equals(NO_LATITUDE))
         {
+            Log.i(DEBUG_TAG,"Choosing the first layout");
+            //hide the toolbar buttons
+            hideToolbarButtons();
             // We have no internet , no cached weather info either for the current or the selected location
             // show the appropriate layout
             Bundle bundle = new Bundle();
@@ -189,11 +193,23 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
             FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
             fragmentErrorLayout.setArguments(bundle);
             mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout,FRAGMENT_ERROR_LAYOUT_TAG).commit();
+
+        }
+        else if(AppUtils.getNetworkState(this)&&AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE) && AppUtils.getCurrentPosition(this)[0].equals(NO_LATITUDE))
+        {
+            Log.i(DEBUG_TAG,"Choosing the second layout");
             //hide the toolbar buttons
             hideToolbarButtons();
-            return true;
+            // We have  internet , no cached weather info either for the current or the selected location
+            // show the appropriate layout
+            Bundle bundle = new Bundle();
+            bundle.putString(FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.select_a_location_from_search_bar_text));
+            bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,true);
+            FragmentErrorLayout fragmentErrorLayout = new FragmentErrorLayout();
+            fragmentErrorLayout.setArguments(bundle);
+            mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout,FRAGMENT_ERROR_LAYOUT_TAG).commit();
         }
-        return false;
+
     }
 
     @Override
@@ -311,8 +327,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
 
         showWeatherForecastFragment();
-
-
     }
 
 

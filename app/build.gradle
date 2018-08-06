@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 
 def agroMonitorAPIKey = '"NO_AGRO_MONITOR_KEY_FOUND"'
-def GoogleMapsAPIKey  = '"NO_GMAPS_KEY_FOUND'
 
 def sensitiveDataFile = file('../sensitive_data.txt')
 Properties sensitiveData = new Properties()
@@ -18,10 +17,6 @@ if (sensitiveDataFile.canRead())
         {
             agroMonitorAPIKey = sensitiveData['AgroMonitorAPIKey']
         }
-        if (sensitiveData.containsKey('GoogleMapsAPIKey'))
-        {
-            GoogleMapsAPIKey = sensitiveData['GoogleMapsAPIKey']
-        }
     }
 }
 
@@ -37,14 +32,13 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dsktp.sora.weatherfarm"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        // add a Constant Field for the Movies DB API
+        // add a Constant Field for the AgroMonitoring API
         buildConfigField "String", "AgroMonitorAPIKey", agroMonitorAPIKey
-        buildConfigField "String", "GoogleMapsAPIKey", GoogleMapsAPIKey
     }
     buildTypes {
         release {
