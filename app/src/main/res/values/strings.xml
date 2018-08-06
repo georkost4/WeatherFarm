@@ -90,7 +90,7 @@
     <string name="updating_list_string">Updating list</string>
     <string name="updating_data_string">Updating data</string>
     <string name="connect_first_and_try">Connect to the internet first and try again</string>
-
+    <string name="total_area_sting">Total area</string>
 
 
 </resources>

@@ -30,8 +30,8 @@ import static android.appwidget.AppWidgetManager.getInstance;
  */
 public class MyWidgetProvider extends AppWidgetProvider {
 
-    static void updateAppWidget(final Context context, final AppWidgetManager appWidgetManager,
-                                final int appWidgetId) {
+    private static void updateAppWidget(final Context context, final AppWidgetManager appWidgetManager,
+                                        final int appWidgetId) {
 
         // Construct the RemoteViews object
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);

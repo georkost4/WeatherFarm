@@ -30,7 +30,7 @@ public class Weather implements Parcelable
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
@@ -38,7 +38,7 @@ public class Weather implements Parcelable
         return main;
     }
 
-    public void setMain(String main) {
+    private void setMain(String main) {
         this.main = main;
     }
 
@@ -46,7 +46,7 @@ public class Weather implements Parcelable
         return description;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
 
@@ -54,7 +54,7 @@ public class Weather implements Parcelable
         return icon;
     }
 
-    public void setIcon(String icon) {
+    private void setIcon(String icon) {
         this.icon = icon;
     }
 

@@ -1,6 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.model.Forecast;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -36,6 +37,9 @@ public class WeatherForecastPOJO implements Parcelable
         this.clouds = clouds;
         this.snow = snow;
     }
+
+    @Ignore
+    public WeatherForecastPOJO(){}
 
     public Snow getSnow() {
         return snow;

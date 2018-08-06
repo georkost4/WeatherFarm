@@ -45,9 +45,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 {
     private static final String DEBUG_TAG = "#FragmentMyPolygons";
     private View mInflatedView;
-    private RecyclerView rvPolygons;
     private PolygonAdapter mAdapter;
-    private RemoteRepository mRepo;
 
     @Nullable
     @Override
@@ -63,22 +61,22 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
             //get the polygon list only if the polygon list hasn't been synced
             //otherwise query the local database
             if (!AppUtils.hasThePolygonListSynced(getContext())) {
-                mRepo = RemoteRepository.getsInstance();
-                mRepo.getListOfPolygons(mInflatedView.getContext());
+                RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
             }
         }
         else
         {
             ImageButton refresh = getActivity().findViewById(R.id.toolbar_refresh_button);
-            refresh.setVisibility(View.VISIBLE);
+            refresh.setVisibility(View.VISIBLE); //show the refresh button
+            //set the refresh button listener
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(AppUtils.getNetworkState(getContext()))
                     {
+                        //update the polygon list
                         Toast.makeText(getContext(), R.string.updating_list_string,Toast.LENGTH_SHORT).show();
-                        mRepo = RemoteRepository.getsInstance();
-                        mRepo.getListOfPolygons(mInflatedView.getContext());
+                        RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
                     }
                     else
                     {
@@ -87,18 +85,19 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
                 }
             });
         }
+        //set up toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
 
         //inflate the list of the polygons
-        rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
+        RecyclerView rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
         mAdapter = new PolygonAdapter(getContext());
         rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPolygons.setAdapter(mAdapter);
 
         mAdapter.setmCallback(this);
 
-        ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getViewLifecycleOwner(), new Observer<List<PolygonInfoPOJO>>() {
+        ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getActivity(), new Observer<List<PolygonInfoPOJO>>() {
             @Override
             public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
                 Log.d(DEBUG_TAG,"Live data to the rescue...");
@@ -115,7 +114,9 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     }
 
     @Override
-    public void handleDeleteButtonClick(final String polygonID) {
+    public void handleDeleteButtonClick(final String polygonID)
+    {
+        //delete the clicked polygon from the db and the remote server
         RemoteRepository remoteRepository = RemoteRepository.getsInstance();
         remoteRepository.removePolygon(polygonID,getContext());
         final PolygonDao dao = AppDatabase.getsDbInstance(getContext()).polygonDao();
@@ -128,7 +129,9 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     }
 
     @Override
-    public void handleForecastButtonClick(String polygonID) {
+    public void handleForecastButtonClick(String polygonID)
+    {
+        //get forecast data for the clicked polygon
         if(AppUtils.getNetworkState(getContext())) {
             RemoteRepository.getsInstance().setmPolyListCallback(this);
             RemoteRepository.getsInstance().getForecastPolygon(polygonID, getContext());

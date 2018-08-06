@@ -83,11 +83,11 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
 
+        //show the toolbar buttons
         showToolbarButtons();
-
+        //check for cached data and show the error layout if no cached data is available
         checkForNetworkAndCachedData();
-
-
+        //get the Location permission from the user
         requestLocationPermissionFromTheUser();
 
         //if we have cached data show the weather forecast fragment to the user
@@ -119,12 +119,12 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     }
 
 
-    public void requestLocationPermissionFromTheUser()
+    private void requestLocationPermissionFromTheUser()
     {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) //if the platform has android less than an android 6.0 version then dont handle runtime permissions
         {
-
+            //check to see if we have the permissions
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 Log.d(DEBUG_TAG, "We have the permissions");
 
@@ -135,8 +135,9 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                     getCurrentPosition();
                 }
 
-            } else
-                {
+            }
+            else
+            {
                 // Location permission not granded
                 Log.d(DEBUG_TAG, "We dont have hte permissions");
                 //provide additional context to why you will need to access the devices location
@@ -277,7 +278,9 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         }
     }
 
-    public void getCurrentPosition() {
+    private void getCurrentPosition() {
+        //get the current positions
+        //and request weather data for that location
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
@@ -322,7 +325,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     @Override
     public void onSettingsChanged() {
         Log.d(DEBUG_TAG,"On settings change");
-        // lets assume the position has changed so re fetch data for the new location
+        //The position has changed so re fetch data for the new location
         String[] newLocationArray = AppUtils.getSelectedPosition(this);
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
 

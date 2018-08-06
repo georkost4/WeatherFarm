@@ -66,13 +66,13 @@ public class FragmentDetailedWeatherInfo extends Fragment
 
         //show loading indicator
         mInflatedView.findViewById(R.id.detailed_fragment_loading_indicator).setVisibility(View.VISIBLE);
-
+        // bind the views
         bindViews();
 
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.detailed_forecast_toolbar_title);
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        //populate the views with data
         mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt()));
         mTvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
         mTvTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp())));
@@ -128,8 +128,6 @@ public class FragmentDetailedWeatherInfo extends Fragment
         mTvCloudiness = mInflatedView.findViewById(R.id.tv_detail_cloudiness_value);
         mTvRainVolume = mInflatedView.findViewById(R.id.tv_detail_rain_volume_value);
         mTvSnowVolume = mInflatedView.findViewById(R.id.tv_detail_snow_volume_value);
-
-
     }
 
 

@@ -37,7 +37,7 @@ public class Main implements Parcelable {
         return temp;
     }
 
-    public void setTemp(double temp) {
+    private void setTemp(double temp) {
         this.temp = temp;
     }
 
@@ -45,7 +45,7 @@ public class Main implements Parcelable {
         return temp_min;
     }
 
-    public void setTemp_min(double temp_min) {
+    private void setTemp_min(double temp_min) {
         this.temp_min = temp_min;
     }
 
@@ -53,7 +53,7 @@ public class Main implements Parcelable {
         return temp_max;
     }
 
-    public void setTemp_max(double temp_max) {
+    private void setTemp_max(double temp_max) {
         this.temp_max = temp_max;
     }
 
@@ -61,7 +61,7 @@ public class Main implements Parcelable {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    private void setPressure(double pressure) {
         this.pressure = pressure;
     }
 
@@ -69,7 +69,7 @@ public class Main implements Parcelable {
         return sea_level;
     }
 
-    public void setSea_level(double sea_level) {
+    private void setSea_level(double sea_level) {
         this.sea_level = sea_level;
     }
 
@@ -77,7 +77,7 @@ public class Main implements Parcelable {
         return grnd_level;
     }
 
-    public void setGrnd_level(double grnd_level) {
+    private void setGrnd_level(double grnd_level) {
         this.grnd_level = grnd_level;
     }
 
@@ -85,7 +85,7 @@ public class Main implements Parcelable {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    private void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 

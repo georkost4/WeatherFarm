@@ -52,8 +52,8 @@ public class FragmentErrorLayout extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.error_no_cached_data_layout,container,false);
 
-        Log.d(DEBUG_TAG,"Text = " + mInformationalText);
-        Log.d(DEBUG_TAG,"Flag = " + mShowSearchLayoutFlag);
+        Log.i(DEBUG_TAG,"Text = " + mInformationalText);
+        Log.i(DEBUG_TAG,"Flag = " + mShowSearchLayoutFlag);
 
 
         if(mShowSearchLayoutFlag)
@@ -66,6 +66,7 @@ public class FragmentErrorLayout extends Fragment
 
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle("");
 
+        //if the place is selected handle it
         handlePlaceSelected();
 
         mInflatedView.findViewById(R.id.btn_refresh).setOnClickListener(new View.OnClickListener() {

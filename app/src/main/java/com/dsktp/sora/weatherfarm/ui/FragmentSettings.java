@@ -47,6 +47,7 @@ public class FragmentSettings extends Fragment
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.settings_toolbar_title);
 
+        //setup google search place bar
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -55,8 +56,8 @@ public class FragmentSettings extends Fragment
                 Log.i(DEBUG_TAG,"Latitude = " + place.getLatLng().latitude);
                 Log.i(DEBUG_TAG,"Longitude = " + place.getLatLng().longitude);
 
-                AppUtils.saveSelectedPosition(place,getContext());
-                mCallback.onSettingsChanged();
+                AppUtils.saveSelectedPosition(place,getContext()); //save the selected position to preferences
+                mCallback.onSettingsChanged(); //trigger the callback
 
             }
 

@@ -25,7 +25,7 @@ public class Wind implements Parcelable {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    private void setSpeed(double speed) {
         this.speed = speed;
     }
 
@@ -33,7 +33,7 @@ public class Wind implements Parcelable {
         return deg;
     }
 
-    public void setDeg(double deg) {
+    private void setDeg(double deg) {
         this.deg = deg;
     }
 

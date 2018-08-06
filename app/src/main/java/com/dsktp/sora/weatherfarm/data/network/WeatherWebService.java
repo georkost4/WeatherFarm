@@ -14,7 +14,7 @@ import retrofit2.http.Query;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public interface WeatherWebService
+interface WeatherWebService
 {
     @GET("weather")
     Call<WeatherForecastPOJO> currentWeatherLatLongForecast(@Query("lat") String latitude, @Query("lon") String longtitude, @Query("appid") String API_KEY);

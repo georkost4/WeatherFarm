@@ -30,21 +30,14 @@ public class Converter
 {
 
 
-         /** This method converts a JSON string into a ArrayList<Step>
-         * @param value The JSON string
-         * @return ArrayList<Step>
-         */
+
         @TypeConverter
         public static GeoJSON GeoJSONFromString(String value) {
             Type listType = new TypeToken<GeoJSON>() {}.getType();
             return new Gson().fromJson(value, listType);
         }
 
-        /**
-         * This method converts a ArrayList<Step> to a JSON string
-         * @param list The ArrayList<Step> to convert
-         * @return the JSON string from conversion
-         */
+
         @TypeConverter
         public static String GeoJSONToString(GeoJSON geoJSONObject) {
             Gson gson = new Gson();
@@ -52,21 +45,14 @@ public class Converter
             return json;
         }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static double[] arrayFromString(String value) {
         Type listType = new TypeToken<double[]>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String arrayToString(double[] array) {
         Gson gson = new Gson();
@@ -74,21 +60,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Weather WeatherFromString(String value) {
         Type listType = new TypeToken<Weather>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String WeatherToString(Weather geoJSONObject) {
         Gson gson = new Gson();
@@ -96,21 +75,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Main MainFromString(String value) {
         Type listType = new TypeToken<Main>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String MainToString(Main geoJSONObject) {
         Gson gson = new Gson();
@@ -118,21 +90,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Snow SnowFromString(String value) {
         Type listType = new TypeToken<Snow>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String SnownToString(Snow geoJSONObject) {
         Gson gson = new Gson();
@@ -140,21 +105,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Rain RainFromString(String value) {
         Type listType = new TypeToken<Rain>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String RainToString(Rain geoJSONObject) {
         Gson gson = new Gson();
@@ -162,21 +120,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Cloud CloudFromString(String value) {
         Type listType = new TypeToken<Cloud>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String CloudToString(Cloud geoJSONObject) {
         Gson gson = new Gson();
@@ -184,21 +135,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static Wind WindFromString(String value) {
         Type listType = new TypeToken<Wind>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String WindToString(Wind geoJSONObject) {
         Gson gson = new Gson();
@@ -206,21 +150,14 @@ public class Converter
         return json;
     }
 
-    /** This method converts a JSON string into a ArrayList<Step>
-     * @param value The JSON string
-     * @return ArrayList<Step>
-     */
+
     @TypeConverter
     public static ArrayList<Weather> WeatherListFromString(String value) {
         Type listType = new TypeToken<ArrayList<Weather>>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
-    /**
-     * This method converts a ArrayList<Step> to a JSON string
-     * @param list The ArrayList<Step> to convert
-     * @return the JSON string from conversion
-     */
+
     @TypeConverter
     public static String MainToString(ArrayList<Weather> geoJSONObject) {
         Gson gson = new Gson();

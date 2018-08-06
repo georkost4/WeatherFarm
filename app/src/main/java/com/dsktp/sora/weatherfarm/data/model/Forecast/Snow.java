@@ -26,7 +26,7 @@ public class Snow implements Parcelable {
         return threeHourSnowVolume;
     }
 
-    public void setThreeHourSnowVolume(double threeHourSnowVolume) {
+    private void setThreeHourSnowVolume(double threeHourSnowVolume) {
         this.threeHourSnowVolume = threeHourSnowVolume;
     }
 

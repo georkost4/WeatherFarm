@@ -23,7 +23,7 @@ public class Cloud implements Parcelable {
         return all;
     }
 
-    public void setAll(int all) {
+    private void setAll(int all) {
         this.all = all;
     }
 

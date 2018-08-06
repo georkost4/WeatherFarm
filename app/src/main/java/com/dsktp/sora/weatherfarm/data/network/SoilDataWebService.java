@@ -13,7 +13,7 @@ import retrofit2.http.Query;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public interface SoilDataWebService
+interface SoilDataWebService
 {
     @GET("soil")
     Call<Soil> currentSoilDataLatLongForecast(@Query("lat") String latitude, @Query("lon") String longtitude, @Query("appid") String API_KEY);

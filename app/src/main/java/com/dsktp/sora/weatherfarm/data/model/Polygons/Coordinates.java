@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public  class Coordinates
+class Coordinates
 {
     @SerializedName("1")
     private String latitude;

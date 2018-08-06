@@ -1,5 +1,6 @@
 package com.dsktp.sora.weatherfarm;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -59,15 +60,17 @@ public class WeatherForecastDaoTest
         ArrayList<Weather> dummyWeatherList = new ArrayList<>();
         dummyWeatherList.add(new Weather(14,"maindummy","descDummy","24"));
         dummyWeatherForeCastPOJO.setWeather(dummyWeatherList);
+        ArrayList<WeatherForecastPOJO> dummyWeatherPOJOlist = new ArrayList<>();
+        dummyWeatherPOJOlist.add(dummyWeatherForeCastPOJO);
 
-        mWeatherDao.insertWeatherForecastEntry(dummyWeatherForeCastPOJO);
+        mWeatherDao.insertWeatherForecastEntry(dummyWeatherPOJOlist);
 
 
-        List<WeatherForecastPOJO> tableList = mWeatherDao.getWeatherEntries();
+        LiveData<List<WeatherForecastPOJO>> tableList = mWeatherDao.getWeatherEntries();
+        List<WeatherForecastPOJO> list = tableList.getValue();
 
-
-        assertThat(tableList.size(),equalTo(1));
-        assertThat(tableList.get(0).getMain().getHumidity(),equalTo(3.0));
+        assertThat(list.size(),equalTo(1));
+        assertThat(list.get(0).getMain().getHumidity(),equalTo(3.0));
     }
 
     @Test

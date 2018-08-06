@@ -26,7 +26,7 @@ public class Rain implements Parcelable {
         return threeHourRainVolume;
     }
 
-    public void setThreeHourRainVolume(double threeHourRainVolume) {
+    private void setThreeHourRainVolume(double threeHourRainVolume) {
         this.threeHourRainVolume = threeHourRainVolume;
     }
 

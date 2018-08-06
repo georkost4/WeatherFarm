@@ -85,13 +85,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
 
     public class MyWeatherViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView day;
+        TextView day;
         private TextView temperature_min;
         private TextView temperature_max;
         private ImageView icon;
         private TextView weatherDescription;
 
-        public MyWeatherViewholder(@NonNull final View itemView)
+        MyWeatherViewholder(@NonNull final View itemView)
         {
             super(itemView);
             day = itemView.findViewById(R.id.tv_day_label);

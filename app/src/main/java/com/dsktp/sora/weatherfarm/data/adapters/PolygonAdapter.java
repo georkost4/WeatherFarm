@@ -82,7 +82,7 @@ public class PolygonAdapter extends RecyclerView.Adapter<PolygonAdapter.PolygonV
             private Button deleteBtn;
             private Button forecastButton;
 
-            public PolygonViewHolder(@NonNull View itemView)
+            PolygonViewHolder(@NonNull View itemView)
             {
                 super(itemView);
                 deleteBtn = itemView.findViewById(R.id.polygon_row_btn);

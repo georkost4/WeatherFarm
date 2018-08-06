@@ -8,7 +8,7 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public class Point
+class Point
 {
     private List<Coordinates> points; //todo use this class in request body
 }

@@ -8,4 +8,5 @@
     <!--colors for the place auto-complete fragment-->
     <color name="place_autocomplete_search_text">#000000</color>
     <color name="place_autocomplete_search_hint">#5a70cc</color>
+    <color name="detailed_fragment_view_divider_color">#455a64</color>
 </resources>

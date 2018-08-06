@@ -1,5 +1,6 @@
 package com.dsktp.sora.weatherfarm.ui;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -47,9 +48,6 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     private View mInflatedView;
     private RecyclerView mRecyclerView;
     private WeatherAdapter mAdapter;
-    private WeatherForecastViewModel mViewModel;
-    private Button mDetailsButton;
-    private FragmentDetailedWeatherInfo mDetailWeatherForecast;
     private WeatherForecastPOJO dataToSend;
 
     @Override
@@ -58,11 +56,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
-    }
+
 
     @Nullable
     @Override
@@ -73,7 +67,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
         showToolbarButtons();
 
-        mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details);
+        Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details);
         mDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,8 +79,9 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
 
         ImageButton refreshButton = getActivity().findViewById(R.id.toolbar_refresh_button);
-
+        //show the refresh button
         refreshButton.setVisibility(View.VISIBLE);
+        //set up refresh button listener
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -132,13 +127,14 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
 
         //get the ViewModel and observe the LiveData object for changes
-        mViewModel = ViewModelProviders.of(this).get(WeatherForecastViewModel.class);
-        mViewModel.getWeatherList().observe(getViewLifecycleOwner(), new Observer<List<WeatherForecastPOJO>>() {
+        WeatherForecastViewModel mViewModel = ViewModelProviders.of(this).get(WeatherForecastViewModel.class);
+        mViewModel.getWeatherList().observe(getActivity(), new Observer<List<WeatherForecastPOJO>>() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onChanged(@Nullable List<WeatherForecastPOJO> weatherForecastPOJOS)
             {
                 //the first time the App loads the list will be empty
-                if(!weatherForecastPOJOS.isEmpty()) //todo remove if necessary
+                if(!weatherForecastPOJOS.isEmpty())
                 {
                     Log.d(DEBUG_TAG,"WeatherForecastPOJOS list size = " + weatherForecastPOJOS.size());
                     dataToSend = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
@@ -155,7 +151,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
 
                     TextView tvLastUpdated = mInflatedView.findViewById(R.id.tv_last_updated_value);
-
+                    //get the date from the utils method
                     String date = TimeUtils.unixToDateTime(AppUtils.getLastUpdated(getContext())/1000);
                     tvLastUpdated.setText(date);
 
@@ -167,32 +163,39 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
     @Override
     public void handleClick(WeatherForecastPOJO weatherForecastPOJO) {
+        //show the weather info for this day clicked
         Toast.makeText(getContext(),"To be implemented",Toast.LENGTH_SHORT).show();
     }
 
-    public void onWeatherDetailsClicked(View view)
+    private void onWeatherDetailsClicked(View view)
     {
+        //handle the detailed button click
         if(getActivity().getSupportFragmentManager().findFragmentByTag(DETAILED_FORECAST_FRAGMENT_TAG) == null)
         {
-            mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
+            //show the weather detail info for today
+            FragmentDetailedWeatherInfo mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
             // create and save the first item of the forecast into a bundle to send it to the fragment
             Bundle bundle = new Bundle();
             bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY,dataToSend);
             mDetailWeatherForecast.setArguments(bundle);
 
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
                     .addToBackStack("")
                     .commit();
         }
     }
 
-    public void showToolbarButtons()
+    private void showToolbarButtons()
     {
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
         getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
+    }
 
 }
 

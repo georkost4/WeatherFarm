@@ -1,9 +1,6 @@
 package com.dsktp.sora.weatherfarm;
 
-import android.util.Log;
-
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
-import com.dsktp.sora.weatherfarm.utils.Utils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import static com.dsktp.sora.weatherfarm.utils.Utils.Time.getCurrentDay;
-import static com.dsktp.sora.weatherfarm.utils.Utils.Time.unixToDay;
+import static com.dsktp.sora.weatherfarm.utils.TimeUtils.getCurrentDay;
+import static com.dsktp.sora.weatherfarm.utils.TimeUtils.unixToDay;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -96,7 +93,7 @@ public class WeatherAdapterBindViewholderTest
         );
     }
 
-    public void populateListWithFakeData()
+    private void populateListWithFakeData()
     {
         dummyList = new ArrayList<>();
         WeatherForecastPOJO dummyObject = new WeatherForecastPOJO();

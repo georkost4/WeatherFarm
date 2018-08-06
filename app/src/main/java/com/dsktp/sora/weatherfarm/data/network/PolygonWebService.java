@@ -21,7 +21,7 @@ import retrofit2.http.Query;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
-public interface PolygonWebService
+interface PolygonWebService
 {
     @Headers({"Content-Type: application/json"})
     @POST("polygons")

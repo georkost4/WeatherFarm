@@ -87,6 +87,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
         starterMark.setVisible(false);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(riziaPosition,15.0f));
 
+        //change map type button listener
         mInflatedView.findViewById(R.id.toogle_map_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +96,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
             }
         });
 
-
+        //on long map touch listener
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @SuppressLint("RestrictedApi")
             @Override
@@ -108,7 +109,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                     if(markerList.size() == 4) // the polygon will be shaped from 4 points
                     {
                         double polygonArea = AreaUtils.squareMetersToHectares(SphericalUtil.computeArea(pointList));
-                        Toast.makeText(mInflatedView.getContext(),"Total area = " + String.format("%.2f",polygonArea) + " ha",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mInflatedView.getContext(),getString(R.string.total_area_sting) + " = " + String.format("%.2f",polygonArea) + " ha",Toast.LENGTH_SHORT).show();
                         if(polygonArea<2000) // todo replace this with the actual remaining area of the user
                         {
                             PolygonOptions polygonOptions = new PolygonOptions();
@@ -136,7 +137,6 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                             }
                             mMap.addPolygon(polygonOptions);
                             Log.d(DEBUG_TAG,"Number of points = " + polygonOptions.getPoints().size() );
-
                         }
                         else
                         {
@@ -159,6 +159,9 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
 
     @Override
     public void updateOnFailure() {
+        //invalid polygon
+        //clear the map
+        //clear the markers
         Toast.makeText(mInflatedView.getContext(), R.string.wrong_polygon_error_text,Toast.LENGTH_LONG).show();
         markerList.clear();
         mMap.clear();
@@ -168,6 +171,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
 
     @Override
     public void updateOnSuccess() {
+        //the polygon was send to the server successfully so go back
         getActivity().getSupportFragmentManager().popBackStack(); // go to polygons
 
     }
@@ -175,6 +179,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
     @Override
     public void onStart() {
         super.onStart();
+        //hide the toolbar options
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
         getActivity().findViewById(R.id.settings_btn).setVisibility(View.GONE);
     }
@@ -182,6 +187,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
     @Override
     public void onPause() {
         super.onPause();
+        //show the toolbar buttons
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
         getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
     }
