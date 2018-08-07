@@ -1,9 +1,10 @@
 
-Isquid:S1659"(Declare "mTvMaxTemp" on a separate line.(àþá†üÿÿÿÿ8˜ÆãÜÐ,
-Gsquid:S1659",Declare "mTvWindDegrees" on a separate line.(æÇŒb8˜ÆãÜÐ,
-esquid:UselessImportCheck"7Remove this unused import 'android.widget.ImageButton'.(‚ÏÉõÿÿÿÿÿ8²‘äÜÐ,
-psquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.TempUtils'.(Ç‚Šƒ8˜ÆãÜÐ,
-Esquid:S1659")Declare "mTvPressure" on a separate line.(ï–Žé8˜ÆãÜÐ,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(í„Ð¶úÿÿÿÿ8˜ÆãÜÐ,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(íž¨ªþÿÿÿÿ8˜ÆãÜÐ,
-_squid:UselessImportCheck"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ8²‘äÜÐ,
+Ksquid:S1659("(Declare "mTvMaxTemp" on a separate line.(àþá†üÿÿÿÿ8«»í¤Ñ,
+Gsquid:S1659)")Declare "mTvPressure" on a separate line.(ï–Žé8«»í¤Ñ,
+Isquid:S1659*",Declare "mTvWindDegrees" on a separate line.(æÇŒb8«»í¤Ñ,
+Usquid:S1135`"2Complete the task associated to this TODO comment.(í„Ð¶úÿÿÿÿ8«»í¤Ñ,
+Usquid:S1135i"2Complete the task associated to this TODO comment.(íž¨ªþÿÿÿÿ8«»í¤Ñ,
+gsquid:UselessImportCheck
+"7Remove this unused import 'android.widget.ImageButton'.(‚ÏÉõÿÿÿÿÿ8«»í¤Ñ,
+asquid:UselessImportCheck"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ8«»í¤Ñ,
+rsquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.TempUtils'.(Ç‚Šƒ8«»í¤Ñ,

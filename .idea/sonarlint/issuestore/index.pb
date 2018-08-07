@@ -1,6 +1,4 @@
 
-\
-,app/src/debug/res/values/google_maps_api.xml,c\7\c7ab7bac149c0f83f3f9611a0eb8fdce1aaf3aee
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 R
@@ -141,3 +139,17 @@ Y
 )app/src/main/res/layout/widget_layout.xml,a\f\af1e8a366f32f6b23c7f4b7203574e0e1365b9a2
 `
 0app/src/main/res/xml/my_widget_provider_info.xml,5\5\558f471200b4e38dcccd58c0ace577a4a0ca898a
+y
+Iapp/src/main/java/com/dsktp/sora/weatherfarm/widget/MyWidgetProvider.java,a\3\a3158779e69dbc0fdc1818369d0772e315442efb
+^
+.app/src/release/res/values/google_maps_api.xml,8\a\8ad28fcd8d693ab58d4fdb7d36965532163ebfa3
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+F
+app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+~
+Napp/src/main/java/com/dsktp/sora/weatherfarm/data/service/MyJobDispatcher.java,b\8\b8b3e8612e79154fdef5667464851dbac5fbb5a6

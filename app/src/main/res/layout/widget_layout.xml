@@ -48,7 +48,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="154dp"
         android:orientation="horizontal"
-        tools:background="?attr/colorButtonNormal">
+        >
 
         <TextView
             android:id="@+id/tv_widget_min_temp_label"

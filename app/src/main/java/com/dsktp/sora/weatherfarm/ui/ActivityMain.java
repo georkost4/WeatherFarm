@@ -18,13 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.data.network.networkReceiver;
-import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
+import com.dsktp.sora.weatherfarm.data.service.MyJobDispatcher;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -82,6 +81,9 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
         Toolbar toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
+
+        //schedule periodic update
+        MyJobDispatcher.setUpJob(this);
 
         //show the toolbar buttons
         showToolbarButtons();
@@ -305,14 +307,15 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                             FragmentErrorLayout errorLayout = new FragmentErrorLayout();
                             Bundle dataToSend = new Bundle();
                             if(AppUtils.getNetworkState(getBaseContext())) {
+                                //we have internet
                                 dataToSend.putBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY, true); // show the search bar
-                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"The location of the device cannot be found please enter it manually using the search bar.");
+                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.select_a_location_from_search_bar_text));
                             }
                             else
                             {
                                 //we have no internet
-                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"You have no internet connection , please check your connection and enter your location using the search bar.");
-                                dataToSend.putBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
+                                dataToSend.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.no_cache_no_internet_please_select_location));
+                                dataToSend.putBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false); //hide the toolbar
                             }
                             errorLayout.setArguments(dataToSend);
                             mFragmentManager.beginTransaction().replace(R.id.fragment_container,errorLayout).commit();
@@ -365,7 +368,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 else
                 {
                     //we have no internet so hide the search bar until reconnect
-                    bundle.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,"Please reconnect to the internet and select the place from the search bar");
+                    bundle.putString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY,getString(R.string.no_cache_no_internet_please_select_location));
                     bundle.putBoolean(FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
                 }
                 fragmentErrorLayout.setArguments(bundle);

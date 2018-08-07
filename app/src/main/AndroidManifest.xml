@@ -9,6 +9,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -51,6 +52,15 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/my_widget_provider_info" />
         </receiver>
+
+        <service
+            android:exported="false"
+            android:name=".data.service.MyJobDispatcher">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
