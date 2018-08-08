@@ -69,3 +69,6 @@ sensitive_data.txt
 
 # app signing key store
 android.jks
+
+# README INSTRUCTIONS
+readme.txt

@@ -8,15 +8,31 @@ import java.text.DecimalFormat;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class contains method to calculate temperature.
+ */
 public class TempUtils
 {
 
+    /**
+     * This method takes input a double representing temperature in kelvin units.
+     * Returns a String representing temperature in Fahrenheit
+     * @param kelvinTemperature The double value of the temperature
+     * @return String representing temperature in Fahrenheit
+     */
     public static String kelvinToFahrenheit(double kelvinTemperature)
     {
         //todo to be implemented
         return null;
     }
 
+    /**
+     * This method takes input a double representing temperature in kelvin units.
+     * Returns a String representing temperature in Celsius
+     * @param kelvinTemperature The double value of the temperature
+     * @return String representing temperature in Celsius
+     */
     public static String kelvinToCelsius(double kelvinTemperature)
     {
         //todo to be implemented

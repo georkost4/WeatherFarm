@@ -11,17 +11,25 @@ import com.dsktp.sora.weatherfarm.R;
 public class ImageUtils
 {
 
-    public static int getIcon(String icon)
+    /**
+     * This method takes a string input containing the weather description so the
+     * input could be something like " clouds" . The method checks if the description
+     * contains some keywords and returns the closest to that description int resource
+     * of that weatherDescription.
+     * @param weatherDescription The weather description string
+     * @return int representing a drawable icon resource
+     */
+    public static int getIcon(String weatherDescription)
     {
-        //todo to be implemented
-        if(icon.contains("rain")){ return R.drawable.ic_rain; }
-        else if(icon.contains("light rain")) return R.drawable.ic_light_rain;
-        else if(icon.contains("clear")) return R.drawable.ic_clear;
-        else if(icon.contains("few cloud")||icon.contains("broken clouds")) return R.drawable.ic_light_clouds;
-        else if(icon.contains("cloud")) return R.drawable.ic_cloudy;
-        else if(icon.contains("fog")) return R.drawable.ic_fog;
-        else if(icon.contains("snow")) return R.drawable.ic_snow;
-        else if(icon.contains("storm")) return R.drawable.ic_storm;
+        //todo add afternoon and night icons
+        if(weatherDescription.contains("rain")){ return R.drawable.ic_rain; }
+        else if(weatherDescription.contains("light rain")) return R.drawable.ic_light_rain;
+        else if(weatherDescription.contains("clear")) return R.drawable.ic_clear;
+        else if(weatherDescription.contains("few cloud")||weatherDescription.contains("broken clouds")) return R.drawable.ic_light_clouds;
+        else if(weatherDescription.contains("cloud")) return R.drawable.ic_cloudy;
+        else if(weatherDescription.contains("fog")) return R.drawable.ic_fog;
+        else if(weatherDescription.contains("snow")) return R.drawable.ic_snow;
+        else if(weatherDescription.contains("storm")) return R.drawable.ic_storm;
         return R.drawable.ic_image_placeholder;
 
     }

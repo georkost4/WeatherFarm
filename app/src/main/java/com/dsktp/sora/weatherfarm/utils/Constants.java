@@ -6,6 +6,10 @@ package com.dsktp.sora.weatherfarm.utils;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class holds constant strings used across the project
+ */
 public class Constants
 {
     public static final String BASE_AGRO_MONITORING_URL ="https://api.agromonitoring.com/agro/1.0/";
@@ -44,9 +48,9 @@ public class Constants
     public static final String PREFERENCES_IS_POLYGON_LIST_SYNCED = "polygon_sync_boolean_key";
 
 //    error strings
-    public static final String NO_PLACE =" Unknown name";
-    public static final String NO_LATITUDE ="Unkown lat";
-    public static final String NO_LONGTITUDE =" Unknown lon";
+    public static final String NO_PLACE ="Unknown name";
+    public static final String NO_LATITUDE ="Unknown lat";
+    public static final String NO_LONGITUDE ="Unknown lon";
 
     //FragmentErrorLayout.java
 
