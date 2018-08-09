@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
-import com.dsktp.sora.weatherfarm.data.network.networkReceiver;
+import com.dsktp.sora.weatherfarm.data.network.NetworkReceiver;
 import com.dsktp.sora.weatherfarm.data.service.MyJobDispatcher;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
@@ -66,7 +66,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     @Override
     protected void onStart() {
         super.onStart();
-        mReceiver = new networkReceiver();
+        mReceiver = new NetworkReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         if(mReceiver!=null) registerReceiver(mReceiver,intentFilter);
@@ -271,12 +271,11 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     public void onSettingsClicked(View view) {
         view.setVisibility(View.GONE); // todo maybe remove this
-        if (mFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG) == null) {
+        if (mFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG) == null)
+        {
             mFragmentSettings = new FragmentSettings();
             mFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragmentSettings, SETTINGS_FRAGMENT_TAG).addToBackStack("").commit();
             mFragmentSettings.setCallback(this);
-
-
         }
     }
 
@@ -331,7 +330,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         //The position has changed so re fetch data for the new location
         String[] newLocationArray = AppUtils.getSelectedPosition(this);
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
-
         showWeatherForecastFragment();
     }
 

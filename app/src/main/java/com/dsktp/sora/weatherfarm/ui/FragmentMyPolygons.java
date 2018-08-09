@@ -1,23 +1,18 @@
 package com.dsktp.sora.weatherfarm.ui;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
@@ -32,7 +27,6 @@ import com.dsktp.sora.weatherfarm.data.viewmodel.PolygonViewModel;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -91,11 +85,11 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 
         //inflate the list of the polygons
         RecyclerView rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
-        mAdapter = new PolygonAdapter(getContext());
+        mAdapter = new PolygonAdapter();
         rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPolygons.setAdapter(mAdapter);
 
-        mAdapter.setmCallback(this);
+        mAdapter.setCallback(this);
 
         ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getActivity(), new Observer<List<PolygonInfoPOJO>>() {
             @Override
