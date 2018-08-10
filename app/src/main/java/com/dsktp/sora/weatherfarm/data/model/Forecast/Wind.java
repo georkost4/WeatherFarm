@@ -9,6 +9,13 @@ import android.os.Parcelable;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+
+/**
+ * This class represents a Wind object that is a part of the API response
+ * when you request weather forecast data. It also implements the Parcelable
+ * interface so we can write the object into Room Database
+ */
 public class Wind implements Parcelable {
     private double speed;
     private double deg;

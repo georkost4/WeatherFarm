@@ -22,6 +22,12 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.NO_LATITUDE;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class is used to setup and run a periodic job every
+ * 3 hours to update the data from the server. It uses the Firebase
+ * Job dispatcher class
+ */
 public class MyJobDispatcher extends JobService {
 
     private String DEBUG_TAG = "#MyJobDispatcher";
@@ -49,6 +55,10 @@ public class MyJobDispatcher extends JobService {
         return false;
     }
 
+    /**
+     * This method set's up a Firebase Job.
+     * @param context The context to access the Job Dispatcher
+     */
     public static void setUpJob(Context context)
     {
         // Create a new dispatcher using the Google Play driver.
@@ -70,10 +80,11 @@ public class MyJobDispatcher extends JobService {
                 // retry with exponential backoff
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 // constraints that need to be satisfied for the job to run
-                .setConstraints(
-                        // only run on any network
-                        Constraint.ON_ANY_NETWORK
-                )
+                .setConstraints
+                        (
+                                // run on any network
+                                Constraint.ON_ANY_NETWORK
+                        )
                 .build();
 
         dispatcher.mustSchedule(myJob);

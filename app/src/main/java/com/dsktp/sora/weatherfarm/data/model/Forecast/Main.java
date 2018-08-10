@@ -9,6 +9,12 @@ import android.os.Parcelable;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents a Main object that is a part of the API response
+ * when you request weather forecast data. It also implements the Parcelable
+ * interface so we can write the object into Room Database
+ */
 public class Main implements Parcelable {
     private double temp;
     private double temp_min;
@@ -30,8 +36,7 @@ public class Main implements Parcelable {
         this.humidity = humidity;
     }
 
-    public Main() {
-    }
+    public Main() {  }
 
     public double getTemp() {
         return temp;
@@ -97,6 +102,7 @@ public class Main implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
+        //write the values to Parcel object
         dest.writeDouble(temp);
         dest.writeDouble(temp_min);
         dest.writeDouble(temp_max);
@@ -118,7 +124,10 @@ public class Main implements Parcelable {
     };
 
 
-    private Main(Parcel in) {
+    private Main(Parcel in)
+    {
+        //read and set the values from
+        //the Parcel object
         setTemp(in.readDouble());
         setTemp_min(in.readDouble());
         setTemp_max(in.readDouble());

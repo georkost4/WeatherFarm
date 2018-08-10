@@ -10,6 +10,11 @@ import android.support.annotation.NonNull;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents a Polygon object from the API response
+ * when you request the List of Polygons .
+ */
 @Entity(tableName = "polygonTable")
 public class PolygonInfoPOJO
 {
@@ -22,8 +27,7 @@ public class PolygonInfoPOJO
     private double area;
     private String user_id;
 
-    public PolygonInfoPOJO() {
-    }
+    public PolygonInfoPOJO() {   } // empty constructor
 
     @NonNull
     public String getId() {

@@ -6,6 +6,12 @@ package com.dsktp.sora.weatherfarm.data.model.Polygons;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+
+/**
+ * This class represents a GeoJSON object that is a part of the API response
+ * when you request the List of Polygons .
+ */
 public  class GeoJSON
 {
     private final String type = "Feature";
@@ -19,8 +25,6 @@ public  class GeoJSON
 
 
 
-
-
     public String getType() {
         return type;
     }
@@ -29,7 +33,8 @@ public  class GeoJSON
         return properties;
     }
 
-    public void setProperties(PolygonProperties properties) {
+    public void setProperties(PolygonProperties properties)
+    {
         this.properties = properties;
     }
 

@@ -15,6 +15,12 @@ import java.util.ArrayList;
  * UDACITY ND programm.
  */
 
+
+/**
+ * This class represents a WeatherForecastPOJO object from the  API response
+ * when you request weather forecast data. It also implements the Parcelable
+ * interface so we can write the object into Room Database
+ */
 @Entity(tableName = "weatherForecastTable")
 public class WeatherForecastPOJO implements Parcelable
 {

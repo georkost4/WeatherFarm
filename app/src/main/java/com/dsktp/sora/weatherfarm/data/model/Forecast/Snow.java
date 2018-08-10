@@ -11,6 +11,13 @@ import com.google.gson.annotations.SerializedName;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+
+/**
+ * This class represents a Snow object that is a part of the API response
+ * when you request weather forecast data. It also implements the Parcelable
+ * interface so we can write the object into Room Database
+ */
 public class Snow implements Parcelable {
     @SerializedName("3h")
     private double threeHourSnowVolume;

@@ -10,6 +10,12 @@ import android.arch.persistence.room.PrimaryKey;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents a UVindex object that is a part of the API response
+ * when you request UV index forecast data. It also implements the Parcelable
+ * interface so we can write the object into Room Database
+ */
 @Entity(tableName = "CurrentUltraVioletDataTable")
 public class UVindex
 {

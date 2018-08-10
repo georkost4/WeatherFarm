@@ -8,17 +8,18 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents a Geometry object that is a part of the API response
+ * when you push a user - defined polygon to the server .
+ */
 public  class Geometry {
     private final String type = "Polygon";
-
     private List<double[][]> coordinates;
 
-//    public Geometry(List<List<Coordinates>> coordinates) {
-//        this.coordinates = coordinates;
-//    }
 
-
-    public Geometry(List<double[][]> coordinates) {
+    public Geometry(List<double[][]> coordinates)
+    {
         this.coordinates = coordinates;
     }
 

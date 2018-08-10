@@ -13,15 +13,14 @@ import java.util.List;
  * UDACITY ND programm.
  */
 
-public class PolygonPOJO
+public class SendPolygonPOJO
 {
     private String name;
     private GeoJSON geo_json;
 
 
 
-    public PolygonPOJO() {
-    }
+    public SendPolygonPOJO() { } // empty constructor
 
     public String getName() {
         return name;

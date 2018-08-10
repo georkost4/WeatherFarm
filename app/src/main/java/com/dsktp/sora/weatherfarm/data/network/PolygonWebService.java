@@ -1,7 +1,7 @@
 package com.dsktp.sora.weatherfarm.data.network;
 
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
+import com.dsktp.sora.weatherfarm.data.model.Polygons.SendPolygonPOJO;
 
 import java.util.List;
 
@@ -21,11 +21,17 @@ import retrofit2.http.Query;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This interface defines the methods that the Retrofit library will use
+ * to send and receive Polygon data from the Agro Monitoring API. The following
+ * methods define the web endpoint along with any Path and Query variables.
+ */
 interface PolygonWebService
 {
     @Headers({"Content-Type: application/json"})
     @POST("polygons")
-    Call<PolygonInfoPOJO> sendPolygon(@Query("appid") String API_KEY, @Body PolygonPOJO body);
+    Call<PolygonInfoPOJO> sendPolygon(@Query("appid") String API_KEY, @Body SendPolygonPOJO body);
 
     @GET("polygons/{polyID}")
     Call<PolygonInfoPOJO> getPolygonInfo(@Path("polyID") String polyID, @Query("appid") String API_KEY);

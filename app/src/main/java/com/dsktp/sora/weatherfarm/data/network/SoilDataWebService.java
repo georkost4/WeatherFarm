@@ -13,6 +13,12 @@ import retrofit2.http.Query;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This interface defines the methods that the Retrofit library will use
+ * to send and receive Soil data from the Agro Monitoring API. The following
+ * methods define the web endpoint along with any Path and Query variables.
+ */
 interface SoilDataWebService
 {
     @GET("soil")

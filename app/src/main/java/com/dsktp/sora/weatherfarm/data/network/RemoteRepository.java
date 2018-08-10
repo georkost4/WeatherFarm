@@ -13,7 +13,7 @@ import com.dsktp.sora.weatherfarm.data.model.Polygons.GeoJSON;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.Geometry;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonInfoPOJO;
 import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonProperties;
-import com.dsktp.sora.weatherfarm.data.model.Polygons.PolygonPOJO;
+import com.dsktp.sora.weatherfarm.data.model.Polygons.SendPolygonPOJO;
 import com.dsktp.sora.weatherfarm.data.repository.AppDatabase;
 import com.dsktp.sora.weatherfarm.data.repository.AppExecutors;
 import com.dsktp.sora.weatherfarm.data.repository.PolygonDao;
@@ -416,8 +416,8 @@ public class RemoteRepository
         PolygonWebService service = retrofit.create(PolygonWebService.class);
 
 
-        PolygonPOJO polygonPOJO = new PolygonPOJO();
-        polygonPOJO.setName(polygonName);
+        SendPolygonPOJO sendPolygonPOJO = new SendPolygonPOJO();
+        sendPolygonPOJO.setName(polygonName);
 
         double[][] coordinatesArray = new double[5][2];
 
@@ -445,9 +445,9 @@ public class RemoteRepository
         Geometry polygonGeometry = new Geometry(pointList);
         GeoJSON data = new GeoJSON(new PolygonProperties(),polygonGeometry);
 
-        polygonPOJO.setGeo_json(data);
+        sendPolygonPOJO.setGeo_json(data);
 
-        Call<PolygonInfoPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey,polygonPOJO);
+        Call<PolygonInfoPOJO> responsePOJOCall = service.sendPolygon(BuildConfig.AgroMonitorAPIKey, sendPolygonPOJO);
 
         Log.d(DEBUG_TAG,bodyToString(responsePOJOCall.request().body()));
 
@@ -488,7 +488,9 @@ public class RemoteRepository
     }
 
     private static String bodyToString(final RequestBody request){
-        try {
+        try
+
+        {
             final RequestBody copy = request;
             final Buffer buffer = new Buffer();
             copy.writeTo(buffer);

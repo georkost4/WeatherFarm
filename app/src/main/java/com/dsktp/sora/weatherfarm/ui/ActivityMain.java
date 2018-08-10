@@ -69,7 +69,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         mReceiver = new NetworkReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        if(mReceiver!=null) registerReceiver(mReceiver,intentFilter);
+        registerReceiver(mReceiver,intentFilter);
     }
 
     @Override
@@ -97,9 +97,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         {
             //we have cached data so show them to the user
             showWeatherForecastFragment();
-
         }
-
 
     }
 

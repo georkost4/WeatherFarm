@@ -1,4 +1,4 @@
 
-psquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡ô£ÿ
-Ksquid:S1068"*Remove this unused "points" private field.(–ƒ˜ºþÿÿÿÿ8Ðì™£Ì,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(–ƒ˜ºþÿÿÿÿ8”´€ÃÌ,
+Usquid:S1135"2Complete the task associated to this TODO comment.(–ƒ˜ºþÿÿÿÿ8”´€ÃÌ,
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡ô£ÿ
+Msquid:S1068"*Remove this unused "points" private field.(–ƒ˜ºþÿÿÿÿ8Ðì™£Ì,

@@ -155,3 +155,5 @@ X
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/service/MyJobDispatcher.java,b\8\b8b3e8612e79154fdef5667464851dbac5fbb5a6
 s
 Capp/src/main/java/com/dsktp/sora/weatherfarm/utils/FormatUtils.java,8\0\803d378542eb468382812516d3bc5bc350088c8f
+~
+Napp/src/main/java/com/dsktp/sora/weatherfarm/data/network/NetworkReceiver.java,f\8\f80b31a16308a8a2cbab8d4f98336a6c903123cf
