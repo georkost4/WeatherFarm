@@ -46,50 +46,50 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
 
+        //todo check if the polygon list has been synced first before checking for internet
 
-
-        if(AppUtils.getNetworkState(getContext())) {
-            //show the loading indicator
-            mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
-
-            //get the polygon list only if the polygon list hasn't been synced
-            //otherwise query the local database
-            if (!AppUtils.hasThePolygonListSynced(getContext())) {
+        //get the polygon list only if the polygon list hasn't been synced
+        //and we have internet
+        //otherwise query the local database
+        if (!AppUtils.hasThePolygonListSynced(getContext())) {
+            if (AppUtils.getNetworkState(getContext()))
+            {
+                //we have internet
+                //start the loading from the server
+                //show the loading indicator
+                mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
                 RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
+            } else
+            {
+                //we dont have internet to fetch the data
+                //show the refresh button until the user connect to internet
+                ImageButton refresh = getActivity().findViewById(R.id.toolbar_refresh_button);
+                refresh.setVisibility(View.VISIBLE); //show the refresh button
+                //set the refresh button listener
+                refresh.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (AppUtils.getNetworkState(getContext())) {
+                            //update the polygon list
+                            Toast.makeText(getContext(), R.string.updating_list_string, Toast.LENGTH_SHORT).show();
+                            RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
+                        } else {
+                            //show error message
+                            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         }
-        else
-        {
-            ImageButton refresh = getActivity().findViewById(R.id.toolbar_refresh_button);
-            refresh.setVisibility(View.VISIBLE); //show the refresh button
-            //set the refresh button listener
-            refresh.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(AppUtils.getNetworkState(getContext()))
-                    {
-                        //update the polygon list
-                        Toast.makeText(getContext(), R.string.updating_list_string,Toast.LENGTH_SHORT).show();
-                        RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
-                    }
-                    else
-                    {
-                        Toast.makeText(getContext(), R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+
+
         //set up toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
 
-        //inflate the list of the polygons
-        RecyclerView rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
-        mAdapter = new PolygonAdapter();
-        rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvPolygons.setAdapter(mAdapter);
+        //set up the recyclerView
+        setUpRecyclerView();
 
-        mAdapter.setCallback(this);
 
         ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getActivity(), new Observer<List<PolygonInfoPOJO>>() {
             @Override
@@ -105,6 +105,16 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
 
 
         return mInflatedView;
+    }
+
+    private void setUpRecyclerView() {
+        //inflate the list of the polygons
+        RecyclerView rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
+        mAdapter = new PolygonAdapter();
+        rvPolygons.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPolygons.setAdapter(mAdapter);
+
+        mAdapter.setCallback(this);
     }
 
     @Override

@@ -16,6 +16,11 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class defines  the methods that are available to the CurrentUltraVioletDataTable
+ * to the Room Database
+ */
 @Dao
 public interface UVindexDao
 {

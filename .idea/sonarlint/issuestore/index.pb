@@ -37,14 +37,10 @@ Papp/src/main/java/com/dsktp/sora/weatherfarm/data/network/UViDataWebService.jav
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/Geometry.java,d\b\db27bc484090705c0b3c8a5d4418a362628e09f3
 á
 Wapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/PolygonProperties.java,8\9\89cb49bd443da58dd1593360c81a2fabeceb6281
-Å
-Qapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/Coordinates.java,7\f\7f7a5e5c5e87814ccc997ee32e79ebb90508c18f
 Ä
 Papp/src/main/java/com/dsktp/sora/weatherfarm/data/network/PolygonWebService.java,2\5\253b3e73c521037050b5056b4b887145e1d19e5b
 }
 Mapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/GeoJSON.java,c\0\c0398b6465c79238b71daba05af13f98023e1f38
-{
-Kapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/Point.java,6\c\6c73ea7614e937b3ee36f4f3d5d45e7f4e102ceb
 Ö
 Uapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/PolygonInfoPOJO.java,3\3\3387139cd0d2f11eec4526e43de40ae473200adb
 }
@@ -57,8 +53,6 @@ w
 Gapp/src/androidTest/java/com/dsktp/sora/weatherfarm/UVindexDaoTest.java,f\6\f6ccccc64b0a1e1e965089e48dd473eed01aba8e
 x
 Happ/src/androidTest/java/com/dsktp/sora/weatherfarm/SoilDataDaoTest.java,d\0\d05ef208281dddf794a6f4d7627aeed51d8b6b0b
-Å
-Qapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/PolygonPOJO.java,e\7\e72830b6ad738ce16099f441327cfcd22f8134e6
 q
 Aapp/src/main/java/com/dsktp/sora/weatherfarm/utils/Converter.java,4\0\408dbbe36d0e42f0754c38a8c72c28936b7da907
 |
@@ -157,3 +151,5 @@ s
 Capp/src/main/java/com/dsktp/sora/weatherfarm/utils/FormatUtils.java,8\0\803d378542eb468382812516d3bc5bc350088c8f
 ~
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/network/NetworkReceiver.java,f\8\f80b31a16308a8a2cbab8d4f98336a6c903123cf
+Ö
+Uapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/SendPolygonPOJO.java,9\d\9d3ad57a9476ace4e159e738891efa721e5c65a3

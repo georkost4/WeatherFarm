@@ -17,6 +17,12 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class defines a ViewModel used for the Polygon objects
+ * to be observable from the fragment and update the UI when a change
+ * occurs to the data
+ */
 public class PolygonViewModel extends AndroidViewModel
 {
     private static final String DEBUG_TAG = "#PolygonViewModel";

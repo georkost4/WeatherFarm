@@ -18,6 +18,12 @@ import com.dsktp.sora.weatherfarm.utils.Converter;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents a Room Database implementation . The member variables are classes that each one hold
+ * methods for specific tables in this database.It also implements the Singleton Pattern to make sure that only
+ * one instance of thi class is active.
+ */
 @Database(entities = {Soil.class, UVindex.class, WeatherForecastPOJO.class, PolygonInfoPOJO.class}, version = 1,exportSchema = false)
 @TypeConverters({Converter.class})
 public abstract class AppDatabase extends RoomDatabase
@@ -28,10 +34,16 @@ public abstract class AppDatabase extends RoomDatabase
     public abstract PolygonDao polygonDao();
     public abstract WeatherForecastDao weatherForecastDao();
 
+    /**
+     * Singleton Constructor
+     * @param context The context to create the Database
+     * @return AppDatabase object
+     */
     public static AppDatabase getsDbInstance(Context context)
     {
         if(sDbInstance == null)
         {
+            //create the room database
             sDbInstance = Room.databaseBuilder(context,AppDatabase.class,"ApplicationDatabase").build();
         }
         return sDbInstance;

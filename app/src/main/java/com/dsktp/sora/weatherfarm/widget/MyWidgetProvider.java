@@ -28,7 +28,9 @@ import static android.appwidget.AppWidgetManager.getInstance;
 /**
  * Implementation of App Widget functionality.
  */
-public class MyWidgetProvider extends AppWidgetProvider {
+public class MyWidgetProvider extends AppWidgetProvider
+{
+    private static String DEBUG_TAG = "#MyWidgetProvider";
 
     private static void updateAppWidget(final Context context, final AppWidgetManager appWidgetManager,
                                         final int appWidgetId) {
@@ -39,9 +41,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
             @Override
             public void run() {
                 List<WeatherForecastPOJO> weatherForecastPOJOList = AppDatabase.getsDbInstance(context).weatherForecastDao().getWeatherEntriesList();
-                Log.d("#TEST", String.valueOf(weatherForecastPOJOList.get(0).getDt()));
-
-                if(weatherForecastPOJOList!=null && !weatherForecastPOJOList.isEmpty())
+                if(!weatherForecastPOJOList.isEmpty())
                 {
                     updateValues(views,weatherForecastPOJOList,context);
                     // Instruct the widget manager to update the widget
@@ -52,7 +52,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
     }
 
     private static void updateValues(RemoteViews views, List<WeatherForecastPOJO> weatherForecastPOJOList,Context context) {
-        Log.i("#TEST","updating values");
+        Log.i(DEBUG_TAG,"Updating the widget values");
         views.setTextViewText(R.id.tv_widget_date, TimeUtils.unixToDate(weatherForecastPOJOList.get(0).getDt()));
         views.setTextViewText(R.id.tv_widget_location_value, AppUtils.getSelectedPosition(context)[0]);
         views.setTextViewText(R.id.tv_widget_temp, FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOList.get(0).getMain().getTemp())));
@@ -85,6 +85,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        //if the action equal to ACTION == UPDATE then update the Widget UI
         if(intent.getAction().equals(ACTION_APPWIDGET_UPDATE))
         {
             int[] ids = (int[]) intent.getExtras().get(AppWidgetManager.EXTRA_APPWIDGET_IDS);

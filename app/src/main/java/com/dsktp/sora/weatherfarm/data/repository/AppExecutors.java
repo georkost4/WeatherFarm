@@ -9,12 +9,18 @@ import java.util.concurrent.Executors;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class utilizes the Executor class to implement a singleThread executor, to run
+ * database queries in a background thread.
+ */
 public class AppExecutors
 {
     private static AppExecutors sInstance;
     private final Executor roomIO;
 
-    private AppExecutors(Executor roomIO) {
+    private AppExecutors(Executor roomIO)
+    {
         this.roomIO = roomIO;
     }
 
