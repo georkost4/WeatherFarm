@@ -57,11 +57,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     private FusedLocationProviderClient mFusedLocationClient;
     private BroadcastReceiver mReceiver;
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(mReceiver!=null) unregisterReceiver(mReceiver);
-    }
+
 
     @Override
     protected void onStart() {
@@ -381,6 +377,13 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     private void hideToolbarButtons() {
         findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
         findViewById(R.id.settings_btn).setVisibility(View.GONE);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mReceiver!=null) unregisterReceiver(mReceiver);
     }
 
 

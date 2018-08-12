@@ -35,6 +35,10 @@ import java.util.List;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class contains methods that create and interact with the polygons.
+ */
 public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.PolygonRowCallback,RemoteRepository.deliveryCallBack
 {
     private static final String DEBUG_TAG = "#FragmentMyPolygons";
@@ -45,8 +49,6 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
-
-        //todo check if the polygon list has been synced first before checking for internet
 
         //get the polygon list only if the polygon list hasn't been synced
         //and we have internet
@@ -107,6 +109,12 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         return mInflatedView;
     }
 
+    /**
+     * This method set's up the recyclerView by
+     * getting a reference to the view , creating a
+     * new adapter object , setting it's layout manager
+     * and data adapter.
+     */
     private void setUpRecyclerView() {
         //inflate the list of the polygons
         RecyclerView rvPolygons = mInflatedView.findViewById(R.id.rv_polygon_list);
@@ -117,6 +125,13 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         mAdapter.setCallback(this);
     }
 
+    /**
+     * This method is triggered when the user click on
+     * the "Delete" button on the polygon list. It sends
+     * a request to delete the polygon from the local and
+     * remote server
+     * @param polygonID The polygonID to delete
+     */
     @Override
     public void handleDeleteButtonClick(final String polygonID)
     {
@@ -132,6 +147,14 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         });
     }
 
+
+    /**
+     * This method is triggered when the user click on
+     * the "forecast" button on the polygon list. It sends
+     * a request to fetch the weather forecast data for that
+     * specific polygon
+     * @param polygonID The polygonID to fetch the data
+     */
     @Override
     public void handleForecastButtonClick(String polygonID)
     {
@@ -142,11 +165,16 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         }
         else
         {
+            //inform the user about the internet connection
             Toast.makeText(getContext(), R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
         }
     }
 
-
+    /**
+     * This method is triggered when the Remote Repository has a successful
+     * response from the server containing the polygon List.
+     * @param polygonList List<WeatherForecastPOJO> containing the user-defined polygons
+     */
     @Override
     public void populateList(List<WeatherForecastPOJO> polygonList)
     {
@@ -164,18 +192,21 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     @Override
     public void onStart() {
         super.onStart();
+        //hide the toolbar button "Polygons"
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        //show the toolbar button "Polygons"
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        //hide the the "Refresh" icon from the toolbar
         getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
     }
 }
