@@ -48,12 +48,7 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.WEATHER_FORECAST_FRAGME
  */
 public class ActivityMain extends AppCompatActivity implements FragmentSettings.SettingsChangeCallback {
     private static final String DEBUG_TAG = "#ActivityMain";
-    private FragmentMap mMapFragment;
-    private FragmentWeatherForecast mWeatherFragment;
-    private FragmentMyPolygons mPolygonFragment;
-    private FragmentSettings mFragmentSettings;
     private FragmentManager mFragmentManager;
-    private FragmentDetailedWeatherInfo mDetailWeatherForecast;
     private FusedLocationProviderClient mFusedLocationClient;
     private BroadcastReceiver mReceiver;
 
@@ -62,9 +57,11 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     @Override
     protected void onStart() {
         super.onStart();
+        //initialize the broadcast receiver
         mReceiver = new NetworkReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        //register the receiver with the action CONNECTIVITY_ACTION
         registerReceiver(mReceiver,intentFilter);
     }
 
@@ -80,7 +77,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
         //schedule periodic update
         MyJobDispatcher.setUpJob(this);
-
         //show the toolbar buttons
         showToolbarButtons();
         //check for cached data and show the error layout if no cached data is available
@@ -97,18 +93,18 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     }
 
-    private void showToolbarButtons() {
-        //show the toolbar buttons
-        findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
-        findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
-    }
 
+
+    /**
+     * This method makes the fragment transaction and shows the user
+     * the Weather Forecast fragment
+     */
     private void showWeatherForecastFragment() {
         // show the Weather forecast fragment
         if (mFragmentManager.findFragmentByTag(WEATHER_FORECAST_FRAGMENT_TAG) == null) //check to see if it already exists before re-creating
         {
             Log.i(DEBUG_TAG, "Creating weather fragment");
-            mWeatherFragment = new FragmentWeatherForecast();
+            FragmentWeatherForecast mWeatherFragment = new FragmentWeatherForecast();
             mFragmentManager.beginTransaction().replace(R.id.fragment_container, mWeatherFragment, WEATHER_FORECAST_FRAGMENT_TAG).commit();
         }
 
@@ -176,7 +172,16 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         }
     }
 
+    /**
+     * This method makes a check to see if the app is run for the first time meaning that
+     * the selected weather position , current position is null . It also checks for internet connection
+     * and shows the error layout fragment with the appropriate text message to inform the user about
+     * the current app state
+     */
     private void checkForNetworkAndCachedData() {
+        //we dont have internet
+        //we dont have current position
+        //we dont have selected position
         if(!AppUtils.getNetworkState(this)&&AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE)&&AppUtils.getCurrentPosition(this)[0].equals(NO_LATITUDE))
         {
             Log.i(DEBUG_TAG,"Choosing the first layout");
@@ -192,6 +197,9 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
             mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout,FRAGMENT_ERROR_LAYOUT_TAG).commit();
 
         }
+        //we have internet
+        //we dont have selected position
+        //we dont have current position
         else if(AppUtils.getNetworkState(this)&&AppUtils.getSelectedPosition(this)[0].equals(NO_PLACE) && AppUtils.getCurrentPosition(this)[0].equals(NO_LATITUDE))
         {
             Log.i(DEBUG_TAG,"Choosing the second layout");
@@ -217,7 +225,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 mFragmentManager.popBackStack();
                 if (mFragmentManager.getBackStackEntryCount() == 1) // stack count == 1 means that the user is in the FIRST screen so HIDE the up nav button
                 {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false); //hide the back button on the toolbar
                 }
                 break;
             }
@@ -228,28 +236,38 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (mFragmentManager.getBackStackEntryCount() == 0) {
-            findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE); //show the button if the user navigates to first screen
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        if (mFragmentManager.getBackStackEntryCount() == 0)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false); //hide the back button from toolbar
         }
     }
 
+    /**
+     * This method handles the click on the toolbar button "POLYGONS".It takes the user
+     * to the Polygon Fragment screen.
+     * @param view The View(Polygons Button) object that was clicked
+     */
     public void onPolygonsClick(View view) {
         if (mFragmentManager.findFragmentByTag(Constants.POLYGON_FRAGMENT_TAG) == null) // if the click came from settings dont add it to the back stack
         {
             Log.i(DEBUG_TAG, "Creating polygon fragment");
-            mPolygonFragment = new FragmentMyPolygons();
+            FragmentMyPolygons mPolygonFragment = new FragmentMyPolygons();
             mFragmentManager.beginTransaction().replace(R.id.fragment_container, mPolygonFragment, POLYGON_FRAGMENT_TAG).
                     setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
         }
 
     }
 
+    /**
+     * This method handles the click on the  floating action button " + ".It takes the user
+     * to the Map Fragment screen.
+     * @param view The View(Map Floating Action Button) object that was clicked
+     */
     public void onMapClick(View view) {
         if(AppUtils.getNetworkState(this)) {
             if (mFragmentManager.findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null) {
                 Log.i(DEBUG_TAG, "Creating map fragment");
-                mMapFragment = new FragmentMap();
+                FragmentMap mMapFragment = new FragmentMap();
                 mFragmentManager.beginTransaction().replace(R.id.fragment_container, mMapFragment, MAP_FRAGMENT_TAG)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .addToBackStack("")
@@ -263,16 +281,25 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     }
 
+    /**
+     * This method handles the click on the toolbar button "SETTINGS".It takes the user
+     * to the Settings Fragment screen.
+     * @param view The View(Settings Button) object that was clicked
+     */
     public void onSettingsClicked(View view) {
-        view.setVisibility(View.GONE); // todo maybe remove this
         if (mFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG) == null)
         {
-            mFragmentSettings = new FragmentSettings();
+            FragmentSettings mFragmentSettings = new FragmentSettings();
             mFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragmentSettings, SETTINGS_FRAGMENT_TAG).addToBackStack("").commit();
-            mFragmentSettings.setCallback(this);
+            mFragmentSettings.setCallback(this); // set the callback to this activity/fragment so we can handle the onSettingsChanged method
         }
     }
 
+    /**
+     * This method uses a Fused Location client to get the current position of the device.
+     * If successful it requests weather data for that position , otherwise it shows the
+     * error layout to the user with the right text to inform him about the state of the app.
+     */
     private void getCurrentPosition() {
         //get the current positions
         //and request weather data for that location
@@ -318,8 +345,14 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 });
     }
 
+    /**
+     * This is a callback method that is triggered when a settings option is changed
+     * in the Settings Fragment . It reloads the UI properly according to the change
+     * in settings the user made.
+     */
     @Override
     public void onSettingsChanged() {
+        //todo add a Settings ID changed to have more cases to handle
         Log.d(DEBUG_TAG,"On settings change");
         //The position has changed so re fetch data for the new location
         String[] newLocationArray = AppUtils.getSelectedPosition(this);
@@ -374,15 +407,28 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         }
     }
 
+    /**
+     * This method hides the toolbar button from the user
+     */
     private void hideToolbarButtons() {
         findViewById(R.id.btn_my_polygons).setVisibility(View.GONE);
         findViewById(R.id.settings_btn).setVisibility(View.GONE);
+    }
+
+    /**
+     * This method makes the toolbar buttons visible to the user
+     */
+    private void showToolbarButtons() {
+        //show the toolbar buttons
+        findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
+        findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
     }
 
 
     @Override
     protected void onStop() {
         super.onStop();
+        //unregister the receiver
         if(mReceiver!=null) unregisterReceiver(mReceiver);
     }
 
