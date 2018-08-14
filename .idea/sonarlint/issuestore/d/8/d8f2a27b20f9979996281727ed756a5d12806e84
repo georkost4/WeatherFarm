@@ -1,12 +1,7 @@
 
-Vsquid:S1135‹"2Complete the task associated to this TODO comment.(É¬üñıÿÿÿÿ8Ü›¥¬Ñ,
-‚squid:S14504"_Remove the "mWeatherFragment" field and declare it as a local variable in the relevant methods.(‹¤ùÿÿÿÿ8Ü›¥¬Ñ,
-osquid:S1301×"KReplace this "switch" statement by "if" statements to increase readability.(É–òÈúÿÿÿÿ8Ü›¥¬Ñ,
-usquid:S3776v"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¡¥‹âşÿÿÿÿ8Ü›¥¬Ñ,
-Qsquid:S1199Ø"-Extract this nested code block into a method.(°íäÿÿÿÿÿ8Ü›¥¬Ñ,
-]"squid:SwitchLastCaseIsDefaultCheck×""Add a default case to this switch.(É–òÈúÿÿÿÿ8Ü›¥¬Ñ,
-Xsquid:S10688":Remove this unused "mDetailWeatherForecast" private field.(ÊĞÇ 8Ü›¥¬Ñ,
-~squid:S14503"[Remove the "mMapFragment" field and declare it as a local variable in the relevant methods.(ÿáá™ûÿÿÿÿ8Ü›¥¬Ñ,
-}squid:S14505"_Remove the "mPolygonFragment" field and declare it as a local variable in the relevant methods.(ãöãá8Ü›¥¬Ñ,
-qsquid:MaximumInheritanceDepth1"<This class has 7 parents which is greater than 5 authorized.(íÔ«£úÿÿÿÿ8Ü›¥¬Ñ,
-~squid:S14506"`Remove the "mFragmentSettings" field and declare it as a local variable in the relevant methods.(è´®Š8Ü›¥¬Ñ,
+Nsquid:S1199"-Extract this nested code block into a method.(°íäÿÿÿÿÿ8ù”¤¥Ó,
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¡¥‹âşÿÿÿÿ8ù”¤¥Ó,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(ş¹’î8‘Õµ¥Ó,
+osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(íÔ«£úÿÿÿÿ8ù”¤¥Ó,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(É–òÈúÿÿÿÿ8ù”¤¥Ó,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(É–òÈúÿÿÿÿ8ù”¤¥Ó,

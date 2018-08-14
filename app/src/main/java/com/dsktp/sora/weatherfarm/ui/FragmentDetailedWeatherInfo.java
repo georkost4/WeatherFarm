@@ -7,10 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -18,7 +16,6 @@ import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
-import com.dsktp.sora.weatherfarm.utils.TempUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 
 import static com.dsktp.sora.weatherfarm.utils.TempUtils.kelvinToCelsius;
@@ -29,6 +26,12 @@ import static com.dsktp.sora.weatherfarm.utils.TempUtils.kelvinToCelsius;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+
+/**
+ * This class represents the fragment that shows more details about
+ * the current forecast weather data
+ */
 public class FragmentDetailedWeatherInfo extends Fragment
 {
     private View mInflatedView;
@@ -37,9 +40,12 @@ public class FragmentDetailedWeatherInfo extends Fragment
     private TextView mTvTemp;
     private TextView mTvDay;
     private ImageView mIvWeatherIcon;
-    private TextView mTvMinTemp,mTvMaxTemp;
-    private TextView mTvHumidity,mTvPressure;
-    private TextView mTvWindSpeed,mTvWindDegrees;
+    private TextView mTvMinTemp;
+    private TextView mTvMaxTemp;
+    private TextView mTvHumidity;
+    private TextView mTvPressure;
+    private TextView mTvWindSpeed;
+    private TextView mTvWindDegrees;
     private TextView mTvCloudiness;
     private TextView mTvRainVolume;
     private TextView mTvSnowVolume;
@@ -68,7 +74,7 @@ public class FragmentDetailedWeatherInfo extends Fragment
         mInflatedView.findViewById(R.id.detailed_fragment_loading_indicator).setVisibility(View.VISIBLE);
         // bind the views
         bindViews();
-
+        //set up the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.detailed_forecast_toolbar_title);
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -113,6 +119,10 @@ public class FragmentDetailedWeatherInfo extends Fragment
 
     }
 
+    /**
+     * This method binds the variables to each view using the method
+     * findViewByIId of the inflated view
+     */
     private void bindViews()
     {
         mTvLocation = mInflatedView.findViewById(R.id.tv_detail_current_location_value);

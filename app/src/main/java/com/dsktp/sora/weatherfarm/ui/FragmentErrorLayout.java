@@ -26,6 +26,12 @@ import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragmen
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This fragment is used to inform the user about some errors such as no cached weather data to show
+ * , no current or selected place is configured to get the weather forecast data or there is no internet
+ * connectivity to select a place to get weather data.
+ */
 public class FragmentErrorLayout extends Fragment
 {
     private static final String DEBUG_TAG = "#FragmentErrorLayout";
@@ -40,8 +46,8 @@ public class FragmentErrorLayout extends Fragment
         {
             Log.d(DEBUG_TAG,"Getting the values from the bundle");
             //Get the values from the bundle
-            mInformationalText = getArguments().getString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY);
-            mShowSearchLayoutFlag = getArguments().getBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false);
+            mInformationalText = getArguments().getString(Constants.FRAGMENT_ERROR_LAYOUT_TEXT_BUNDLE_KEY); // this value determines the text the user will see
+            mShowSearchLayoutFlag = getArguments().getBoolean(Constants.FRAGMENT_ERROR_LAYOUT_BUNDLE_KEY,false); // this value determines if the search bar is visible
         }
     }
 
@@ -56,9 +62,8 @@ public class FragmentErrorLayout extends Fragment
         Log.i(DEBUG_TAG,"Flag = " + mShowSearchLayoutFlag);
 
 
-        if(mShowSearchLayoutFlag)
+        if(mShowSearchLayoutFlag)   //show the search bar if the flag is true
         {
-            //show the layout if the flag is true
             mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE);
         }
         //set the text to inform the user about his situation
@@ -69,25 +74,44 @@ public class FragmentErrorLayout extends Fragment
         //if the place is selected handle it
         handlePlaceSelected();
 
-        mInflatedView.findViewById(R.id.btn_refresh).setOnClickListener(new View.OnClickListener() {
+        getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.VISIBLE); //make the toolbar icon visible
+        getActivity().findViewById(R.id.toolbar_refresh_button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(AppUtils.getNetworkState(getContext())) {
-                   // we have internet
-                    mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE);
-                    //set the text to inform the user about his situation
-                    ((TextView)mInflatedView.findViewById(R.id.tv_error_text_value)).setText(R.string.error_internet_but_not_selected_place_error);
-                }
-                else
-                {
-                    Toast.makeText(getContext(),getString(R.string.no_connection_text),Toast.LENGTH_SHORT).show();
-                }
+            public void onClick(View view){
+                handleRefreshButtonClicked(view);
             }
         });
         return mInflatedView;
     }
 
+    /**
+     * This method handles the click on the toolbar
+     * button Refresh. It checks for network connectivity
+     * and if the device has no internet connectivity it
+     * informs the user using a text message
+     * @param view The View object that was clicked
+     */
+    private void handleRefreshButtonClicked(View view)
+    {
+        if(AppUtils.getNetworkState(getContext())) {
+            // we have internet
+            mInflatedView.findViewById(R.id.add_new_location_layout).setVisibility(View.VISIBLE);
+//            //set the text to inform the user about his situation
+//            ((TextView)mInflatedView.findViewById(R.id.tv_error_text_value)).setText(R.string.error_internet_but_not_selected_place_error); todo maybe remove this line
+        }
+        else
+        {
+            //we dont have internet connection show the user a proper text
+            Toast.makeText(getContext(),getString(R.string.no_connection_text),Toast.LENGTH_SHORT).show();
+        }
 
+    }
+
+    /**
+     * This method handles the Place selection from the search bar. It gets the Place
+     * object and it saves the Name , Latitude , Longitude properties to the shared
+     * preferences. It also requests weather data for that lat,lon coordinates.
+     */
     private void handlePlaceSelected()
     {
         // launch the place autocomplete fragment to choose a location

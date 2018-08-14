@@ -35,7 +35,6 @@ import java.util.List;
 
 import static com.dsktp.sora.weatherfarm.utils.Constants.DETAILED_FORECAST_FRAGMENT_TAG;
 import static com.dsktp.sora.weatherfarm.utils.Constants.NO_PLACE;
-import static com.dsktp.sora.weatherfarm.utils.TimeUtils.unixToDate;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -50,13 +49,6 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     private WeatherAdapter mAdapter;
     private WeatherForecastPOJO dataToSend;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-
 
     @Nullable
     @Override
@@ -67,7 +59,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
         showToolbarButtons();
 
-        Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details);
+        Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details); //setup detail button listener
         mDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

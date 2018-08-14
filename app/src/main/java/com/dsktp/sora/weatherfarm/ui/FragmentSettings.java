@@ -23,18 +23,26 @@ import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragmen
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This fragment class represents the settings screen of the app.
+ */
 public class FragmentSettings extends Fragment implements PlaceSelectionListener
 {
     private static final String DEBUG_TAG = "#FragmentSettings";
     private View mInflatedView;
     private SettingsChangeCallback mCallback;
 
-    public void setCallback(SettingsChangeCallback mCallback) {
-        this.mCallback = mCallback;
-    }
 
+    public void setCallback(SettingsChangeCallback mCallback) {  this.mCallback = mCallback;  }
+
+    /**
+     * This interface is used to get the callback from the MainActivity to handle the
+     * update of the UI with the new values depending on what has changed.
+     */
     public interface SettingsChangeCallback
     {
+//        void onSettingsChanged(String whatChanged,String newValue); //todo refactor that to handle more than one change
         void onSettingsChanged();
     }
 

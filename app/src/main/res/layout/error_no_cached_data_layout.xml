@@ -54,15 +54,4 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/btn_refresh"
-        android:layout_width="42dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="52dp"
-        android:contentDescription="@string/error_layout_refresh_button_content_desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_refresh_black_24dp" />
-
 </android.support.constraint.ConstraintLayout>

@@ -46,6 +46,11 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.WEATHER_FORECAST_FRAGME
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class is the sole activity on the project managing and switching
+ * the fragments
+ */
 public class ActivityMain extends AppCompatActivity implements FragmentSettings.SettingsChangeCallback {
     private static final String DEBUG_TAG = "#ActivityMain";
     private FragmentManager mFragmentManager;
@@ -110,7 +115,14 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     }
 
-
+    /**
+     * This method check to see if the device is running android os >= 6.0 or API 23. If it does
+     * then it check's to see if the Location permission is granted and if it is it fetches weather
+     * forecast data for that location. If the permission is not granted it asks the user to grant it
+     * using a pop up dialog. In case the user denies the location permission for the current location
+     * of the device , then the app shows an error layout informing the user about the current state of
+     * the app.
+     */
     private void requestLocationPermissionFromTheUser()
     {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -163,8 +175,6 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
                 fragmentErrorLayout.setArguments(bundle);
                 mFragmentManager.beginTransaction().replace(R.id.fragment_container,fragmentErrorLayout).commit(); //show the error layout
                 hideToolbarButtons();
-
-
 
                 //ask for permissions again
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
