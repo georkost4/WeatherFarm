@@ -51,7 +51,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
      */
     public interface onClickListener
     {
-        void handleClick(WeatherForecastPOJO weatherForecastPOJO);
+        void onDayDetailsClick(WeatherForecastPOJO weatherForecastPOJO);
     }
 
     public void setList(List<WeatherForecastPOJO> mList)
@@ -128,7 +128,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
         @Override
         public void onClick(View view) {
             //call the callback method to handle the click to the fragment / class that implements the interface
-            mCallback.handleClick(mDailyList.get(getAdapterPosition()));
+            mCallback.onDayDetailsClick(mDailyList.get(getAdapterPosition()));
         }
     }
 }

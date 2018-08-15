@@ -42,6 +42,11 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.NO_PLACE;
  * The name of the project is WeatherFarm and it was created as part of
  * UDACITY ND programm.
  */
+
+/**
+ * This class represents the Fragment Weather Forecast screen that shows the user
+ * the current weather information along with the 5-day forecast list.
+ */
 public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.onClickListener {
     private static final String DEBUG_TAG = "#FragmentWeatherForecast";
     private View mInflatedView;
@@ -62,10 +67,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details); //setup detail button listener
         mDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                onWeatherDetailsClicked(view);
-            }
-        });
+            public void onClick(View view) {      onWeatherDetailsClicked(view);   }    });
 
         //set the title of  the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
@@ -76,32 +78,8 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         //set up refresh button listener
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                if(AppUtils.getNetworkState(getContext()))
-                {
-                    // we have internet
-                    Toast.makeText(getContext(), R.string.updating_data_string, Toast.LENGTH_SHORT).show();
-                    if(AppUtils.getSelectedPosition(getContext())[0].equals(NO_PLACE))
-                    {
-                        //we have not selected a place so use the current position
-                        String[] selectedPosition = AppUtils.getCurrentPosition(getContext());
-                        RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[0],selectedPosition[1],getContext());
-                    }
-                    else
-                    {
-                        //use the selected position to fetch data
-                        String[] selectedPosition = AppUtils.getSelectedPosition(getContext());
-                        RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[1],selectedPosition[2],getContext());
-                    }
-
-
-                }
-                else
-                {
-                    Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
-                }
-
+            public void onClick(View view) {
+                onRefreshButtonClick();
             }
         });
 
@@ -119,6 +97,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
 
         //get the ViewModel and observe the LiveData object for changes
+        //and update the UI views when a change occurs
         WeatherForecastViewModel mViewModel = ViewModelProviders.of(this).get(WeatherForecastViewModel.class);
         mViewModel.getWeatherList().observe(getActivity(), new Observer<List<WeatherForecastPOJO>>() {
             @SuppressLint("LongLogTag")
@@ -139,13 +118,13 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.setList(weatherForecastPOJOS);
 
-                    //hide the loading indicator
-                    mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
-
                     TextView tvLastUpdated = mInflatedView.findViewById(R.id.tv_last_updated_value);
                     //get the date from the utils method
                     String date = TimeUtils.unixToDateTime(AppUtils.getLastUpdated(getContext())/1000);
                     tvLastUpdated.setText(date);
+
+                    //hide the loading indicator
+                    mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
 
                 }
             }});
@@ -153,12 +132,54 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         return mInflatedView;
     }
 
-    @Override
-    public void handleClick(WeatherForecastPOJO weatherForecastPOJO) {
-        //show the weather info for this day clicked
-        Toast.makeText(getContext(),"To be implemented",Toast.LENGTH_SHORT).show();
+    /**
+     * This method handles the toolbar button click "Refresh". It checks for internet
+     * connectivity and requests up-to date weather forecast data , otherwise is shows
+     * a toast to the user to inform him about the connectivity issue.
+     */
+    private void onRefreshButtonClick()
+    {
+        if(AppUtils.getNetworkState(getContext()))
+        {
+            // we have internet
+            Toast.makeText(getContext(), R.string.updating_data_string, Toast.LENGTH_SHORT).show();
+            if(AppUtils.getSelectedPosition(getContext())[0].equals(NO_PLACE))
+            {
+                //we have not selected a place so use the current position
+                String[] selectedPosition = AppUtils.getCurrentPosition(getContext());
+                RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[0],selectedPosition[1],getContext());
+            }
+            else
+            {
+                //use the selected position to fetch data
+                String[] selectedPosition = AppUtils.getSelectedPosition(getContext());
+                RemoteRepository.getsInstance().getForecastLatLon(selectedPosition[1],selectedPosition[2],getContext());
+            }
+        }
+        else
+        {
+            Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
+    /**
+     * This method is triggered when the user clicks on a day in the 5-day
+     * forecast weather data list. It shows more detailed forecast data about
+     * that day
+     * @param weatherForecastPOJO The WeatherForecastPOJO object that contains the weather data
+     */
+    @Override
+    public void onDayDetailsClick(WeatherForecastPOJO weatherForecastPOJO) {
+        //show the weather info for this day clicked
+        Toast.makeText(getContext(),"To be implemented",Toast.LENGTH_SHORT).show(); //todo to be implemented
+    }
+
+    /**
+     * This method is triggered when the user clicks on the "Details" button. It shows more detailed
+     * forecast data about the current day.
+     */
     private void onWeatherDetailsClicked(View view)
     {
         //handle the detailed button click
@@ -170,13 +191,16 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
             Bundle bundle = new Bundle();
             bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY,dataToSend);
             mDetailWeatherForecast.setArguments(bundle);
-
+            //replace the current fragment with  the detailed weather forecast Fragment
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)
                     .addToBackStack("")
                     .commit();
         }
     }
 
+    /**
+     * This method makes the toolbar buttons visible
+     */
     private void showToolbarButtons()
     {
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
@@ -186,6 +210,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     @Override
     public void onStop() {
         super.onStop();
+        //hide the refresh toolbar button
         getActivity().findViewById(R.id.toolbar_refresh_button).setVisibility(View.GONE);
     }
 

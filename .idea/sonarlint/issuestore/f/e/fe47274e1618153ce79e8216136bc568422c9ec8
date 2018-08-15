@@ -1,6 +1,6 @@
 
-~squid:S00116p"ZRename this field "temperature_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½öŸõüÿÿÿÿ8Ä¬æ€Ò,
-ysquid:S00116o"ZRename this field "temperature_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ï ï8£¼ºÏ,
-Ksquid:S1068""-Remove this unused "DEBUG_TAG" private field.(³×˜Û8£¼ºÏ,
 Lsquid:S1068#")Remove this unused "mList" private field.(Öº¤ñùÿÿÿÿ8£¼ºÏ,
+ysquid:S00116o"ZRename this field "temperature_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ï ï8£¼ºÏ,
+~squid:S00116p"ZRename this field "temperature_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½öŸõüÿÿÿÿ8Ä¬æ€Ò,
+Ksquid:S1068""-Remove this unused "DEBUG_TAG" private field.(³×˜Û8£¼ºÏ,
 usquid:S001144"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ü»ïÿşÿÿÿÿ8£¼ºÏ,
