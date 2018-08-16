@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,6 +30,8 @@ import com.dsktp.sora.weatherfarm.utils.Constants;
 
 import java.util.List;
 
+import static com.dsktp.sora.weatherfarm.utils.Constants.MAP_FRAGMENT_TAG;
+
 /**
  * This file created by Georgios Kostogloudis
  * and was last modified on 26/7/2018.
@@ -50,6 +53,46 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_my_polygons,container,false);
 
+        //set up toolbar
+        ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
+
+        //set up the recyclerView
+        setUpRecyclerView();
+
+        //setup Map Button click listener
+        mInflatedView.findViewById(R.id.btn_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onMapClick(v);
+            }
+        });
+
+        //prepare data for first app run
+        checkIfPolygonDataSynced();
+
+        //Get the live data and observe for changes and update UI accordingly
+        ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getActivity(), new Observer<List<PolygonInfoPOJO>>() {
+            @Override
+            public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
+                Log.d(DEBUG_TAG,"Loading polygon list from live data...");
+                if(polygonInfoPOJOS.isEmpty()) Toast.makeText(getContext(), R.string.add_new_polygon_string,Toast.LENGTH_LONG).show();
+                mAdapter.setPolygonList(polygonInfoPOJOS);
+                mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.GONE);
+            }
+        });
+
+
+        return mInflatedView;
+    }
+
+    /**
+     * This method is used for the first time the user runs the app
+     * and checks if the user has retrieved the polygon list from the server.
+     * If he did then the data is loaded from local database , if not it makes
+     * a request to the server assuming you have internet connection available
+     */
+    private void checkIfPolygonDataSynced() {
         //get the polygon list only if the polygon list hasn't been synced
         //and we have internet
         //otherwise query the local database
@@ -63,7 +106,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
                 RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
             } else
             {
-                //we dont have internet to fetch the data
+                //we don't have internet to fetch the data
                 //show the refresh button until the user connect to internet
                 ImageButton refresh = getActivity().findViewById(R.id.toolbar_refresh_button);
                 refresh.setVisibility(View.VISIBLE); //show the refresh button
@@ -83,30 +126,6 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
                 });
             }
         }
-
-
-        //set up toolbar
-        ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.my_polygons_toolbar_title);
-
-        //set up the recyclerView
-        setUpRecyclerView();
-
-
-        ViewModelProviders.of(this).get(PolygonViewModel.class).getPolygonList().observe(getActivity(), new Observer<List<PolygonInfoPOJO>>() {
-            @Override
-            public void onChanged(@Nullable List<PolygonInfoPOJO> polygonInfoPOJOS) {
-                Log.d(DEBUG_TAG,"Live data to the rescue...");
-                if(polygonInfoPOJOS.isEmpty()) Toast.makeText(getContext(), R.string.add_new_polygon_string,Toast.LENGTH_LONG).show();
-                mAdapter.setPolygonList(polygonInfoPOJOS);
-                mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.GONE);
-            }
-        });
-
-
-
-
-        return mInflatedView;
     }
 
     /**
@@ -123,6 +142,29 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         rvPolygons.setAdapter(mAdapter);
 
         mAdapter.setCallback(this);
+    }
+
+    /**
+     * This method handles the click on the  floating action button " + ".It takes the user
+     * to the Map Fragment screen.
+     * @param view The View(Map Floating Action Button) object that was clicked
+     */
+    public void onMapClick(View view) {
+        if(AppUtils.getNetworkState(getContext())) {
+            if (getActivity().getSupportFragmentManager().findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null) {
+                Log.i(DEBUG_TAG, "Creating map fragment");
+                FragmentMap mMapFragment = new FragmentMap();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mMapFragment, MAP_FRAGMENT_TAG)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack("")
+                        .commit();
+            }
+        }
+        else
+        {
+            Toast.makeText(getContext(), R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     /**

@@ -2,13 +2,10 @@ package com.dsktp.sora.weatherfarm.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.WeatherForecastPOJO;
@@ -55,10 +52,10 @@ public class MyWidgetProvider extends AppWidgetProvider
         Log.i(DEBUG_TAG,"Updating the widget values");
         views.setTextViewText(R.id.tv_widget_date, TimeUtils.unixToDate(weatherForecastPOJOList.get(0).getDt()));
         views.setTextViewText(R.id.tv_widget_location_value, AppUtils.getSelectedPosition(context)[0]);
-        views.setTextViewText(R.id.tv_widget_temp, FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOList.get(0).getMain().getTemp())));
+        views.setTextViewText(R.id.tv_widget_temp, FormatUtils.formatTemperature(weatherForecastPOJOList.get(0).getMain().getTemp(),context));
         views.setImageViewResource(R.id.iv_widget_weather_icon, ImageUtils.getIcon(weatherForecastPOJOList.get(0).getWeather().get(0).getDescription()));
-        views.setTextViewText(R.id.tv_widget_max_temp_value, FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOList.get(0).getMain().getTemp_max())));
-        views.setTextViewText(R.id.tv_widget_min_temp_value, FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOList.get(0).getMain().getTemp_min())));
+        views.setTextViewText(R.id.tv_widget_max_temp_value, FormatUtils.formatTemperature(weatherForecastPOJOList.get(0).getMain().getTemp_max(),context));
+        views.setTextViewText(R.id.tv_widget_min_temp_value, FormatUtils.formatTemperature(weatherForecastPOJOList.get(0).getMain().getTemp_min(),context));
         views.setTextViewText(R.id.tv_widget_pressure_value, FormatUtils.formatPressure(weatherForecastPOJOList.get(0).getMain().getPressure()));
         views.setTextViewText(R.id.tv_widget_humidity_value, FormatUtils.formatHumidity(weatherForecastPOJOList.get(0).getMain().getHumidity()));
 

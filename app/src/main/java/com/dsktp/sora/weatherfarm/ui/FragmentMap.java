@@ -33,6 +33,8 @@ import com.google.maps.android.SphericalUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dsktp.sora.weatherfarm.utils.Constants.MAP_FRAGMENT_TAG;
+
 public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRepository.onFailure{
 
     private  String DEBUG_TAG ="#" + getClass().getSimpleName() ;
@@ -156,6 +158,8 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
         sProgressBar.setVisibility(View.GONE);
 
     }
+
+
 
     @Override
     public void updateOnFailure() {

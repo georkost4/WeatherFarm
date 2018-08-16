@@ -59,29 +59,19 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_current_forecast,container,false);
+
+        //region UI configurations
         //show the loading indicator
-        mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.VISIBLE);
+        setLoadingIndicatorVisibility(View.VISIBLE);
 
-        showToolbarButtons();
-
-        Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details); //setup detail button listener
-        mDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {      onWeatherDetailsClicked(view);   }    });
 
         //set the title of  the toolbar
         ((ActivityMain)getActivity()).getSupportActionBar().setTitle(R.string.weather_forecast_toolbar_title);
-
+        showToolbarButtons(); //show the toolbar buttons
         ImageButton refreshButton = getActivity().findViewById(R.id.toolbar_refresh_button);
+        Button mDetailsButton = mInflatedView.findViewById(R.id.btn_weather_details); //setup detail button listener
         //show the refresh button
         refreshButton.setVisibility(View.VISIBLE);
-        //set up refresh button listener
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onRefreshButtonClick();
-            }
-        });
 
         //bind the views
         mRecyclerView = mInflatedView.findViewById(R.id.rv_5_day_forecast);
@@ -95,6 +85,23 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         mAdapter = new WeatherAdapter();
         mAdapter.setCallback(this);
 
+        //endregion
+
+        //region UI button Listeners
+        mDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {      onWeatherDetailsClicked(view);   }    });
+
+        //set up refresh button listener
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRefreshButtonClick();
+            }
+        });
+        //endregion
+
+        //region Live Data observer and populate UI
 
         //get the ViewModel and observe the LiveData object for changes
         //and update the UI views when a change occurs
@@ -111,7 +118,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     dataToSend = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
                     // populate the UI
                     tvCondition.setText(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription());
-                    tvTemperature.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(weatherForecastPOJOS.get(0).getMain().getTemp())));
+                    tvTemperature.setText(FormatUtils.formatTemperature(weatherForecastPOJOS.get(0).getMain().getTemp(),getContext()));
                     ivWeatherImage.setImageResource(ImageUtils.getIcon(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription()));
                     tvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
                     //set the new data to the adapter
@@ -124,13 +131,15 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                     tvLastUpdated.setText(date);
 
                     //hide the loading indicator
-                    mInflatedView.findViewById(R.id.loading_indicator).setVisibility(View.GONE);
-
+                    setLoadingIndicatorVisibility(View.GONE);
                 }
             }});
+        //endregion
 
         return mInflatedView;
     }
+
+
 
     /**
      * This method handles the toolbar button click "Refresh". It checks for internet
@@ -205,6 +214,15 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     {
         getActivity().findViewById(R.id.btn_my_polygons).setVisibility(View.VISIBLE);
         getActivity().findViewById(R.id.settings_btn).setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Ui method for changing the loading indicator visibility.
+     * @param visibility The int parameter depending the visibility parameter
+     */
+    private  void setLoadingIndicatorVisibility(int visibility) {
+        //show/Hide the loading indicator
+        mInflatedView.findViewById(R.id.loading_indicator).setVisibility(visibility);
     }
 
     @Override

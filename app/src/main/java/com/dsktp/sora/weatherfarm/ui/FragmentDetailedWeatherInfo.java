@@ -81,11 +81,11 @@ public class FragmentDetailedWeatherInfo extends Fragment
         //populate the views with data
         mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt()));
         mTvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
-        mTvTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp())));
+        mTvTemp.setText(FormatUtils.formatTemperature(mWeatherForecastData.getMain().getTemp(),getContext()));
         mIvWeatherIcon.setImageResource(ImageUtils.getIcon(mWeatherForecastData.getWeather().get(0).getDescription()));
         //Main Data
-        mTvMinTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp_min())));
-        mTvMaxTemp.setText(FormatUtils.formatToCelsiousSing(kelvinToCelsius(mWeatherForecastData.getMain().getTemp_max())));
+        mTvMinTemp.setText(FormatUtils.formatTemperature(mWeatherForecastData.getMain().getTemp_min(),getContext()));
+        mTvMaxTemp.setText(FormatUtils.formatTemperature(mWeatherForecastData.getMain().getTemp_max(),getContext()));
         mTvPressure.setText(FormatUtils.formatPressure(mWeatherForecastData.getMain().getPressure()));
         mTvHumidity.setText(FormatUtils.formatHumidity(mWeatherForecastData.getMain().getHumidity()));
         //Wind

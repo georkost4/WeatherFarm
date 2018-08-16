@@ -1,5 +1,6 @@
 package com.dsktp.sora.weatherfarm.data.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     private List<WeatherForecastPOJO> mList;
     private List<WeatherForecastPOJO> mDailyList;
     private onClickListener mCallback;
+    private Context mContext;
 
     /**
      * Default constructor
@@ -74,6 +76,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
     public MyWeatherViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
         View inflatedRowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_weather_forecast_row_item,viewGroup,false);
+        mContext = viewGroup.getContext();
         return new MyWeatherViewholder(inflatedRowView);
     }
 
@@ -91,8 +94,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
             myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt()));
         }
         //populate the list
-        myWeatherViewholder.temperature_min.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_min())));
-        myWeatherViewholder.temperature_max.setText(FormatUtils.formatToCelsiousSing(TempUtils.kelvinToCelsius(itemToBind.getMain().getTemp_max())));
+        myWeatherViewholder.temperature_min.setText(FormatUtils.formatTemperature(itemToBind.getMain().getTemp_min(),mContext));
+        myWeatherViewholder.temperature_max.setText(FormatUtils.formatTemperature(itemToBind.getMain().getTemp_max(),mContext));
         myWeatherViewholder.icon.setImageResource(ImageUtils.getIcon(itemToBind.getWeather().get(0).getDescription()));
         myWeatherViewholder.weatherDescription.setText(itemToBind.getWeather().get(0).getDescription());
     }

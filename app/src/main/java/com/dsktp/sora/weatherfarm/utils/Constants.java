@@ -39,6 +39,11 @@ public class Constants
     public static final String PREFERENCES_CURRENT_PLACE_LATITUDE_KEY = "current_place_lat_key";
     public static final String PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY = "current_place_lon_key";
 
+    //units preference keys
+    public static final String PREFERENCES_UNITS_KEY = "app_units_preference_key";
+    public static final String PREFERENCES_UNITS_IMPERIAL_VALUE = "app_units_imperial_value";
+    public static final String PREFERENCES_UNITS_METRIC_VALUE = "app_units_metric_value";
+
     //connectivity key
     public static final String PREFERENCES_CONNECTIVITY_KEY = "connectivity_key";
 
@@ -47,7 +52,7 @@ public class Constants
     //polygon list is synced
     public static final String PREFERENCES_IS_POLYGON_LIST_SYNCED = "polygon_sync_boolean_key";
 
-//    error strings
+    //error strings
     public static final String NO_PLACE ="Unknown name";
     public static final String NO_LATITUDE ="Unknown lat";
     public static final String NO_LONGITUDE ="Unknown lon";

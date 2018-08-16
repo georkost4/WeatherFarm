@@ -268,28 +268,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
 
     }
 
-    /**
-     * This method handles the click on the  floating action button " + ".It takes the user
-     * to the Map Fragment screen.
-     * @param view The View(Map Floating Action Button) object that was clicked
-     */
-    public void onMapClick(View view) {
-        if(AppUtils.getNetworkState(this)) {
-            if (mFragmentManager.findFragmentByTag(Constants.MAP_FRAGMENT_TAG) == null) {
-                Log.i(DEBUG_TAG, "Creating map fragment");
-                FragmentMap mMapFragment = new FragmentMap();
-                mFragmentManager.beginTransaction().replace(R.id.fragment_container, mMapFragment, MAP_FRAGMENT_TAG)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .addToBackStack("")
-                        .commit();
-            }
-        }
-        else
-        {
-            Toast.makeText(this, R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
-        }
 
-    }
 
     /**
      * This method handles the click on the toolbar button "SETTINGS".It takes the user

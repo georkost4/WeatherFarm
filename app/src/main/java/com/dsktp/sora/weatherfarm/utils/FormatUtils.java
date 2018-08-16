@@ -7,6 +7,8 @@ package com.dsktp.sora.weatherfarm.utils;
  * UDACITY ND programm.
  */
 
+import android.content.Context;
+
 /**
  * This class contains formatting methods for imperial/metric unit settings
  */
@@ -18,9 +20,25 @@ public class FormatUtils
      * @param unformattedTemp The input temperature
      * @return formatted String with the "C" sign at the end
      */
-    public static String formatToCelsiousSing(String unformattedTemp)
+    public static String formatTemperature(double unformattedTemp, Context context)
     {
-        return unformattedTemp + " °C";
+        String units = AppUtils.getUnitUserPreference(context);
+        switch (units)
+        {
+            case Constants.PREFERENCES_UNITS_IMPERIAL_VALUE:
+            {
+                return TempUtils.kelvinToCelsius(unformattedTemp) + " °C";
+            }
+            case Constants.PREFERENCES_UNITS_METRIC_VALUE:
+            {
+                return TempUtils.kelvinToFahrenheit(unformattedTemp) + " F";
+            }
+            default:
+            {
+                return TempUtils.kelvinToCelsius(unformattedTemp) + " °C";
+            }
+        }
+
     }
 
     /**

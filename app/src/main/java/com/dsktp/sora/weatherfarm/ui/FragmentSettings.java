@@ -59,6 +59,8 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(this);
 
+
+
         return mInflatedView;
     }
 

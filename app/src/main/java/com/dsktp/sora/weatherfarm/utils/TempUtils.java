@@ -1,6 +1,6 @@
 package com.dsktp.sora.weatherfarm.utils;
-
 import java.text.DecimalFormat;
+
 
 /**
  * This file created by Georgios Kostogloudis

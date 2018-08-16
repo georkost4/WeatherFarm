@@ -15,6 +15,9 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CONNECTIVIT
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CURRENT_PLACE_LATITUDE_KEY;
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_CURRENT_PLACE_LONGTITUDE_KEY;
 import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_IS_POLYGON_LIST_SYNCED;
+import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_UNITS_IMPERIAL_VALUE;
+import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_UNITS_KEY;
+import static com.dsktp.sora.weatherfarm.utils.Constants.PREFERENCES_UNITS_METRIC_VALUE;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -163,4 +166,32 @@ public class AppUtils
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PREFERENCES_CONNECTIVITY_KEY,false);
     }
 
+    /**
+     * This method retrieves the user preferred units . Imperial or
+     * Metric.
+     * @param context The Context object to access the shared preferences
+     * @return String representing the user preferred units
+     */
+    public static String getUnitUserPreference(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(PREFERENCES_UNITS_KEY,PREFERENCES_UNITS_IMPERIAL_VALUE);
+
+    }
+
+    /**
+     * This method saves the units preference for the user into.
+     * shared app preferences for later user .It can
+     * take two values either Metric or Imperial.
+     * @param context The Context object to access the preferences
+     * @param units The String values of the units
+     */
+    public static void saveUnitUserPreference(Context context,String units)
+    {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString(Constants.PREFERENCES_UNITS_KEY,units)
+                .apply();
+
+    }
 }
