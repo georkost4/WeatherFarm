@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
+import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
@@ -32,6 +35,8 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
     private static final String DEBUG_TAG = "#FragmentSettings";
     private View mInflatedView;
     private SettingsChangeCallback mCallback;
+    private Switch imperialSwitch;
+    private Switch metricSwitch;
 
 
     public void setCallback(SettingsChangeCallback mCallback) {  this.mCallback = mCallback;  }
@@ -42,8 +47,8 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
      */
     public interface SettingsChangeCallback
     {
-//        void onSettingsChanged(String whatChanged,String newValue); //todo refactor that to handle more than one change
-        void onSettingsChanged();
+        void onUserPreferredUnitChange();
+        void onLocationSettingChange();
     }
 
     @Nullable
@@ -59,9 +64,72 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(this);
 
+        //get reference to the switches
+        imperialSwitch = mInflatedView.findViewById(R.id.switch_imperial_unit);
+        metricSwitch = mInflatedView.findViewById(R.id.switch_metric);
+        //set on check change listeners
+        imperialSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onImperialSwitchCheckChange(buttonView,isChecked);
+            }
+        });
 
+        metricSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onMetricSwitchCheckChange(buttonView,isChecked);
+            }
+        });
 
         return mInflatedView;
+    }
+
+
+    /**
+     * This method is triggered when the Metric Unit switch has changed
+     * state.
+     * @param buttonView The switch
+     * @param isChecked The boolean variable determining the check state
+     */
+    private void onMetricSwitchCheckChange(CompoundButton buttonView, boolean isChecked)
+    {
+        //The Metric switch is checked
+        if(isChecked)
+        {
+            //disable the Imperial Switch
+            imperialSwitch.setChecked(false);
+            //set the user preferred unit to metric
+            AppUtils.saveUnitUserPreference(getContext(), Constants.PREFERENCES_UNITS_METRIC_VALUE);
+            mCallback.onUserPreferredUnitChange();
+        }
+        else
+        {
+            //The metric switch is disabled
+        }
+    }
+
+    /**
+     * This method is triggered when the Imperial Unit switch has changed
+     * state.
+     * @param buttonView The switch
+     * @param isChecked The boolean variable determining the check state
+     */
+    private void onImperialSwitchCheckChange(CompoundButton buttonView, boolean isChecked)
+    {
+        //The Imperial switch is checked
+        if(isChecked)
+        {
+            //disable the Metric Switch
+            metricSwitch.setChecked(false);
+            //set the user preferred unit to Imperial
+            AppUtils.saveUnitUserPreference(getContext(), Constants.PREFERENCES_UNITS_IMPERIAL_VALUE);
+            mCallback.onUserPreferredUnitChange();
+        }
+        else
+        {
+            //The metric switch is disabled
+        }
     }
 
 
@@ -78,7 +146,7 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
         Log.i(DEBUG_TAG,"Longitude = " + place.getLatLng().longitude);
 
         AppUtils.saveSelectedPosition(place,getContext()); //save the selected position to preferences
-        mCallback.onSettingsChanged(); //trigger the callback
+        mCallback.onLocationSettingChange(); //trigger the callback
 
 
     }

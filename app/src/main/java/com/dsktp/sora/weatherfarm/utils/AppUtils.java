@@ -188,6 +188,7 @@ public class AppUtils
      */
     public static void saveUnitUserPreference(Context context,String units)
     {
+        Log.i(DEBUG_TAG,"Setting the user preferred unit to = " + units);
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putString(Constants.PREFERENCES_UNITS_KEY,units)

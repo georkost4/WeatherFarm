@@ -89,7 +89,7 @@ public class FragmentDetailedWeatherInfo extends Fragment
         mTvPressure.setText(FormatUtils.formatPressure(mWeatherForecastData.getMain().getPressure()));
         mTvHumidity.setText(FormatUtils.formatHumidity(mWeatherForecastData.getMain().getHumidity()));
         //Wind
-        mTvWindSpeed.setText(FormatUtils.formatWindSpeed(mWeatherForecastData.getWind().getSpeed()));
+        mTvWindSpeed.setText(FormatUtils.formatWindSpeed(mWeatherForecastData.getWind().getSpeed(),getContext()));
         mTvWindDegrees.setText(FormatUtils.formatWindDegrees(mWeatherForecastData.getWind().getDeg()));
         //Clouds
         mTvCloudiness.setText(FormatUtils.formatCloudiness(mWeatherForecastData.getClouds().getAll()));

@@ -71,9 +71,24 @@ public class FormatUtils
      * @param windSpeed The wind speed value
      * @return String formatted with correct units
      */
-    public static String formatWindSpeed(double windSpeed)
+    public static String formatWindSpeed(double windSpeed,Context context)
     {
-        return windSpeed + " m/s";
+        String units = AppUtils.getUnitUserPreference(context);
+        switch (units)
+        {
+            case Constants.PREFERENCES_UNITS_IMPERIAL_VALUE:
+            {
+                return windSpeed + " m/s";
+            }
+            case Constants.PREFERENCES_UNITS_METRIC_VALUE:
+            {
+                return windSpeed + " miles/h";
+            }
+            default:
+            {
+                return windSpeed + " m/s";
+            }
+        }
     }
 
     /**

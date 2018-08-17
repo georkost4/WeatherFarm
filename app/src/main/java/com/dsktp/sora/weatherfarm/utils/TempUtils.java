@@ -24,7 +24,9 @@ public class TempUtils
     public static String kelvinToFahrenheit(double kelvinTemperature)
     {
         //todo to be implemented
-        return null;
+        DecimalFormat df2 = new DecimalFormat(".1");
+        double temperature = kelvinTemperature-457.87; // 1 kelvin = -457.87 Fahrenheit
+        return df2.format(temperature);
     }
 
     /**
@@ -37,7 +39,7 @@ public class TempUtils
     {
         //todo to be implemented
         DecimalFormat df2 = new DecimalFormat(".1");
-        double temperature = kelvinTemperature-272.15;
+        double temperature = kelvinTemperature-272.15; // 1 kelvin  = -272.15 Celsius
         return df2.format(temperature);
     }
 

@@ -335,12 +335,12 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
     }
 
     /**
-     * This is a callback method that is triggered when a settings option is changed
+     * This is a callback method that is triggered when the location option is changed
      * in the Settings Fragment . It reloads the UI properly according to the change
      * in settings the user made.
      */
     @Override
-    public void onSettingsChanged() {
+    public void onLocationSettingChange() {
         //todo add a Settings ID changed to have more cases to handle
         Log.d(DEBUG_TAG,"On settings change");
         //The position has changed so re fetch data for the new location
@@ -348,6 +348,21 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],this);
         showWeatherForecastFragment();
     }
+
+    /**
+     * This is a callback method that is triggered when the unit settings option is changed
+     * in the Settings Fragment . It reloads the UI properly according to the change
+     * in settings the user made.
+     */
+    @Override
+    public void onUserPreferredUnitChange()
+    {
+        //todo fix the repaint method
+        //repaint the fragment
+        mFragmentManager.findFragmentByTag(Constants.WEATHER_FORECAST_FRAGMENT_TAG).onCreate(null);
+    }
+
+
 
 
     @Override
@@ -420,6 +435,7 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
         //unregister the receiver
         if(mReceiver!=null) unregisterReceiver(mReceiver);
     }
+
 
 
 }
