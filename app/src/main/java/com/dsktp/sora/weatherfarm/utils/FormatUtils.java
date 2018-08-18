@@ -22,16 +22,19 @@ public class FormatUtils
      */
     public static String formatTemperature(double unformattedTemp, Context context)
     {
+        //todo change metric for celsious
+        //todo changew imperial for fahrenheit
         String units = AppUtils.getUnitUserPreference(context);
         switch (units)
         {
             case Constants.PREFERENCES_UNITS_IMPERIAL_VALUE:
             {
-                return TempUtils.kelvinToCelsius(unformattedTemp) + " °C";
+                return TempUtils.kelvinToFahrenheit(unformattedTemp) + " F";
+
             }
             case Constants.PREFERENCES_UNITS_METRIC_VALUE:
             {
-                return TempUtils.kelvinToFahrenheit(unformattedTemp) + " F";
+                return TempUtils.kelvinToCelsius(unformattedTemp) + " °C";
             }
             default:
             {
@@ -78,11 +81,12 @@ public class FormatUtils
         {
             case Constants.PREFERENCES_UNITS_IMPERIAL_VALUE:
             {
-                return windSpeed + " m/s";
+                return windSpeed + " miles/h";
             }
             case Constants.PREFERENCES_UNITS_METRIC_VALUE:
             {
-                return windSpeed + " miles/h";
+
+                return windSpeed + " m/s";
             }
             default:
             {

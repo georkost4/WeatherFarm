@@ -355,11 +355,11 @@ public class ActivityMain extends AppCompatActivity implements FragmentSettings.
      * in settings the user made.
      */
     @Override
-    public void onUserPreferredUnitChange()
-    {
+    public void onUserPreferredUnitChange() {
         //todo fix the repaint method
         //repaint the fragment
-        mFragmentManager.findFragmentByTag(Constants.WEATHER_FORECAST_FRAGMENT_TAG).onCreate(null);
+        mFragmentManager.beginTransaction().replace(R.id.fragment_container, new FragmentWeatherForecast()).commit();
+
     }
 
 

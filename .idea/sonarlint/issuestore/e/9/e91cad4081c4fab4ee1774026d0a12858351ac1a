@@ -1,3 +1,4 @@
 
-Jsquid:S1172·"+Remove this unused method parameter "view".(¾ç8ÙÚÊ¤Ñ,
-Qsquid:S1135°"2Complete the task associated to this TODO comment.(ìîú®8ÍŠÒÓ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(ìîú®8ÍŠÒÓ,
+Gsquid:S1172"+Remove this unused method parameter "view".(¾ç8ÙÚÊ¤Ñ,
+psquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.TempUtils'.(Ç‚Šƒ8ÊŞ¶ÊÔ,
