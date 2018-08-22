@@ -38,44 +38,24 @@
 
     <!--todo remove the style from the switch to somthing else-->
     <Switch
-        android:id="@+id/switch_imperial_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:checked="false"
-        android:splitTrack="false"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_unit_imperial_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_unit_imperial_label"
-        tools:checked="false" />
-
-    <TextView
-        android:id="@+id/tv_unit_imperial_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/settings_imperial_units_string"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/tv_metric_unit_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/settings_metric_units_string"
-        app:layout_constraintStart_toStartOf="@+id/tv_unit_imperial_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_unit_imperial_label" />
-
-    <Switch
-        android:id="@+id/switch_metric"
+        android:id="@+id/switch_units"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:checked="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_metric_unit_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_metric_unit_label"
-        tools:checked="true" />
+        android:splitTrack="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_units_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_units_label"
+        tools:checked="false" />
+
+    <TextView
+        android:id="@+id/tv_units_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/settings_metric_units_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>

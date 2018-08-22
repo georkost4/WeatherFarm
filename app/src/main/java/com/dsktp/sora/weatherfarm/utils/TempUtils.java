@@ -25,7 +25,7 @@ public class TempUtils
     {
         //todo to be implemented
         DecimalFormat df2 = new DecimalFormat(".1");
-        double temperature = kelvinTemperature-457.87; // 1 kelvin = -457.87 Fahrenheit
+        double temperature = (kelvinTemperature * (1.8)) - 459.67; // T(F) = T(K)*9/5 - 459.67
         return df2.format(temperature);
     }
 

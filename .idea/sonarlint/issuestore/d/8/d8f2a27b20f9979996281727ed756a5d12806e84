@@ -1,8 +1,8 @@
 
-]"squid:SwitchLastCaseIsDefaultChecké""Add a default case to this switch.(É–òÈúÿÿÿÿ8´ÑŠËÔ,
-Qsquid:S1199ê"-Extract this nested code block into a method.(°íäÿÿÿÿÿ8´ÑŠËÔ,
-usquid:S3776~"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¡¥‹âşÿÿÿÿ8´ÑŠËÔ,
-qsquid:MaximumInheritanceDepth6"<This class has 7 parents which is greater than 5 authorized.(íÔ«£úÿÿÿÿ8´ÑŠËÔ,
-Qsquid:S1135Ø"2Complete the task associated to this TODO comment.(ş¹’î8´ÑŠËÔ,
-osquid:S1301é"KReplace this "switch" statement by "if" statements to increase readability.(É–òÈúÿÿÿÿ8´ÑŠËÔ,
-Qsquid:S1135è"2Complete the task associated to this TODO comment.(ï©ªÕ8ŠåËÔ,
+]"squid:SwitchLastCaseIsDefaultChecké""Add a default case to this switch.(É–òÈúÿÿÿÿ8×Ä³òÔ,
+Qsquid:S1199ê"-Extract this nested code block into a method.(°íäÿÿÿÿÿ8×Ä³òÔ,
+osquid:S1301é"KReplace this "switch" statement by "if" statements to increase readability.(É–òÈúÿÿÿÿ8×Ä³òÔ,
+Qsquid:S1135Ø"2Complete the task associated to this TODO comment.(ş¹’î8×Ä³òÔ,
+Qsquid:S1135ç"2Complete the task associated to this TODO comment.(ï©ªÕ8×Ä³òÔ,
+usquid:S3776~"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¡¥‹âşÿÿÿÿ8×Ä³òÔ,
+qsquid:MaximumInheritanceDepth6"<This class has 7 parents which is greater than 5 authorized.(íÔ«£úÿÿÿÿ8×Ä³òÔ,

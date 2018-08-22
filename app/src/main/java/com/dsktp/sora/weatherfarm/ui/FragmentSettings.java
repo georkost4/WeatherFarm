@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
@@ -35,8 +36,8 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
     private static final String DEBUG_TAG = "#FragmentSettings";
     private View mInflatedView;
     private SettingsChangeCallback mCallback;
-    private Switch imperialSwitch;
-    private Switch metricSwitch;
+    private Switch mUnitsSwitch;
+    private TextView mUnitsLabel;
 
 
     public void setCallback(SettingsChangeCallback mCallback) {  this.mCallback = mCallback;  }
@@ -64,73 +65,76 @@ public class FragmentSettings extends Fragment implements PlaceSelectionListener
         SupportPlaceAutocompleteFragment autocompleteFragment =  (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(this);
 
-        //get reference to the switches
-        imperialSwitch = mInflatedView.findViewById(R.id.switch_imperial_unit);
-        metricSwitch = mInflatedView.findViewById(R.id.switch_metric);
-        //set on check change listeners
-        imperialSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                onImperialSwitchCheckChange(buttonView,isChecked);
-            }
-        });
 
-        metricSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                onMetricSwitchCheckChange(buttonView,isChecked);
-            }
-        });
+        //set up the switch logic
+        setUpSwitch();
+
 
         return mInflatedView;
+    }
+
+    /**
+     * This method takes care of setting up the switch the label
+     * and the on Switch change listener.
+     */
+    private void setUpSwitch() {
+        //get reference to the switch
+        mUnitsSwitch = mInflatedView.findViewById(R.id.switch_units);
+        mUnitsLabel = mInflatedView.findViewById(R.id.tv_units_label);
+        //set the state of the switch from the user preference
+        String unitsPrefered = AppUtils.getUnitUserPreference(getContext());
+        if(unitsPrefered.equals(Constants.PREFERENCES_UNITS_IMPERIAL_VALUE))
+        {
+            //user has imperial units
+            mUnitsSwitch.setChecked(false); // switch off the switch
+            mUnitsLabel.setText(R.string.settings_imperial_units_string); //set the label to correct text
+
+        }
+        else
+        {
+            //user has chosen metric units
+            mUnitsSwitch.setChecked(true); //switch on the switch
+            mUnitsLabel.setText(R.string.settings_metric_units_string); // set the correct label
+        }
+        //set on check change listeners
+        mUnitsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                oncSwitchCheckChange(buttonView,isChecked);
+            }
+        });
     }
 
 
     /**
      * This method is triggered when the Metric Unit switch has changed
      * state.
-     * @param buttonView The switch
+     * @param switchView The switch
      * @param isChecked The boolean variable determining the check state
      */
-    private void onMetricSwitchCheckChange(CompoundButton buttonView, boolean isChecked)
+    private void oncSwitchCheckChange(CompoundButton switchView, boolean isChecked)
     {
-        //The Metric switch is checked
+        //The  switch is checked
         if(isChecked)
         {
-            //disable the Imperial Switch
-            imperialSwitch.setChecked(false);
+            //set the label text to Metric
+            ((TextView)mInflatedView.findViewById(R.id.tv_units_label)).setText(R.string.settings_metric_units_string);
             //set the user preferred unit to metric
             AppUtils.saveUnitUserPreference(getContext(), Constants.PREFERENCES_UNITS_METRIC_VALUE);
             mCallback.onUserPreferredUnitChange();
         }
         else
         {
-            //The metric switch is disabled
-        }
-    }
-
-    /**
-     * This method is triggered when the Imperial Unit switch has changed
-     * state.
-     * @param buttonView The switch
-     * @param isChecked The boolean variable determining the check state
-     */
-    private void onImperialSwitchCheckChange(CompoundButton buttonView, boolean isChecked)
-    {
-        //The Imperial switch is checked
-        if(isChecked)
-        {
-            //disable the Metric Switch
-            metricSwitch.setChecked(false);
-            //set the user preferred unit to Imperial
+            //The  switch is disabled
+            //set the label text to Imperial
+            ((TextView)mInflatedView.findViewById(R.id.tv_units_label)).setText(R.string.settings_imperial_units_string);
+            //set the user preferred unit to metric
             AppUtils.saveUnitUserPreference(getContext(), Constants.PREFERENCES_UNITS_IMPERIAL_VALUE);
             mCallback.onUserPreferredUnitChange();
         }
-        else
-        {
-            //The metric switch is disabled
-        }
     }
+
+
 
 
     /**

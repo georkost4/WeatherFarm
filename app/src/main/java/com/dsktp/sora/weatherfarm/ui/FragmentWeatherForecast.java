@@ -47,7 +47,7 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.NO_PLACE;
  * This class represents the Fragment Weather Forecast screen that shows the user
  * the current weather information along with the 5-day forecast list.
  */
-public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.onClickListener {
+public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.onClickListener,FragmentSettings.SettingsChangeCallback {
     private static final String DEBUG_TAG = "#FragmentWeatherForecast";
     private View mInflatedView;
     private RecyclerView mRecyclerView;
@@ -59,7 +59,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflatedView = inflater.inflate(R.layout.fragment_current_forecast,container,false);
-
+        Log.i(DEBUG_TAG,"WeatherFragment inflated...");
         //region UI configurations
         //show the loading indicator
         setLoadingIndicatorVisibility(View.VISIBLE);
@@ -170,6 +170,35 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
             Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
         }
 
+
+    }
+
+    /**
+     * This is a callback method that is triggered when the location option is changed
+     * in the Settings Fragment . It reloads the UI properly according to the change
+     * in settings the user made.
+     */
+    @Override
+    public void onLocationSettingChange() {
+        //todo add a Settings ID changed to have more cases to handle
+        Log.d(DEBUG_TAG,"On settings change");
+        //The position has changed so re fetch data for the new location
+        String[] newLocationArray = AppUtils.getSelectedPosition(getContext());
+        RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],getContext());
+//        showWeatherForecastFragment();
+    }
+
+    /**
+     * This is a callback method that is triggered when the unit settings option is changed
+     * in the Settings Fragment . It reloads the UI properly according to the change
+     * in settings the user made.
+     */
+    @Override
+    public void onUserPreferredUnitChange() {
+        //todo fix the repaint method
+        //repaint the fragment
+//        mFragmentManager.beginTransaction().replace(R.id.fragment_container, new FragmentWeatherForecast()).commit();
+        mAdapter.notifyDataSetChanged();
 
     }
 
