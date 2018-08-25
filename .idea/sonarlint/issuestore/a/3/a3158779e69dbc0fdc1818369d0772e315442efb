@@ -1,3 +1,5 @@
 
-psquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ü¿‰8ÿ»óÕÒ,
 psquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.TempUtils'.(Ç‚Šƒ8ÆŞ¶ÊÔ,
+Zsquid:UselessImportCheck"1Remove this unused import 'java.text.DateFormat'.(÷Œá¼8éâ­ëÖ,
+usquid:UselessImportCheck"GRemove this unused import 'com.dsktp.sora.weatherfarm.utils.TimeUtils'.(Óš©úÿÿÿÿ8”ï¥ëÖ,
+psquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ü¿‰8ÿ»óÕÒ,

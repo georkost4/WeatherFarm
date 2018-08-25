@@ -5,8 +5,11 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * This file created by Georgios Kostogloudis
@@ -83,9 +86,7 @@ public class WeatherForecastPOJO implements Parcelable
         return clouds;
     }
 
-    public void setDt(int dt) {
-        this.dt = dt;
-    }
+    public void setDt(int dt) {  this.dt = dt;  }
 
     public void setWeather(ArrayList<Weather> weather) {
         this.weather = weather;
@@ -110,6 +111,8 @@ public class WeatherForecastPOJO implements Parcelable
     public void setSnow(Snow snow) {
         this.snow = snow;
     }
+
+
 
     @Override
     public int describeContents() {
@@ -140,8 +143,10 @@ public class WeatherForecastPOJO implements Parcelable
     };
 
 
+
+
     private WeatherForecastPOJO(Parcel in) {
-        setDt(in.readInt());
+        setDt( in.readInt());
         setWeather(in.readArrayList(null));
         setMain((Main) in.readParcelable(null));
         setWind((Wind) in.readParcelable(null));
@@ -150,4 +155,6 @@ public class WeatherForecastPOJO implements Parcelable
         setSnow((Snow) in.readParcelable(null));
 
     }
+
+
 }

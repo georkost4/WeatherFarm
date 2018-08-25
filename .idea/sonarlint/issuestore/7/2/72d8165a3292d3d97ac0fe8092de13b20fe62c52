@@ -1,5 +1,5 @@
 
-Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8’“úÊÔ,
-Rsquid:S1172"1Remove this unused method parameter "buttonView".(‹ÎË˜şÿÿÿÿ8’“úÊÔ,
-Msquid:S1172"1Remove this unused method parameter "buttonView".(’‚±¸8’“úÊÔ,
-wsquid:S1450"\Remove the "mInflatedView" field and declare it as a local variable in the relevant methods.(¾Ê8’“úÊÔ,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8Œæº™Ö,
+Rsquid:S1172"1Remove this unused method parameter "switchView".(ê€ä ıÿÿÿÿ8Œæº™Ö,
+|squid:S1450"[Remove the "mUnitsSwitch" field and declare it as a local variable in the relevant methods.(‚˜Öğşÿÿÿÿ8Œæº™Ö,
+vsquid:S1450"ZRemove the "mUnitsLabel" field and declare it as a local variable in the relevant methods.(£Ö×8œÁ™Ö,

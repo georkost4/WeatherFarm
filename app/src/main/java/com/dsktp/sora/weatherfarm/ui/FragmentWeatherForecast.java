@@ -28,7 +28,6 @@ import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.dsktp.sora.weatherfarm.utils.FormatUtils;
 import com.dsktp.sora.weatherfarm.utils.ImageUtils;
-import com.dsktp.sora.weatherfarm.utils.TempUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
     private View mInflatedView;
     private RecyclerView mRecyclerView;
     private WeatherAdapter mAdapter;
-    private WeatherForecastPOJO dataToSend;
+    private WeatherForecastPOJO dataToSendToDetailsFragment;
 
 
     @Nullable
@@ -115,7 +114,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
                 if(!weatherForecastPOJOS.isEmpty())
                 {
                     Log.d(DEBUG_TAG,"WeatherForecastPOJOS list size = " + weatherForecastPOJOS.size());
-                    dataToSend = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
+                    dataToSendToDetailsFragment = weatherForecastPOJOS.get(0); //save the first object to send for detailed view
                     // populate the UI
                     tvCondition.setText(weatherForecastPOJOS.get(0).getWeather().get(0).getDescription());
                     tvTemperature.setText(FormatUtils.formatTemperature(weatherForecastPOJOS.get(0).getMain().getTemp(),getContext()));
@@ -127,7 +126,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
 
                     TextView tvLastUpdated = mInflatedView.findViewById(R.id.tv_last_updated_value);
                     //get the date from the utils method
-                    String date = TimeUtils.unixToDateTime(AppUtils.getLastUpdated(getContext())/1000);
+                    String date = TimeUtils.unixToDateTime(AppUtils.getLastUpdated(getContext()) / 1000);
                     tvLastUpdated.setText(date);
 
                     //hide the loading indicator
@@ -185,7 +184,6 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
         //The position has changed so re fetch data for the new location
         String[] newLocationArray = AppUtils.getSelectedPosition(getContext());
         RemoteRepository.getsInstance().getForecastLatLon(newLocationArray[1],newLocationArray[2],getContext());
-//        showWeatherForecastFragment();
     }
 
     /**
@@ -227,7 +225,7 @@ public class FragmentWeatherForecast extends Fragment implements WeatherAdapter.
             FragmentDetailedWeatherInfo mDetailWeatherForecast = new FragmentDetailedWeatherInfo();
             // create and save the first item of the forecast into a bundle to send it to the fragment
             Bundle bundle = new Bundle();
-            bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY,dataToSend);
+            bundle.putParcelable(Constants.DETAILED_FORECAST_ARGUMENT_KEY, dataToSendToDetailsFragment);
             mDetailWeatherForecast.setArguments(bundle);
             //replace the current fragment with  the detailed weather forecast Fragment
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mDetailWeatherForecast,DETAILED_FORECAST_FRAGMENT_TAG)

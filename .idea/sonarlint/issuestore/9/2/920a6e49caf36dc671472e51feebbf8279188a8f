@@ -1,18 +1,18 @@
 
-Nsquid:S1135"2Complete the task associated to this TODO comment.(†²Øİ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8ÎœÀİĞ,
-Isquid:S1172".Remove this unused method parameter "context".(›÷Àn8ÎœÀİĞ,
-c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8ÎœÀİĞ,
-nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Osquid:S1172".Remove this unused method parameter "context".(ğ”«âøÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
-ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8ÎœÀİĞ,
-osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8ÎœÀİĞ,
-Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8ÎœÀİĞ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+nsquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¸Õñ‘8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÓöµÀ8§—ÑìÖ,
+Isquid:S1172".Remove this unused method parameter "context".(›÷Àn8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+osquid:S1192"SDefine a constant instead of duplicating this literal "Respone message = " 5 times.(‡ı¹Ä8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+Osquid:S1172".Remove this unused method parameter "context".(ğ”«âøÿÿÿÿ8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+ssquid:S00114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¹û…Äüÿÿÿÿ8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+Dsquid:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ8§—ÑìÖ,
+usquid:S3008"TRename this field "DEBUG_TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ò¦øÿÿÿÿ8§—ÑìÖ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(†²Øİ8§—ÑìÖ,

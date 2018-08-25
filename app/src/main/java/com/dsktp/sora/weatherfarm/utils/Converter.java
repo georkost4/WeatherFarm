@@ -8,6 +8,7 @@ package com.dsktp.sora.weatherfarm.utils;
  */
 
 import android.arch.persistence.room.TypeConverter;
+import android.util.Log;
 
 import com.dsktp.sora.weatherfarm.data.model.Forecast.Cloud;
 import com.dsktp.sora.weatherfarm.data.model.Forecast.Main;
@@ -21,6 +22,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * This class contain's method's for converting a ArrayList<E> into a JSON string and vice versa. This
@@ -28,22 +30,19 @@ import java.util.ArrayList;
  */
 public class Converter
 {
+    @TypeConverter
+    public static GeoJSON GeoJSONFromString(String value) {
+        Type listType = new TypeToken<GeoJSON>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
 
 
-
-        @TypeConverter
-        public static GeoJSON GeoJSONFromString(String value) {
-            Type listType = new TypeToken<GeoJSON>() {}.getType();
-            return new Gson().fromJson(value, listType);
-        }
-
-
-        @TypeConverter
-        public static String GeoJSONToString(GeoJSON geoJSONObject) {
-            Gson gson = new Gson();
-            String json = gson.toJson(geoJSONObject);
-            return json;
-        }
+    @TypeConverter
+    public static String GeoJSONToString(GeoJSON geoJSONObject) {
+        Gson gson = new Gson();
+        String json = gson.toJson(geoJSONObject);
+        return json;
+    }
 
 
     @TypeConverter

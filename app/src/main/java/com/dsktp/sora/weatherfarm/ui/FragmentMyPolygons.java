@@ -202,7 +202,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     {
         //get forecast data for the clicked polygon
         if(AppUtils.getNetworkState(getContext())) {
-            RemoteRepository.getsInstance().setmPolyListCallback(this);
+            RemoteRepository.getsInstance().setPolyListCallback(this);
             RemoteRepository.getsInstance().getForecastPolygon(polygonID, getContext());
         }
         else

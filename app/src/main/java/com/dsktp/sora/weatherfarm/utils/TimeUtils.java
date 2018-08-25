@@ -43,7 +43,7 @@ public class TimeUtils
 
         List<WeatherForecastPOJO> filteredList = new ArrayList<>();
         filteredList.add(list.get(0));
-        boolean flagTommorrow = false;
+        boolean flagTomorrow = false;
         boolean flagTomorrow1 = false;
         boolean flagTomorrow2 = false;
         boolean flagTomorrow3 = false;
@@ -56,11 +56,11 @@ public class TimeUtils
         {
             if(unixToDay(list.get(i).getDt()).equals(tomorrow))
             {
-                if(!flagTommorrow)
+                if(!flagTomorrow)
                 {
                     Log.d(DEBUG_TAG,"Added for tomorrow");
                     filteredList.add(list.get(i));
-                    flagTommorrow = true;
+                    flagTomorrow = true;
                 }
             }
             if(unixToDay(list.get(i).getDt()).equals(tomorrow1))
@@ -150,13 +150,25 @@ public class TimeUtils
     }
 
     /**
+     * todo refactor the javadoc
+     * This method takes input the time in millis and returns the time in human readable
+     * form e.g for input 1533581302000 the method returns Monay
+     * @param timeInMilli The time in milliseconds
+     * @return in formatted text Day ( Monday)
+     */
+    public static String unixToDayTime(long timeInMilli)
+    {
+        return new java.text.SimpleDateFormat("EEEE HH:mm").format(new java.util.Date (timeInMilli*1000));
+
+    }
+
+    /**
      * This method returns the current day of the week
      * @return String containing the current day of the week
      */
-    public static String getCurrentDay()
+    public static String getDay(int day)
     {
         Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
 
         String mera = "null";
         switch (day) {

@@ -153,3 +153,5 @@ Capp/src/main/java/com/dsktp/sora/weatherfarm/utils/FormatUtils.java,8\0\803d37
 Napp/src/main/java/com/dsktp/sora/weatherfarm/data/network/NetworkReceiver.java,f\8\f80b31a16308a8a2cbab8d4f98336a6c903123cf
 …
 Uapp/src/main/java/com/dsktp/sora/weatherfarm/data/model/Polygons/SendPolygonPOJO.java,9\d\9d3ad57a9476ace4e159e738891efa721e5c65a3
+Y
+)app/src/main/res/raw/sample_json_response,3\8\3833720acd5b451df5e81d94c13380cfe6b39065

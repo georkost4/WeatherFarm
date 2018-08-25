@@ -19,7 +19,6 @@ import com.dsktp.sora.weatherfarm.R;
 import com.dsktp.sora.weatherfarm.data.network.RemoteRepository;
 import com.dsktp.sora.weatherfarm.utils.AppUtils;
 import com.dsktp.sora.weatherfarm.utils.AreaUtils;
-import com.dsktp.sora.weatherfarm.utils.Constants;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,8 +31,6 @@ import com.google.maps.android.SphericalUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.dsktp.sora.weatherfarm.utils.Constants.MAP_FRAGMENT_TAG;
 
 public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRepository.onFailure{
 
@@ -62,7 +59,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
         fragment.getMapAsync(this);
 
         sProgressBar = mInflatedView.findViewById(R.id.pb_loading_map_activity);
-        RemoteRepository.getsInstance().setmMapCallback(this);
+        RemoteRepository.getsInstance().setMapCallback(this);
         return mInflatedView;
 
     }

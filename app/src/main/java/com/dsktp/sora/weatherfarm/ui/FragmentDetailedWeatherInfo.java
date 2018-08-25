@@ -79,7 +79,7 @@ public class FragmentDetailedWeatherInfo extends Fragment
         ((ActivityMain)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //populate the views with data
-        mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt()));
+//        mTvDay.setText(TimeUtils.unixToDate(mWeatherForecastData.getDt())); //todo fix this
         mTvLocation.setText(AppUtils.getSelectedPosition(getContext())[0]);
         mTvTemp.setText(FormatUtils.formatTemperature(mWeatherForecastData.getMain().getTemp(),getContext()));
         mIvWeatherIcon.setImageResource(ImageUtils.getIcon(mWeatherForecastData.getWeather().get(0).getDescription()));

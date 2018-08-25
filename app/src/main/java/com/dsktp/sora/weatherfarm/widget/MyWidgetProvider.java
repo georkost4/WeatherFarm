@@ -17,6 +17,8 @@ import com.dsktp.sora.weatherfarm.utils.ImageUtils;
 import com.dsktp.sora.weatherfarm.utils.TempUtils;
 import com.dsktp.sora.weatherfarm.utils.TimeUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE;
@@ -50,7 +52,7 @@ public class MyWidgetProvider extends AppWidgetProvider
 
     private static void updateValues(RemoteViews views, List<WeatherForecastPOJO> weatherForecastPOJOList,Context context) {
         Log.i(DEBUG_TAG,"Updating the widget values");
-        views.setTextViewText(R.id.tv_widget_date, TimeUtils.unixToDate(weatherForecastPOJOList.get(0).getDt()));
+        views.setTextViewText(R.id.tv_widget_date, SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(weatherForecastPOJOList.get(0).getDt()));
         views.setTextViewText(R.id.tv_widget_location_value, AppUtils.getSelectedPosition(context)[0]);
         views.setTextViewText(R.id.tv_widget_temp, FormatUtils.formatTemperature(weatherForecastPOJOList.get(0).getMain().getTemp(),context));
         views.setImageViewResource(R.id.iv_widget_weather_icon, ImageUtils.getIcon(weatherForecastPOJOList.get(0).getWeather().get(0).getDescription()));
