@@ -1,30 +1,31 @@
 
-squid:S1319¨"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(’õÅ³8Ô˜›íÖ,
-—squid:S1319¯"xThe type of the "geoJSONObject" object should be an interface such as "List" rather than the implementation "ArrayList".(¾»¿°8Ô˜›íÖ,
-zsquid:S14889"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-squid:S1488H"\Immediately return this expression instead of assigning it to the temporary variable "json".(¬ı¹ûÿÿÿÿ8Ô˜›íÖ,
-zsquid:S1488W"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-zsquid:S1488f"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-zsquid:S1488u"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-{squid:S1488„"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-{squid:S1488“"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-{squid:S1488¢"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-{squid:S1488±"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
-Usquid:S1135$"2Complete the task associated to this TODO comment.(×ˆ½úÿÿÿÿ8Ô˜›íÖ,
-]squid:S1118":Add a private constructor to hide the implicit public one.(ò×ãœûÿÿÿÿ8Ô˜›íÖ,
-msquid:S001000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¾§¸8Ô˜›íÖ,
-msquid:S001007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–âšå8Ô˜›íÖ,
-msquid:S00100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê‹ñ8Ô˜›íÖ,
-rsquid:S00100U"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ÈŸºúÿÿÿÿ8Ô˜›íÖ,
-msquid:S00100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¢ÁÄ8Ô˜›íÖ,
-rsquid:S00100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ûïÿıÿÿÿÿ8Ô˜›íÖ,
-rsquid:S00100l"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯õ¡«ûÿÿÿÿ8Ô˜›íÖ,
-msquid:S00100s"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ù±£8Ô˜›íÖ,
-lsquid:S00100{"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—åƒ8Ô˜›íÖ,
-nsquid:S00100‚"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë¹ÁĞ8Ô˜›íÖ,
-ssquid:S00100Š"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ıøóüÿÿÿÿ8Ô˜›íÖ,
-nsquid:S00100‘"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°š8Ô˜›íÖ,
-nsquid:S00100™"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚´Èã8Ô˜›íÖ,
-ssquid:S00100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢å¼ûÿÿÿÿ8Ô˜›íÖ,
-nsquid:S00100¨"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’õÅ³8Ô˜›íÖ,
-nsquid:S00100¯"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾»¿°8Ô˜›íÖ,
+Œsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(’õÅ³8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’õÅ³8Ô˜›íÖ,
+[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8Æ¢ì•×,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ù±£8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾»¿°8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–âšå8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê‹ñ8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ûïÿıÿÿÿÿ8Ô˜›íÖ,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ıøóüÿÿÿÿ8Ô˜›íÖ,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯õ¡«ûÿÿÿÿ8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚´Èã8Ô˜›íÖ,
+[squid:S1118":Add a private constructor to hide the implicit public one.(ò×ãœûÿÿÿÿ8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¾§¸8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°š8Ô˜›íÖ,
+”squid:S1319"xThe type of the "geoJSONObject" object should be an interface such as "List" rather than the implementation "ArrayList".(¾»¿°8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¢ÁÄ8Ô˜›íÖ,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ÈŸºúÿÿÿÿ8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+}squid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(¬ı¹ûÿÿÿÿ8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,
+psquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢å¼ûÿÿÿÿ8Ô˜›íÖ,
+Tsquid:UselessImportCheck"+Remove this unused import 'java.util.Date'.(¸…¼ü8Æ¢ì•×,
+jsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—åƒ8Ô˜›íÖ,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë¹ÁĞ8Ô˜›íÖ,
+xsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(‘ä¹ş8Ô˜›íÖ,

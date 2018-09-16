@@ -103,7 +103,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
                 //start the loading from the server
                 //show the loading indicator
                 mInflatedView.findViewById(R.id.polygon_loading_indicator).setVisibility(View.VISIBLE);
-                RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
+                RemoteRepository.getsInstance().getPolygonRepo().getListOfPolygons(mInflatedView.getContext());
             } else
             {
                 //we don't have internet to fetch the data
@@ -117,7 +117,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
                         if (AppUtils.getNetworkState(getContext())) {
                             //update the polygon list
                             Toast.makeText(getContext(), R.string.updating_list_string, Toast.LENGTH_SHORT).show();
-                            RemoteRepository.getsInstance().getListOfPolygons(mInflatedView.getContext());
+                            RemoteRepository.getsInstance().getPolygonRepo().getListOfPolygons(mInflatedView.getContext());
                         } else {
                             //show error message
                             Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
@@ -179,7 +179,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
     {
         //delete the clicked polygon from the db and the remote server
         RemoteRepository remoteRepository = RemoteRepository.getsInstance();
-        remoteRepository.removePolygon(polygonID,getContext());
+        remoteRepository.getPolygonRepo().removePolygon(polygonID,getContext());
         final PolygonDao dao = AppDatabase.getsDbInstance(getContext()).polygonDao();
         AppExecutors.getInstance().getRoomIO().execute(new Runnable() {
             @Override
@@ -203,7 +203,7 @@ public class FragmentMyPolygons  extends Fragment implements PolygonAdapter.Poly
         //get forecast data for the clicked polygon
         if(AppUtils.getNetworkState(getContext())) {
             RemoteRepository.getsInstance().setPolyListCallback(this);
-            RemoteRepository.getsInstance().getForecastPolygon(polygonID, getContext());
+            RemoteRepository.getsInstance().getPolygonRepo().getForecastPolygon(polygonID, getContext());
         }
         else
         {

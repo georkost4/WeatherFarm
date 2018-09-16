@@ -1,17 +1,18 @@
 
-Nsquid:S1199"-Extract this nested code block into a method.(ĞÎö¬øÿÿÿÿ8¨óëÖ,
 ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(©³‹şÿÿÿÿ8¨óëÖ,
-Psquid:S1066"/Merge this if statement with the enclosing one.(ÿ¶èèúÿÿÿÿ8¨óëÖ,
-Psquid:S1066"/Merge this if statement with the enclosing one.(öî‚ëøÿÿÿÿ8¨óëÖ,
-Jsquid:S1066"/Merge this if statement with the enclosing one.(ÉØÉG8¨óëÖ,
-Isquid:S1199"-Extract this nested code block into a method.(İœÆ¢8¨óëÖ,
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ì»¾úÿÿÿÿ8¨óëÖ,
-Isquid:S1481"-Remove this unused "calendar" local variable.(£„Ş£8¨óëÖ,
-Isquid:S1199"-Extract this nested code block into a method.(¬‹ş8¨óëÖ,
-Isquid:S1199"-Extract this nested code block into a method.(Ô£Ë8¨óëÖ,
-Nsquid:S1199"-Extract this nested code block into a method.(†ø´üÿÿÿÿ8¨óëÖ,
-Ksquid:S1066"/Merge this if statement with the enclosing one.(ÿæŸ8¨óëÖ,
-Isquid:S1199"-Extract this nested code block into a method.(­Õñˆ8¨óëÖ,
-Xsquid:S1854"<Remove this useless assignment to local variable "calendar".(£„Ş£8¨óëÖ,
-Isquid:S1199"-Extract this nested code block into a method.(´Œ8¨óëÖ,
 Vsquid:S1118":Add a private constructor to hide the implicit public one.(³ÌÇ¦8¨óëÖ,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ì»¾úÿÿÿÿ8¨óëÖ,
+Xsquid:S1854"<Remove this useless assignment to local variable "calendar".(£„Ş£8¨óëÖ,
+Nsquid:S1199"-Extract this nested code block into a method.(ĞÎö¬øÿÿÿÿ8¨óëÖ,
+Isquid:S1199"-Extract this nested code block into a method.(¬‹ş8¨óëÖ,
+Isquid:S1199"-Extract this nested code block into a method.(´Œ8¨óëÖ,
+Ksquid:S1066"/Merge this if statement with the enclosing one.(ÿæŸ8¨óëÖ,
+Psquid:S1066"/Merge this if statement with the enclosing one.(öî‚ëøÿÿÿÿ8¨óëÖ,
+Psquid:S1066"/Merge this if statement with the enclosing one.(ÿ¶èèúÿÿÿÿ8¨óëÖ,
+Isquid:S1199"-Extract this nested code block into a method.(İœÆ¢8¨óëÖ,
+Isquid:S1199"-Extract this nested code block into a method.(Ô£Ë8¨óëÖ,
+Nsquid:S1135"2Complete the task associated to this TODO comment.(£Ñ·8‚û•×,
+Jsquid:S1066"/Merge this if statement with the enclosing one.(ÉØÉG8¨óëÖ,
+Isquid:S1199"-Extract this nested code block into a method.(­Õñˆ8¨óëÖ,
+Isquid:S1481"-Remove this unused "calendar" local variable.(£„Ş£8¨óëÖ,
+Nsquid:S1199"-Extract this nested code block into a method.(†ø´üÿÿÿÿ8¨óëÖ,

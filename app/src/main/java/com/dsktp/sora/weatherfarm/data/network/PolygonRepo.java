@@ -37,10 +37,13 @@ import static com.dsktp.sora.weatherfarm.utils.Constants.BASE_AGRO_MONITORING_UR
 public class PolygonRepo
 {
     private static final String DEBUG_TAG = "#PolygonRepo";
-    private RemoteRepository mRemoteRepo = RemoteRepository.getsInstance();
+    private RemoteRepository mRemoteRepo;
 
     public PolygonRepo() {
-        mRemoteRepo.setPolygonRepo(this);
+    }
+
+    public PolygonRepo(RemoteRepository mRemoteRepo) {
+        this.mRemoteRepo = mRemoteRepo;
     }
 
     public void removePolygon(final String polygonID, final Context context)
@@ -59,7 +62,7 @@ public class PolygonRepo
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.isSuccessful())
                 {
-                    if(response.code() == 204)
+                    if(response.code() == 204) //todo create valid code responses Constants
                     {
                         Log.d(DEBUG_TAG,"The polygon was successfully removed from the server");
                         //remove the polygon also from the local database

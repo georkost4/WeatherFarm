@@ -52,7 +52,9 @@ public class RemoteRepository
     private static RemoteRepository sInstance;
     private PolygonRepo polygonRepo;
 
-    private RemoteRepository() {
+    private RemoteRepository()
+    {
+        polygonRepo = new PolygonRepo(this);
 
     }
     public static RemoteRepository getsInstance()
@@ -67,6 +69,10 @@ public class RemoteRepository
 
     public void setPolyListCallback(deliveryCallBack mPolyListCallback) {
         this.mPolyListCallback = mPolyListCallback;
+    }
+
+    public PolygonRepo getPolygonRepo() {
+        return polygonRepo;
     }
 
     public void setMapCallback(onFailure mMapCallback) {

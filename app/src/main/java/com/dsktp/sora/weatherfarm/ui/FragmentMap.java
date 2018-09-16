@@ -124,7 +124,7 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback,RemoteRe
                                     public void onClick(View view) {
                                         if(AppUtils.getNetworkState(getContext())) {
                                             RemoteRepository remoteRepository = RemoteRepository.getsInstance();
-                                            remoteRepository.sendPolygon(pointList, "TestPolygon", mInflatedView.getContext()); // todo show to the user a editext to name the polygon
+                                            remoteRepository.getPolygonRepo().sendPolygon(pointList, "TestPolygon", mInflatedView.getContext()); // todo show to the user a editext to name the polygon
                                             sProgressBar.setVisibility(View.VISIBLE);
 
                                         }

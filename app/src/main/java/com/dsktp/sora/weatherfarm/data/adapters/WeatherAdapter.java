@@ -91,7 +91,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyWeathe
         }
         else
         {
-//            myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt())); //todo fix this
+            myWeatherViewholder.day.setText(TimeUtils.unixToDay(itemToBind.getDt())); //todo change  this to consider user locale
         }
         //populate the list
         myWeatherViewholder.temperature_min.setText(FormatUtils.formatTemperature(itemToBind.getMain().getTemp_min(),mContext));
